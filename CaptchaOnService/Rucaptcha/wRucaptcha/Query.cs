@@ -7,14 +7,20 @@ using System.Net;
 using System.Collections.Specialized;
 using System.Threading;
 using System.IO;
+using Captcha_Service.Rucaptcha.ReqModels;
 
 namespace Captcha_Service.Rucaptcha.wRucaptcha
 {
     partial class Query
     {
-        private static string soft_id = "2392";
+        private static readonly string Soft_id = "2392";
+        private static readonly string Url = "http://rucaptcha.com/res.php?";
+        public string Key { get; set; }
+        public Query(string Key)
+        {
+            this.Key = Key;
+        }
 
-        #region Дополнительные методы
         /// <summary>
         /// Отправить запросс 
         /// </summary>
@@ -37,6 +43,17 @@ namespace Captcha_Service.Rucaptcha.wRucaptcha
             using (StreamReader reader = new StreamReader(stream))
                 return reader.ReadToEnd();
         }
+        /// <summary>
+        /// Переводим данные с байтов в текст
+        /// </summary>
+        /// <param name="request">Байт которые будем переводить в текст</param>
+        /// <returns></returns>
+        public static string ByteToString(WebRequest request)
+        {
+            using ( HttpWebResponse response = (HttpWebResponse)request.GetResponse() )
+            using ( StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.Default, true, 8192) )
+                return reader.ReadToEnd();
+        }
 
         /// <summary>
         /// Получить наш баланс в байтах
@@ -44,11 +61,10 @@ namespace Captcha_Service.Rucaptcha.wRucaptcha
         /// <param name="key">Ключ</param>
         /// <param name="json">Указываем что получаем данные в json</param>
         /// <returns></returns>
-        public static WebRequest GetBalanceByte(string key, bool json = false)
+        public string GetBalanceByte(GetBalance data)
         {
-            string Url = "http://rucaptcha.com/res.php";
-            string Data = "&key=" + key + "&action=getbalance" + "&json=" + json.GetHashCode();
-            return WebRequest.Create(Url + "?" + Data);
+            string Data = "&key=" + data.Key + "&action=getbalance" + "&json=" + data.Json.GetHashCode();
+            return ByteToString( WebRequest.Create(Url + "?" + Data));
         }
 
         /// <summary>
@@ -60,54 +76,39 @@ namespace Captcha_Service.Rucaptcha.wRucaptcha
         /// <returns></returns>
         public string Check(string key, string IdCaptcha, int sleep = 1000, bool json = false)
         {
-            string urlChek = "http://rucaptcha.com/res.php?";
-            //Проверяем решение капчи 
             while (true)
             {
-                //Делаем запроссы
-                var testss = WebRequest.Create(urlChek + $"&key={key}&action=get&id={IdCaptcha}&json={json.GetHashCode()}");
-                //Получаем запросс в нормальном виде
-                string  Decision = Additional.ByteToString(testss);
+                var testss = WebRequest.Create(Url + $"&key={key}&action=get&id={IdCaptcha}&json={json.GetHashCode()}");
+                string  Decision = ByteToString(testss);
 
-                //Если вершно но без json
                 if (Decision.Contains("OK"))
                     return Decision.Replace("OK|", "");
-
-                //если есть json
                 else if (Decision.Contains("request"))
                     return Decision;
-
-                //если ошибка
                 else if (Decision.Contains("ERROR"))
                     return Decision;
 
-                //Задержка
                 Thread.Sleep(sleep);
             }
         }
-        #endregion
 
-        #region Решение капчи
         /// <summary>
         /// Загрузка картинки на сервис
         /// </summary>
         /// <param name="key">Ключ для решения капчи</param>
         /// <param name="ImagePath">Ссылка на картинку</param>
-        /// <param name="soft_id">ID разработчика ПО</param>
+        /// <param name="Soft_id">ID разработчика ПО</param>
         /// <returns></returns>
-        public string RegularUpload(string key, string ImagePath)
+        public string RegularUpload(Regular regular)
         {
-            string DowloadInf = "";
-            string url = "http://rucaptcha.com/in.php";
             using (var webClient = new WebClient())
             {
-                webClient.QueryString.Add("key", key);
-                webClient.QueryString.Add("soft_id", soft_id);
+                webClient.QueryString.Add("key", Key);
+                webClient.QueryString.Add("Soft_id", Soft_id);
 
-                var tets = webClient.UploadFile(url, ImagePath);
-                DowloadInf = Encoding.UTF8.GetString(tets);
+                var tets = webClient.UploadFile(Url, regular.Imape_path);
+                return Encoding.UTF8.GetString(tets).Replace("OK|", ""); ;
             }
-            return DowloadInf.Replace("OK|", "");
         }
 
         /// <summary>
@@ -115,18 +116,12 @@ namespace Captcha_Service.Rucaptcha.wRucaptcha
         /// </summary>
         /// <param name="key">Ключ от сервиса</param>
         /// <param name="TextCaptcha">Текс-Капча который требуется решить</param>
-        /// <param name="soft_id">id разработчика</param>
+        /// <param name="Soft_id">id разработчика</param>
         /// <returns></returns>
-        public string TextUpload(string key, string TextCaptcha)
+        public string TextUpload(string TextCaptcha)
         {
-            string DowloadInf = "";
-            string url = "http://rucaptcha.com/in.php?";
-            using (var webClient = new WebClient())
-            {
-                string data = $"key={key}&textcaptcha={TextCaptcha}&soft_id={soft_id}";
-                DowloadInf = RequestSend(url, data);
-            }
-            return DowloadInf.Replace("OK|", "");
+                string data = $"key={Key}&textcaptcha={TextCaptcha}&Soft_id={Soft_id}";
+                return  RequestSend(Url, data).Replace("OK|", "");
         }
 
         /// <summary>
@@ -136,18 +131,12 @@ namespace Captcha_Service.Rucaptcha.wRucaptcha
         /// <param name="googlekey">Значение параметра k или data-sitekey</param>
         /// <param name="pageurl">Полный URL страницы, на которой вы решаете ReCaptcha V2</param>
         /// <param name="invisible">1 — говорит нам, что на сайте невидимая ReCaptcha. 0 — обычная ReCaptcha.</param>
-        /// <param name="soft_id">ID разработчика ПО</param>
+        /// <param name="Soft_id">ID разработчика ПО</param>
         /// <returns></returns>
-        public string ReCaptcha_V2_Upload(string key, string googlekey, string pageurl)
+        public string ReCaptcha_V2_Upload(ReCaptcha_V2 recaptcha)
         {
-            string DowloadInf = "";
-            string url = "http://rucaptcha.com/in.php?";
-            using (var webClient = new WebClient())
-            {
-                string data = $"key={key}&method=userrecaptcha&googlekey={googlekey}&pageurl={pageurl}&soft_id={soft_id}";
-                DowloadInf = RequestSend(url, data);
-            }
-            return DowloadInf.Replace("OK|", "");
+                string data = $"key={Key}&method=userrecaptcha&googlekey={recaptcha.Google_key}&pageurl={recaptcha.Page_url}&Soft_id={Soft_id}";
+                return RequestSend(Url, data).Replace("OK|", "");
         }
 
         /// <summary>
@@ -157,19 +146,12 @@ namespace Captcha_Service.Rucaptcha.wRucaptcha
         /// <param name="googlekey">Значение параметра k или data-sitekey</param>
         /// <param name="pageurl">Полный URL страницы, на которой вы решаете ReCaptcha V2</param>
         /// <param name="invisible">1 — говорит нам, что на сайте невидимая ReCaptcha. 0 — обычная ReCaptcha.</param>
-        /// <param name="soft_id">ID разработчика ПО</param>
+        /// <param name="Soft_id">ID разработчика ПО</param>
         /// <returns></returns>
-        public string ReCaptcha_V3_Upload(string key, string googlekey, string pageurl, string action)
+        public string ReCaptcha_V3_Upload( ReCaptcha_V3 recaptcha)
         {
-            string DowloadInf = "";
-            string url = "http://rucaptcha.com/in.php?";
-            using (var webClient = new WebClient())
-            {
-                string data = $"key={key}&method=userrecaptcha&version=v3&googlekey={googlekey}&pageurl={pageurl}&action={action}&soft_id={soft_id}";
-                DowloadInf = RequestSend(url, data);
-            }
-            return DowloadInf.Replace("OK|", "");
+                string data = $"key={Key}&method=userrecaptcha&version=v3&googlekey={recaptcha.Google_key}&pageurl={recaptcha.Page_url}&action={recaptcha.Action}&Soft_id={Soft_id}";
+                return RequestSend(Url, data).Replace("OK|", "");
         }
-        #endregion
     }
 }

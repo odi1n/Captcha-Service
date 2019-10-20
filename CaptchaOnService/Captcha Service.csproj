@@ -56,14 +56,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Rucaptcha\ReqModels\GetBalance.cs" />
+    <Compile Include="Rucaptcha\ReqModels\ReCaptcha_V2.cs" />
+    <Compile Include="Rucaptcha\ReqModels\ReCaptcha_V3.cs" />
+    <Compile Include="Rucaptcha\ReqModels\Regular.cs" />
+    <Compile Include="Rucaptcha\ReqModels\Texts.cs" />
     <Compile Include="Rucaptcha\Rucaptcha.cs" />
-    <Compile Include="Rucaptcha\wRucaptcha\Additional.cs" />
-    <Compile Include="Rucaptcha\wRucaptcha\ErrorIn.cs" />
-    <Compile Include="Rucaptcha\wRucaptcha\ErrorRes.cs" />
     <Compile Include="Rucaptcha\wRucaptcha\Query.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Info.txt" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -74,6 +73,7 @@
   <ItemGroup>
     <None Include="NugetCaptchaOnService.nuspec" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
