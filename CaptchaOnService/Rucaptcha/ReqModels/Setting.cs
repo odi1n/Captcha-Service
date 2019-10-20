@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Captcha_Service.Rucaptcha.ReqModels
 {
-    public class Regular : Setting
+    public class Setting
     {
-        public string Imape_path { get; set; }
+        public int Sleep { get; set; }
+        public bool Json { get; set; } = false;
     }
 }

@@ -60,6 +60,7 @@
     <Compile Include="Rucaptcha\ReqModels\ReCaptcha_V2.cs" />
     <Compile Include="Rucaptcha\ReqModels\ReCaptcha_V3.cs" />
     <Compile Include="Rucaptcha\ReqModels\Regular.cs" />
+    <Compile Include="Rucaptcha\ReqModels\Setting.cs" />
     <Compile Include="Rucaptcha\ReqModels\Texts.cs" />
     <Compile Include="Rucaptcha\Rucaptcha.cs" />
     <Compile Include="Rucaptcha\wRucaptcha\Query.cs" />

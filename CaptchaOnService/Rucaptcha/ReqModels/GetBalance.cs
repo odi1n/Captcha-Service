@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Captcha_Service.Rucaptcha.ReqModels
 {
-    public class GetBalance
+    public class GetBalance : Setting
     {
         public string Key { get; set; }
-        public bool Json {get;set;} = false;
     }
 }
