@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Captcha_Service.Rucaptcha.ReqModels
+namespace Captcha_Service.Models.Rucaptcha
 {
-    public class Texts : Setting
+    public class TextModels : SettingModels
     {
-        public string Text_captcha { get; set; }
+        public string TextCaptcha { get; set; }
     }
 }

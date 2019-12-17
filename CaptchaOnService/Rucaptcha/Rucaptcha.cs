@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using System.IO;
-using Captcha_Service.Rucaptcha.ReqModels;
+using Captcha_Service.Models.Rucaptcha;
+using Captcha_Service.Exception.Rucaptcha;
 
 namespace Captcha_Service.Rucaptcha
 {
@@ -14,32 +15,42 @@ namespace Captcha_Service.Rucaptcha
     /// </summary>
     public class Rucaptcha
     {
-        private wRucaptcha.Query Query;
         /// <summary>
         /// Ключ от сервиса
         /// </summary>
-        public string Key { get; set; }
+        private  string _key { get; set; }
+        /// <summary>
+        /// Для запросов
+        /// </summary>
+        private wRucaptcha.Query _query;
 
-        public Rucaptcha(string Key)
+        public Rucaptcha(string key)
         {
-            this.Key = Key;
-            Query = new wRucaptcha.Query(Key);
+            this._key = key; 
+            this._query = new wRucaptcha.Query(key);
         }
 
         /// <summary>
         /// Узнать баланс пользователя
         /// </summary>
-        /// <param name="json">Получать ли данные в json. false - получить обычно, true - получить в json</param>
+        /// <param name="data">Параметры</param>
         /// <returns></returns>
-        public string GetBalance(GetBalance data)
+        public string GetBalance(GetBalnceModels data)
         {
-            if ( Key == null )
-                return "Проверьте ключ";
+            if ( _key == null )
+                throw new ErrorParamsRucaptchaException("Проверьте свой ключ");
+            else if ( data == null )
+                throw new ErrorParamsRucaptchaException("Проверьте указали ли вы данные");
+            else if ( data.Key == null && _key == null )
+                throw new ErrorParamsRucaptchaException("Проверьте свой ключ");
             else
             {
-                if(data.Key == null)
-                    data.Key = Key;
-                return Query.GetBalanceByte(data);
+                if ( data == null )
+                    data.Key = _key;
+                else if ( data.Key == null )
+                    data.Key = _key;
+
+                return _query.GetBalanceByte(data);
             }
         }
 
@@ -47,18 +58,18 @@ namespace Captcha_Service.Rucaptcha
         /// Решить обычную капчу(картинка)
         /// </summary>
         /// <returns></returns>
-        public string Regular(Regular regular)
+        public string Regular(RegularModels regular)
         {
-            if ( Key == null )
+            if ( _key == null )
                 return "Проверьте ключ";
-            else if ( regular.Imape_path == null )
+            else if ( regular.ImapePath == null )
                 return "Проверьте путь к картинке";
             else
             {
-                string DowloadImage = Query.RegularUpload( regular);
+                string DowloadImage = _query.RegularUpload( regular);
                 if ( DowloadImage.Length == 9 || DowloadImage.Length == 10 || DowloadImage.Length == 11 )
                 {
-                    return Query.Check(Key, DowloadImage, regular.Sleep, regular.Json);
+                    return _query.Check(_key, DowloadImage, regular.Sleep, regular.Json);
                 }
                 return DowloadImage;
             }
@@ -68,18 +79,18 @@ namespace Captcha_Service.Rucaptcha
         /// Решить текст капчу
         /// </summary>
         /// <returns></returns>
-        public string Text(Texts text)
+        public string Text(TextModels text)
         {
-            if ( Key == null )
+            if ( _key == null )
                 return "Нет ключа";
-            else if ( text.Text_captcha == null )
+            else if ( text.TextCaptcha == null )
                 return "Проверьте указана ли капча";
             else
             {
-                string DowloadImage = Query.TextUpload(text.Text_captcha);
+                string DowloadImage = _query.TextUpload(text.TextCaptcha);
                 if ( DowloadImage.Length == 9 || DowloadImage.Length == 10 || DowloadImage.Length == 11 )
                 {
-                    return Query.Check(Key, DowloadImage, text.Sleep, text.Json);
+                    return _query.Check(_key, DowloadImage, text.Sleep, text.Json);
                 }
                 return DowloadImage;
             }
@@ -89,19 +100,19 @@ namespace Captcha_Service.Rucaptcha
         /// Решить капчу ReCaptcha V2
         /// </summary>
         /// <returns></returns>
-        public string ReCaptcha_V2(ReCaptcha_V2 recaptcha)
+        public string ReCaptcha_V2(RcV2Models recaptcha)
         {
-            if ( Key == null )
+            if ( _key == null )
                 return "Проверьте ключ";
-            else if(recaptcha.Google_key == null)
+            else if(recaptcha.GoogleKey == null)
                 return "Проверьте указан ли гугл ключ";
-            else if(recaptcha.Page_url == null)
+            else if(recaptcha.PageUrl == null)
                 return "Проверьте указана ли страница";
             {
-                string DowloadImage = Query.ReCaptcha_V2_Upload(recaptcha);
+                string DowloadImage = _query.RcV2Upload(recaptcha);
                 if ( DowloadImage.Length == 9 || DowloadImage.Length == 10 || DowloadImage.Length == 11 )
                 {
-                    return Query.Check(Key, DowloadImage, recaptcha.Sleep, recaptcha.Json);
+                    return _query.Check(_key, DowloadImage, recaptcha.Sleep, recaptcha.Json);
                 }
                 return DowloadImage;
             }
@@ -111,19 +122,19 @@ namespace Captcha_Service.Rucaptcha
         /// Решить капчу ReCaptcha V3
         /// </summary>
         /// <returns></returns>
-        public string ReCaptcha_V3(ReCaptcha_V3 recaptcha)
+        public string ReCaptcha_V3(RcV3Models recaptcha)
         {
-            if ( Key == null )
+            if ( _key == null )
                 return "Проверьте ключ";
-            else if ( recaptcha.Google_key == null )
+            else if ( recaptcha.GoogleKey == null )
                 return "Проверьте указан ли гугл ключ";
-            else if ( recaptcha.Page_url == null )
+            else if ( recaptcha.PageUrl == null )
                 return "Проверьте указана ли страница";
             {
-                string DowloadImage = Query.ReCaptcha_V3_Upload( recaptcha);
+                string DowloadImage = _query.RcV3Upload( recaptcha);
                 if ( DowloadImage.Length == 9 || DowloadImage.Length == 10 || DowloadImage.Length == 11 )
                 {
-                    return Query.Check(Key, DowloadImage, recaptcha.Sleep, recaptcha.Json);
+                    return _query.Check(_key, DowloadImage, recaptcha.Sleep, recaptcha.Json);
                 }
                 return DowloadImage;
             }

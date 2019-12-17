@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Net;
 using System.IO;
-
+using Captcha_Service.Rucaptcha;
+using Captcha_Service.File;
 namespace Captcha_Service
 {
     /// <summary>
@@ -9,7 +10,24 @@ namespace Captcha_Service
     /// </summary>
     public class Captcha
     {
-        private static Captcha captcha = new Captcha();
+        /// <summary>
+        /// Для работы с сохранением
+        /// </summary>
+        static Direct Directorys = new Direct();
+        /// <summary>
+        /// Для сохранения файла
+        /// </summary>
+        static CaptchaRequest capReq = new CaptchaRequest();
+        /// <summary>
+        /// Путь к файлу
+        /// </summary>
+        static string PathFile
+        {
+            get
+            {
+                return $"captcha_{new Random().Next()}.jpg";
+            }
+        }
 
         /// <summary>
         /// Сохранить картинку, получить путь на нее
@@ -18,46 +36,28 @@ namespace Captcha_Service
         /// <returns></returns>
         public static string DownloadImage(string LinkImage)
         {
-            Random random = new Random();
-            string pathFile = "captcha_" + random.Next().ToString() + ".jpg";
-
-            using (WebClient Client = new WebClient())
-            {
-                Client.DownloadFile(LinkImage, pathFile);
-            }
-
-            return pathFile;
+            bool CheckDownload = capReq.DownloadFile(LinkImage, PathFile);
+            if ( CheckDownload )
+                return PathFile;
+            else
+                return null;
         }
 
         /// <summary>
-        /// Сохранить картинку в папку и получить путь на нее
+        /// Сохранить картинку в указанную папку и получить путь на нее
         /// </summary>
         /// <param name="LinkImage">Ссылка на картинку, которую сохранить</param>
         /// <param name="PathSave">Папка для сохранения картинки, если папки нет, будет создана</param>
         /// <returns></returns>
         public static string DownloadImage(string LinkImage, string PathSave)
         {
-            Random random = new Random();
-            captcha.DirectCreate(PathSave);
+            Directorys.Create(PathSave);
+            string path = PathSave + "\\" + PathFile;
 
-            string pathFile = PathSave + "\\captcha_" + random.Next().ToString() + ".jpg";
-
-            using (WebClient Client = new WebClient())
-            {
-                Client.DownloadFile(LinkImage, pathFile);
-            }
-
-            return pathFile;
-        }
-
-        /// <summary>
-        /// Создать папку если ее нет
-        /// </summary>
-        /// <param name="DirectName"></param>
-        private void DirectCreate(string DirectName)
-        {
-            if (!Directory.Exists(DirectName))
-                Directory.CreateDirectory(DirectName);
+            bool CheckDownload = capReq.DownloadFile(LinkImage, path);
+            if ( CheckDownload )
+                return path;
+            return null;
         }
     }
 }

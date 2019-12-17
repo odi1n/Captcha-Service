@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Captcha_Service.Rucaptcha.ReqModels
+namespace Captcha_Service.Models.Rucaptcha
 {
-    public class GetBalance : Setting
+    public class RegularModels : SettingModels
     {
-        public string Key { get; set; }
+        public string ImapePath { get; set; }
     }
 }

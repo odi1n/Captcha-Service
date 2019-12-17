@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Captcha_Service.Rucaptcha.ReqModels
+namespace Captcha_Service.Models.Rucaptcha
 {
-    public class ReCaptcha_V3 : Setting
+    public class RcV3Models : SettingModels
     {
-        public string Page_url { get; set; }
-        public string Google_key { get; set; }
+        public string PageUrl { get; set; }
+        public string GoogleKey { get; set; }
         public string Action { get; set; } = "verify";
     }
 }

@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Captcha_Service.Rucaptcha.ReqModels
+namespace Captcha_Service.Enum.Rucaptcha
 {
-    public class Regular : Setting
+    public enum GetBalnceEnum
     {
-        public string Imape_path { get; set; }
+        GETBALANCE,
+        GET,
+        GET2,
     }
 }
