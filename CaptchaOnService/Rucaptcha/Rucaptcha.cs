@@ -7,6 +7,7 @@ using System.Net;
 using System.IO;
 using Captcha_Service.Models.Rucaptcha;
 using Captcha_Service.Exception.Rucaptcha;
+using Captcha_Service.Enum.Rucaptcha;
 
 namespace Captcha_Service.Rucaptcha
 {
@@ -35,14 +36,30 @@ namespace Captcha_Service.Rucaptcha
         /// </summary>
         /// <param name="data">Параметры</param>
         /// <returns></returns>
-        public string GetBalance(GetBalnceModels data)
+
+        public string GetBalance()
         {
             if ( _key == null )
-                throw new ErrorParamsRucaptchaException("Проверьте свой ключ");
+                throw new ErrorParamsRucaptchaException("Проверьте свой ключ", ERROR.NOBALANCE);
+            {
+                GetBalnceModels data = new GetBalnceModels(){Key = _key, Action = ACTION.GETBALANCE};
+                return _query.GetBalanceByte(data);
+            }
+        }
+
+        /// <summary>
+        /// Дополнительная информация о балансе
+        /// </summary>
+        /// <param name="data">Параметры</param>
+        /// <returns></returns>
+        public string AdditionInfo(GetBalnceModels data)
+        {
+            if ( _key == null )
+                throw new ErrorParamsRucaptchaException("Проверьте свой ключ", ERROR.NOBALANCE);
             else if ( data == null )
-                throw new ErrorParamsRucaptchaException("Проверьте указали ли вы данные");
+                throw new ErrorParamsRucaptchaException("Проверьте указали ли вы данные", ERROR.NODATA);
             else if ( data.Key == null && _key == null )
-                throw new ErrorParamsRucaptchaException("Проверьте свой ключ");
+                throw new ErrorParamsRucaptchaException("Проверьте свой ключ", ERROR.NOBALANCE);
             else
             {
                 if ( data == null )
@@ -66,7 +83,7 @@ namespace Captcha_Service.Rucaptcha
                 return "Проверьте путь к картинке";
             else
             {
-                string DowloadImage = _query.RegularUpload( regular);
+                string DowloadImage = _query.Regular( regular);
                 if ( DowloadImage.Length == 9 || DowloadImage.Length == 10 || DowloadImage.Length == 11 )
                 {
                     return _query.Check(_key, DowloadImage, regular.Sleep, regular.Json);
@@ -87,7 +104,7 @@ namespace Captcha_Service.Rucaptcha
                 return "Проверьте указана ли капча";
             else
             {
-                string DowloadImage = _query.TextUpload(text.TextCaptcha);
+                string DowloadImage = _query.Text(text.TextCaptcha);
                 if ( DowloadImage.Length == 9 || DowloadImage.Length == 10 || DowloadImage.Length == 11 )
                 {
                     return _query.Check(_key, DowloadImage, text.Sleep, text.Json);
@@ -109,7 +126,7 @@ namespace Captcha_Service.Rucaptcha
             else if(recaptcha.PageUrl == null)
                 return "Проверьте указана ли страница";
             {
-                string DowloadImage = _query.RcV2Upload(recaptcha);
+                string DowloadImage = _query.ReCaptchaV2(recaptcha);
                 if ( DowloadImage.Length == 9 || DowloadImage.Length == 10 || DowloadImage.Length == 11 )
                 {
                     return _query.Check(_key, DowloadImage, recaptcha.Sleep, recaptcha.Json);
@@ -131,7 +148,7 @@ namespace Captcha_Service.Rucaptcha
             else if ( recaptcha.PageUrl == null )
                 return "Проверьте указана ли страница";
             {
-                string DowloadImage = _query.RcV3Upload( recaptcha);
+                string DowloadImage = _query.ReCaptchaV3( recaptcha);
                 if ( DowloadImage.Length == 9 || DowloadImage.Length == 10 || DowloadImage.Length == 11 )
                 {
                     return _query.Check(_key, DowloadImage, recaptcha.Sleep, recaptcha.Json);

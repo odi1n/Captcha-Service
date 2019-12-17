@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Captcha_Service.Enum.Rucaptcha
 {
-    public enum GetBalnceEnum
+    public enum ACTION
     {
         GETBALANCE,
         GET,

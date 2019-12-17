@@ -18,6 +18,7 @@ namespace Captcha_Service.Rucaptcha.wRucaptcha
         private static readonly string _url = "http://rucaptcha.com/res.php?";
         private static readonly RuCapRequest _request = new RuCapRequest();
         private static string _key { get; set; }
+        private static readonly string _json = "&json=1";
 
 
         public Query(string key)
@@ -31,10 +32,11 @@ namespace Captcha_Service.Rucaptcha.wRucaptcha
         /// <returns></returns>
         public string GetBalanceByte(GetBalnceModels data)
         {
-            string Data = "&key=" + data.Key + 
-                "&action=" +data.Action +
+            string Data = "&key=" + data.Key +
+                "&action=" + data.Action +
                 "&id=" + data.Id +
-                "&ids=" + data.Ids;
+                "&ids=" + data.Ids +
+                _json;
 
             return _request.ByteToString(WebRequest.Create(_url + "?" + Data));
         }
@@ -68,7 +70,7 @@ namespace Captcha_Service.Rucaptcha.wRucaptcha
         /// Загрузка картинки на сервис
         /// </summary>
         /// <returns></returns>
-        public string RegularUpload(RegularModels regular)
+        public string Regular(RegularModels regular)
         {
             using ( var webClient = new WebClient() )
             {
@@ -84,9 +86,12 @@ namespace Captcha_Service.Rucaptcha.wRucaptcha
         /// Загрузить текст на сервис для решения
         /// </summary>
         /// <returns></returns>
-        public string TextUpload(string TextCaptcha)
+        public string Text(string TextCaptcha)
         {
-            string data = $"key={_key}&textcaptcha={TextCaptcha}&Soft_id={_softId}";
+            string data = $"key="+ _key+
+                "&textcaptcha="+ TextCaptcha+
+                "&Soft_id="+ _softId+
+                _json;
             return _request.Get(_url, data).Replace("OK|", "");
         }
 
@@ -99,20 +104,33 @@ namespace Captcha_Service.Rucaptcha.wRucaptcha
         /// <param name="invisible">1 — говорит нам, что на сайте невидимая ReCaptcha. 0 — обычная ReCaptcha.</param>
         /// <param name="Soft_id">ID разработчика ПО</param>
         /// <returns></returns>
-        public string RcV2Upload(RcV2Models recaptcha)
+        public string ReCaptchaV2(RcV2Models recaptcha)
         {
-            string data = $"key={_key}&method=userrecaptcha&googlekey={recaptcha.GoogleKey}&pageurl={recaptcha.PageUrl}&Soft_id={_softId}";
-            return _request.Get(_url, data).Replace("OK|", "");
+            string data = $"key={_key}"+
+                "&method=userrecaptcha"+
+                "&googlekey="+ recaptcha.GoogleKey +
+                "&pageurl=" + recaptcha.PageUrl +
+                "&Soft_id=" + _softId+
+                _json;
+            return _request.Get(_url, data);
         }
 
         /// <summary>
         /// Загрузить капчу ReCaptcha V2
         /// </summary>
         /// <returns></returns>
-        public string RcV3Upload(RcV3Models recaptcha)
+        public string ReCaptchaV3(RcV3Models recaptcha)
         {
-            string data = $"key={_key}&method=userrecaptcha&version=v3&googlekey={recaptcha.GoogleKey}&pageurl={recaptcha.PageUrl}&action={recaptcha.Action}&Soft_id={_softId}";
-            return _request.Get(_url, data).Replace("OK|", "");
+            string data = $"key={_key}"+
+                "&method=userrecaptcha"+
+                "&version=v3"+
+                "&googlekey=" + recaptcha.GoogleKey+
+                "&pageurl=" + recaptcha.Action+
+                "&action=" + recaptcha.Action+
+                "&soft_id="+_softId+
+                 _json;
+
+            return _request.Get(_url, data);
         }
     }
 }

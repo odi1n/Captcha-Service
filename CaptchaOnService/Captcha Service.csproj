@@ -50,7 +50,8 @@
     <Compile Include="Anticaptcha\wAnticaptcha\JsonDes.cs" />
     <Compile Include="Anticaptcha\wAnticaptcha\Query.cs" />
     <Compile Include="Captcha.cs" />
-    <Compile Include="Enum\Rucaptcha\GetBalnceEnum.cs" />
+    <Compile Include="Enum\Rucaptcha\ACTION.cs" />
+    <Compile Include="Enum\Rucaptcha\ERROR.cs" />
     <Compile Include="Exception\Rucaptcha\ErrorParamsRucaptchaException.cs" />
     <Compile Include="File\Direct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
