@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Addition\DictionaryConvert.cs" />
+    <Compile Include="Addition\JsonConvert.cs" />
     <Compile Include="Anticaptcha\Anticaptcha.cs" />
     <Compile Include="Anticaptcha\wAnticaptcha\Addition.cs" />
     <Compile Include="Anticaptcha\wAnticaptcha\Error.cs" />
@@ -51,23 +53,25 @@
     <Compile Include="Anticaptcha\wAnticaptcha\Query.cs" />
     <Compile Include="Captcha.cs" />
     <Compile Include="Enum\Rucaptcha\ACTION.cs" />
+    <Compile Include="Enum\Rucaptcha\PROXY_TYPE.cs" />
+    <Compile Include="Enum\Rucaptcha\METHOD.cs" />
     <Compile Include="Enum\Rucaptcha\ERROR.cs" />
     <Compile Include="Exception\Rucaptcha\ErrorParamsRucaptchaException.cs" />
     <Compile Include="File\Direct.cs" />
+    <Compile Include="Models\Request\Rucaptcha\GetBalnceModels.cs" />
+    <Compile Include="Models\Request\Rucaptcha\ReCaptchaV2Models.cs" />
+    <Compile Include="Models\Request\Rucaptcha\ReCaptchaV3Models.cs" />
+    <Compile Include="Models\Request\Rucaptcha\RegularModels.cs" />
+    <Compile Include="Models\Request\Rucaptcha\SettingModels.cs" />
+    <Compile Include="Models\Request\Rucaptcha\TextModels.cs" />
+    <Compile Include="Models\Response\Rucaptcha\ResponseInfoModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Rucaptcha\GetBalnceModels.cs" />
-    <Compile Include="Models\Rucaptcha\RcV2Models.cs" />
-    <Compile Include="Models\Rucaptcha\RcV3Models.cs" />
-    <Compile Include="Models\Rucaptcha\RegularModels.cs" />
-    <Compile Include="Models\Rucaptcha\SettingModels.cs" />
-    <Compile Include="Models\Rucaptcha\TextModels.cs" />
-    <Compile Include="Request\CaptchaRequest.cs" />
-    <Compile Include="Request\RuCapRequest.cs" />
+    <Compile Include="Request\RucaptchaRequest.cs" />
     <Compile Include="Rucaptcha\Rucaptcha.cs" />
     <Compile Include="Rucaptcha\Query.cs" />
   </ItemGroup>
@@ -76,9 +80,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="NugetCaptchaOnService.nuspec" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

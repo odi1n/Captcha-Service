@@ -3,6 +3,8 @@ using System.Net;
 using System.IO;
 using Captcha_Service.Rucaptcha;
 using Captcha_Service.File;
+using Captcha_Service.Request;
+
 namespace Captcha_Service
 {
     /// <summary>
@@ -17,7 +19,7 @@ namespace Captcha_Service
         /// <summary>
         /// Для сохранения файла
         /// </summary>
-        static CaptchaRequest capReq = new CaptchaRequest();
+        static RucaptchaRequest capReq = new RucaptchaRequest();
         /// <summary>
         /// Путь к файлу
         /// </summary>
