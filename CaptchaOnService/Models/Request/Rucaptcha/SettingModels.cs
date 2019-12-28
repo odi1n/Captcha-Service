@@ -10,10 +10,6 @@ namespace Captcha_Service.Models.Request.Rucaptcha
     public class SettingModels
     {
         /// <summary>
-        /// Ваш ключ
-        /// </summary>
-        public string Key { get; set; }
-        /// <summary>
         /// 0 — не определено
         /// 1 — капча содержит только кириллицу
         /// 2 — капча содержит только латиницу
@@ -36,11 +32,6 @@ namespace Captcha_Service.Models.Request.Rucaptcha
         /// </summary>
         public string Pingback { get; set; }
 
-        /// <summary>
-        /// Задержка в мс.
-        /// </summary>
-        public int Sleep { get; set; } = 500;
-
 
         /// <summary>
         /// 1 — говорит нам, что на сайте невидимая ReCaptcha. 0 — обычная ReCaptcha.
@@ -54,13 +45,5 @@ namespace Captcha_Service.Models.Request.Rucaptcha
         /// Тип вашего прокси-сервера: HTTP, HTTPS, SOCKS4, SOCKS5.
         /// </summary>
         public PROXY_TYPE Proxytype { get; set; } 
-
-
-        /// <summary>
-        /// По умолчанию отключен.
-        /// 0 — сервер отправит ответ в виде простого текста
-        /// 1 — сервер отправит ответ в формате JSON
-        /// </summary>
-        public int Json { get; set; } = 1;
     }
 }

@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 
 namespace Captcha_Service.Models.Request.Rucaptcha
 {
-    public class GetBalnceModels : SettingModels
+    public class GetBalnceModels 
     {
-
+        /// <summary>
+        /// Действие которое нужно получить
+        /// </summary>
         public ACTION Action { get; set; } = ACTION.GETBALANCE;
         /// <summary>
         /// ID ваших капч, разделенные запятыми.

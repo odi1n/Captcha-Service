@@ -18,18 +18,12 @@ namespace Captcha_Service.Rucaptcha.wRucaptcha
 {
     partial class Query
     {
+        private static string _key { get { return Rucaptcha.Key; } }
+        private static readonly int _json = 1;
         private static readonly string _softId = "2392";
         private static readonly string _urlIn = "http://rucaptcha.com/in.php?";
         private static readonly string _urlRes = "http://rucaptcha.com/res.php?";
         private static readonly RucaptchaRequest _request = new RucaptchaRequest();
-        private static string _key { get; set; }
-
-        public Query(string key)
-        {
-            _key = key;
-        }
-
-        
 
         /// <summary>
         /// Получить наш баланс в байтах
@@ -39,11 +33,11 @@ namespace Captcha_Service.Rucaptcha.wRucaptcha
         {
             var Data = new Dictionary<string, object>()
             {
-                ["key"] = data.Key,
+                ["key"] = _key,
+                ["json"] = _json,
                 ["action"] = data.Action,
                 ["id"] = data.Id,
                 ["ids"] = data.Ids,
-                ["json"] = data.Json,
             };
 
             return _request.GetRequest(_urlRes, Data);
@@ -52,25 +46,27 @@ namespace Captcha_Service.Rucaptcha.wRucaptcha
         /// <summary>
         /// Проверить решилась ли наша капча
         /// </summary>
-        /// <param name="key">Ключ для решения капчи</param>
-        /// <param name="IdCaptcha">Id капчи</param>
-        /// <param name="json">Получать ли данные в json. false(0) - получить обычно, true(1) - получить в json</param>
+        /// <param name="check">Данные капчи</param>
         /// <returns></returns>
-        public string Check(string key, string IdCaptcha, int sleep = 1000, int json = 1)
+        public ResponseInfoModels Check(CheckModels check)
         {
             while ( true )
             {
-                var testss = WebRequest.Create(_urlRes + $"&key={key}&action=get&id={IdCaptcha}&json={json.GetHashCode()}");
-                string Decision = _request.ByteToString(testss);
+                var Data = new Dictionary<string, object>()
+                {
+                    ["key"] = _key,
+                    ["json"] = _json,
+                    ["action"] = check.Action,
+                    ["id"] = check.Id,
+                    ["header_acao"] = check.HeaderAcao,
+                };
 
-                if ( Decision.Contains("OK") )
-                    return Decision.Replace("OK|", "");
-                else if ( Decision.Contains("request") )
-                    return Decision;
-                else if ( Decision.Contains("ERROR") )
-                    return Decision;
+                var response = _request.GetRequest(_urlRes, Data);
 
-                Thread.Sleep(sleep);
+                if ( response.status == 1 && response.request != "CAPCHA_NOT_READY" )
+                    return response;
+
+                Thread.Sleep(check.Sleep);
             }
         }
 
@@ -82,14 +78,14 @@ namespace Captcha_Service.Rucaptcha.wRucaptcha
         {
             var Data = new Dictionary<string, object>()
             {
-                ["key"] = text.Key,
+                ["key"] = _key,
+                ["json"] = _json,
+                ["soft_id"] = _softId,
                 ["language"] = text.Language,
                 ["lang"] = text.Lang,
                 ["textcaptcha"] = text.TextCaptcha,
                 ["header_acao"] = text.HeaderAcao,
                 ["pingback"] = text.HeaderAcao,
-                ["json"] = text.Json,
-                ["soft_id"] = _softId,
             };
 
             return _request.GetRequest(_urlIn, Data);
@@ -108,19 +104,18 @@ namespace Captcha_Service.Rucaptcha.wRucaptcha
         {
             var Data = new Dictionary<string, object>()
             {
-                ["key"] = recaptcha.Key,
+                ["key"] = _key,
+                ["json"] = _json,
+                ["soft_id"] = _softId,
                 ["method"] = recaptcha.Method,
                 ["googlekey"] = recaptcha.GoogleKey,
                 ["pageurl"] = recaptcha.PageUrl,
                 ["invisible"] = recaptcha.Invisible,
                 ["header_acao"] = recaptcha.HeaderAcao,
                 ["pingback"] = recaptcha.HeaderAcao,
-                ["json"] = recaptcha.Json,
-                ["soft_id"] = recaptcha.Sleep,
                 ["proxy"] = recaptcha.Proxy,
                 ["proxytype"] = recaptcha.Proxytype,
                 ["soft_id"] = _softId,
-
             };
 
             return _request.GetRequest(_urlIn, Data);
@@ -134,7 +129,9 @@ namespace Captcha_Service.Rucaptcha.wRucaptcha
         {
             var Data = new Dictionary<string, object>()
             {
-                ["key"] = recaptcha.Key,
+                ["key"] = _key,
+                ["json"] = _json,
+                ["soft_id"] = _softId,
                 ["method"] = recaptcha.Method,
                 ["version"] = recaptcha.Version,
                 ["googlekey"] = recaptcha.GoogleKey,
@@ -143,12 +140,9 @@ namespace Captcha_Service.Rucaptcha.wRucaptcha
                 ["min_score"] = recaptcha.MinScore,
                 ["header_acao"] = recaptcha.HeaderAcao,
                 ["pingback"] = recaptcha.HeaderAcao,
-                ["json"] = recaptcha.Json,
-                ["soft_id"] = recaptcha.Sleep,
                 ["proxy"] = recaptcha.Proxy,
                 ["proxytype"] = recaptcha.Proxytype,
                 ["soft_id"] = _softId,
-
             };
 
             return _request.GetRequest(_urlIn, Data);
@@ -158,33 +152,31 @@ namespace Captcha_Service.Rucaptcha.wRucaptcha
         /// Загрузка картинки на сервис
         /// </summary>
         /// <returns></returns>
-        public string Regular(RegularModels regular)
+        public ResponseInfoModels Regular(RegularModels regular)
         {
-            using ( var webClient = new WebClient() )
+            var data = new Dictionary<string, object>()
             {
-                var data = new Dictionary<string, object>()
-                {
-                    ["key"] = regular.Key,
-                    ["method"] = regular.Method,
-                    ["phrase"] = regular.Phrase,
-                    ["regsense"] = regular.Regsense,
-                    ["numeric"] = regular.Numeric,
-                    ["calc"] = regular.Calc,
-                    ["min_len"] = regular.MinLen,
-                    ["max_len"] = regular.MaxLen,
-                    ["language"] = regular.Language,
-                    ["lang"] = regular.Lang,
-                    ["textinstructions"] = regular.Textinstructions,
-                    ["imginstructions"] = regular.Imginstructions,
-                    ["header_acao"] = regular.HeaderAcao,
-                    ["pingback"] = regular.Pingback,
-                    ["json"] = regular.Json,
-                    ["soft_id"] = _softId,
-                };
+                ["key"] = _key,
+                ["json"] = _json,
+                ["soft_id"] = _softId,
+                ["method"] = regular.Method,
+                ["phrase"] = regular.Phrase,
+                ["regsense"] = regular.Regsense,
+                ["numeric"] = regular.Numeric,
+                ["calc"] = regular.Calc,
+                ["min_len"] = regular.MinLen,
+                ["max_len"] = regular.MaxLen,
+                ["language"] = regular.Language,
+                ["lang"] = regular.Lang,
+                ["textinstructions"] = regular.Textinstructions,
+                ["imginstructions"] = regular.Imginstructions,
+                ["header_acao"] = regular.HeaderAcao,
+                ["pingback"] = regular.Pingback,
+            };
 
-                var request = webClient.UploadFile(_urlIn + DictionaryConvert.Deserialization(data), regular.ImapePath);
-                return Encoding.UTF8.GetString(request);
-            }
+            var photo = _request.UploadFile(_urlIn + DictionaryConvert.Deserialization(data), regular.ImapePath);
+
+            return photo;
         }
     }
 }

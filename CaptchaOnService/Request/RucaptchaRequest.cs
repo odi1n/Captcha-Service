@@ -19,11 +19,22 @@ namespace Captcha_Service.Request
         /// </summary>
         /// <param name="request">Байт которые будем переводить в текст</param>
         /// <returns></returns>
-        public  string ByteToString(WebRequest request)
+        private  string ByteToString(WebRequest request)
         {
             using ( HttpWebResponse response = (HttpWebResponse)request.GetResponse() )
             using ( StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.Default, true, 8192) )
                 return reader.ReadToEnd();
+        }
+
+        public bool DownloadFile(string link, string path)
+        {
+            bool CheckDownload = false;
+            using ( WebClient Client = new WebClient() )
+            {
+                Client.DownloadFile(link, path);
+                CheckDownload = true;
+            }
+            return CheckDownload;
         }
 
         public ResponseInfoModels GetRequest(string url, Dictionary<string, object> data)
@@ -33,21 +44,22 @@ namespace Captcha_Service.Request
             return CheckErrorInfo( response);
         }
 
-        public bool DownloadFile(string Image, String Path)
+        public ResponseInfoModels UploadFile(string link, string path)
         {
-            bool CheckDownload = false;
-            using ( WebClient Client = new WebClient() )
+            using(var webClient = new WebClient() )
             {
-                Client.DownloadFile(Image, Path);
-                CheckDownload = true;
+                var infoUpload = webClient.UploadFile(link, path);
+
+                string response = Encoding.UTF8.GetString(infoUpload);
+
+                return CheckErrorInfo(response);
             }
-            return CheckDownload;
         }
 
         private ResponseInfoModels CheckErrorInfo(string response)
         {
             var json = JsonConvert.Deserializ<ResponseInfoModels>(response);
-            if ( json.status == 0 )
+            if ( json.status == 0)
                 throw new ErrorParamsRucaptchaException(json.request, ERROR.SUCCESS);
             else
                 return json;

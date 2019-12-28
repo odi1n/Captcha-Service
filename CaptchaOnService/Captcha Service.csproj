@@ -63,6 +63,7 @@
     <Compile Include="Models\Request\Rucaptcha\ReCaptchaV3Models.cs" />
     <Compile Include="Models\Request\Rucaptcha\RegularModels.cs" />
     <Compile Include="Models\Request\Rucaptcha\SettingModels.cs" />
+    <Compile Include="Models\Request\Rucaptcha\CheckModels.cs" />
     <Compile Include="Models\Request\Rucaptcha\TextModels.cs" />
     <Compile Include="Models\Response\Rucaptcha\ResponseInfoModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

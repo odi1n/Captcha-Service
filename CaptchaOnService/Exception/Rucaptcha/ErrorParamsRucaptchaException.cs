@@ -8,7 +8,7 @@ using Captcha_Service.Enum.Rucaptcha;
 namespace Captcha_Service.Exception.Rucaptcha
 {
     [Serializable]
-    class ErrorParamsRucaptchaException : System.Exception
+    public class ErrorParamsRucaptchaException : System.Exception
     {
         public ERROR ErrorCode;
         public ErrorParamsRucaptchaException(string Message, ERROR errorCode) : base(Message)
