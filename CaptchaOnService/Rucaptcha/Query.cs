@@ -29,7 +29,7 @@ namespace Captcha_Service.Rucaptcha.wRucaptcha
         /// Получить наш баланс в байтах
         /// </summary>
         /// <returns></returns>
-        public ResponseInfoModels AdditionInfomation(GetBalnceModels data)
+        public ResponseModels AdditionInfomation(GetBalnceModels data)
         {
             var Data = new Dictionary<string, object>()
             {
@@ -48,7 +48,7 @@ namespace Captcha_Service.Rucaptcha.wRucaptcha
         /// </summary>
         /// <param name="check">Данные капчи</param>
         /// <returns></returns>
-        public ResponseInfoModels Check(CheckModels check)
+        public ResponseModels Check(CheckModels check)
         {
             while ( true )
             {
@@ -63,7 +63,7 @@ namespace Captcha_Service.Rucaptcha.wRucaptcha
 
                 var response = _request.GetRequest(_urlRes, Data);
 
-                if ( response.status == 1 && response.request != "CAPCHA_NOT_READY" )
+                if ( response.Status == 1 && response.Request != "CAPCHA_NOT_READY" )
                     return response;
 
                 Thread.Sleep(check.Sleep);
@@ -74,7 +74,7 @@ namespace Captcha_Service.Rucaptcha.wRucaptcha
         /// Загрузить текст на сервис для решения
         /// </summary>
         /// <returns></returns>
-        public ResponseInfoModels Text(TextModels text)
+        public ResponseModels Text(TextModels text)
         {
             var Data = new Dictionary<string, object>()
             {
@@ -100,7 +100,7 @@ namespace Captcha_Service.Rucaptcha.wRucaptcha
         /// <param name="invisible">1 — говорит нам, что на сайте невидимая ReCaptcha. 0 — обычная ReCaptcha.</param>
         /// <param name="Soft_id">ID разработчика ПО</param>
         /// <returns></returns>
-        public ResponseInfoModels ReCaptchaV2(ReCaptchaV2Models recaptcha)
+        public ResponseModels ReCaptchaV2(ReCaptchaV2Models recaptcha)
         {
             var Data = new Dictionary<string, object>()
             {
@@ -125,7 +125,7 @@ namespace Captcha_Service.Rucaptcha.wRucaptcha
         /// Загрузить капчу ReCaptcha V2
         /// </summary>
         /// <returns></returns>
-        public ResponseInfoModels ReCaptchaV3(ReCaptchaV3Models recaptcha)
+        public ResponseModels ReCaptchaV3(ReCaptchaV3Models recaptcha)
         {
             var Data = new Dictionary<string, object>()
             {
@@ -152,7 +152,7 @@ namespace Captcha_Service.Rucaptcha.wRucaptcha
         /// Загрузка картинки на сервис
         /// </summary>
         /// <returns></returns>
-        public ResponseInfoModels Regular(RegularModels regular)
+        public ResponseModels Regular(RegularModels regular)
         {
             var data = new Dictionary<string, object>()
             {

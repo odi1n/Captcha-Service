@@ -18,6 +18,10 @@ namespace Captcha_Service.Models.Request.Rucaptcha
         /// </summary>
         public string GoogleKey { get; set; }
         /// <summary>
+        /// 1 — говорит нам, что на сайте невидимая ReCaptcha. 0 — обычная ReCaptcha.
+        /// </summary>
+        public int? Invisible { get; set; }
+        /// <summary>
         /// Метод указан по умолчанию
         /// </summary>
         public METHOD Method { get; set; } = METHOD.USERRECAPTCHA;

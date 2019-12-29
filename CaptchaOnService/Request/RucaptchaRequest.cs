@@ -37,14 +37,14 @@ namespace Captcha_Service.Request
             return CheckDownload;
         }
 
-        public ResponseInfoModels GetRequest(string url, Dictionary<string, object> data)
+        public ResponseModels GetRequest(string url, Dictionary<string, object> data)
         {
             var request = WebRequest.Create(url + DictionaryConvert.Deserialization(data));
             var response = ByteToString(request);
             return CheckErrorInfo( response);
         }
 
-        public ResponseInfoModels UploadFile(string link, string path)
+        public ResponseModels UploadFile(string link, string path)
         {
             using(var webClient = new WebClient() )
             {
@@ -56,11 +56,11 @@ namespace Captcha_Service.Request
             }
         }
 
-        private ResponseInfoModels CheckErrorInfo(string response)
+        private ResponseModels CheckErrorInfo(string response)
         {
-            var json = JsonConvert.Deserializ<ResponseInfoModels>(response);
-            if ( json.status == 0)
-                throw new ErrorParamsRucaptchaException(json.request, ERROR.SUCCESS);
+            var json = JsonConvert.Deserializ<ResponseModels>(response);
+            if ( json.Status == 0)
+                throw new ErrorParamsRucaptchaException(json.Request, ERROR.SUCCESS);
             else
                 return json;
         }

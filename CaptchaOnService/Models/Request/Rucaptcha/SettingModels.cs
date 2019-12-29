@@ -32,18 +32,13 @@ namespace Captcha_Service.Models.Request.Rucaptcha
         /// </summary>
         public string Pingback { get; set; }
 
-
-        /// <summary>
-        /// 1 — говорит нам, что на сайте невидимая ReCaptcha. 0 — обычная ReCaptcha.
-        /// </summary>
-        public int Invisible { get; set; } 
         /// <summary>
         /// Формат: логин:пароль@123.123.123.123:3128
         /// </summary>
-        public int Proxy { get; set; } 
+        public string Proxy { get; set; } 
         /// <summary>
         /// Тип вашего прокси-сервера: HTTP, HTTPS, SOCKS4, SOCKS5.
         /// </summary>
-        public PROXY_TYPE Proxytype { get; set; } 
+        public PROXY_TYPE? Proxytype { get; set; } 
     }
 }
