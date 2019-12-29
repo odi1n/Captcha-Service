@@ -12,7 +12,7 @@ namespace Captcha_Service.Models.Request.Rucaptcha
         /// <summary>
         /// Действие которое нужно получить
         /// </summary>
-        public ACTION Action { get; set; } = ACTION.GETBALANCE;
+        public Actions Action { get; set; } = Enum.Rucaptcha.Actions.GETBALANCE;
         /// <summary>
         /// ID ваших капч, разделенные запятыми.
         /// </summary>

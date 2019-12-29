@@ -17,7 +17,7 @@ namespace Captcha_Service.Models.Request.Rucaptcha
         /// <summary>
         /// Метод загрузки фото
         /// </summary>
-        public METHOD Method { get; set; }
+        public Method Method { get; set; }
         /// <summary>
         /// 0 — капча состоит из одного слова
         /// 1 — капча состоит из двух или более слов

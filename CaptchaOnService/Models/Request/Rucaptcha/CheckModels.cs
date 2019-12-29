@@ -14,7 +14,7 @@ namespace Captcha_Service.Models.Request.Rucaptcha
         /// Указан по умолчанию
         /// get — получить ответ на капчу
         /// </summary>
-        public ACTION Action { get; set; } = ACTION.GET;
+        public Actions Action { get; set; } = Enum.Rucaptcha.Actions.GET;
         /// <summary>
         /// ID капчи, полученный от in.php.
         /// </summary>

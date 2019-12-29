@@ -18,7 +18,7 @@ namespace Captcha_Service.Models.Request.Rucaptcha
         /// <summary>
         /// Код языка. 
         /// </summary>
-        public string Lang { get; set; }
+        public Lang? Lang { get; set; }
         /// <summary>
         /// 0 — выключен
         /// 1 — включен
@@ -39,6 +39,6 @@ namespace Captcha_Service.Models.Request.Rucaptcha
         /// <summary>
         /// Тип вашего прокси-сервера: HTTP, HTTPS, SOCKS4, SOCKS5.
         /// </summary>
-        public PROXY_TYPE? Proxytype { get; set; } 
+        public ProxyType? Proxytype { get; set; } 
     }
 }

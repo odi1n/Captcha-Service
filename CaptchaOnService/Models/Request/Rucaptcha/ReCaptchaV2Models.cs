@@ -24,6 +24,6 @@ namespace Captcha_Service.Models.Request.Rucaptcha
         /// <summary>
         /// Метод указан по умолчанию
         /// </summary>
-        public METHOD Method { get; set; } = METHOD.USERRECAPTCHA;
+        public Method Method { get; set; } = Method.USERRECAPTCHA;
     }
 }

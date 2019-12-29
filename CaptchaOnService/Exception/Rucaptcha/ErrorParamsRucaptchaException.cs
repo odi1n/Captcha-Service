@@ -10,10 +10,6 @@ namespace Captcha_Service.Exception.Rucaptcha
     [Serializable]
     public class ErrorParamsRucaptchaException : System.Exception
     {
-        public ERROR ErrorCode;
-        public ErrorParamsRucaptchaException(string Message, ERROR errorCode) : base(Message)
-        {
-            this.ErrorCode = errorCode;
-        }
+        public ErrorParamsRucaptchaException(string Message) : base(Message) { }
     }
 }

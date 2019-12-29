@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Captcha_Service.Enum.Rucaptcha
 {
-    public enum METHOD
+    public enum Method
     {
         /// <summary>
         /// Говорит о том, что вы отправляете изображение с помощью multipart-фомы

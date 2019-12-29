@@ -60,7 +60,7 @@ namespace Captcha_Service.Request
         {
             var json = JsonConvert.Deserializ<ResponseModels>(response);
             if ( json.Status == 0 && json.Request != "CAPCHA_NOT_READY" )
-                throw new ErrorParamsRucaptchaException(json.Request, ERROR.SUCCESS);
+                throw new ErrorParamsRucaptchaException(json.Request);
             else
                 return json;
         }

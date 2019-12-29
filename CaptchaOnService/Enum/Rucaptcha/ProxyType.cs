@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Captcha_Service.Enum.Rucaptcha
 {
-    public enum PROXY_TYPE
+    public enum ProxyType
     {
         HTTP, HTTPS, SOCKS4, SOCKS5
     }
