@@ -63,7 +63,7 @@ namespace Captcha_Service.Rucaptcha.wRucaptcha
 
                 var response = _request.GetRequest(_urlRes, Data);
 
-                if ( response.Status == 1 && response.Request != "CAPCHA_NOT_READY" )
+                if ( response.Status == 1)
                     return response;
 
                 Thread.Sleep(check.Sleep);
