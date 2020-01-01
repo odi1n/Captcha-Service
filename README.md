@@ -2,7 +2,7 @@
 Библиотека которая объединяет в себе сервисы для работы с капчей.
 
 На данные момент имеется 2 сервиса:
-- [x] AntiCaptcha
+1. AntiCaptcha
   - [x] ImageToTextTask
   - [x] NoCaptchaTask
   - [x] NoCaptchaTaskProxyless
@@ -18,7 +18,7 @@
   - [x] createTask :
   - [x] getTaskResult
   - [x] getBalance
-- [x] Rucaptcha
+2. Rucaptcha
   - [x] Обычные капчи
   - [x] Текстовые капчи
   - [x] ReCaptcha V2
