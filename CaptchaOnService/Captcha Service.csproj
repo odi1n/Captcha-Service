@@ -58,10 +58,13 @@
     <Compile Include="Enum\Rucaptcha\Method.cs" />
     <Compile Include="Exception\Rucaptcha\ErrorParamsRucaptchaException.cs" />
     <Compile Include="File\Direct.cs" />
+    <Compile Include="Models\Request\Rucaptcha\InvisibleReCaptchaV2Models.cs" />
+    <Compile Include="Models\Request\Rucaptcha\ReportModels.cs" />
     <Compile Include="Models\Request\Rucaptcha\GetBalnceModels.cs" />
     <Compile Include="Models\Request\Rucaptcha\ReCaptchaV2Models.cs" />
     <Compile Include="Models\Request\Rucaptcha\ReCaptchaV3Models.cs" />
     <Compile Include="Models\Request\Rucaptcha\RegularModels.cs" />
+    <Compile Include="Models\Request\Rucaptcha\ProxyModels.cs" />
     <Compile Include="Models\Request\Rucaptcha\SettingModels.cs" />
     <Compile Include="Models\Request\Rucaptcha\CheckModels.cs" />
     <Compile Include="Models\Request\Rucaptcha\TextModels.cs" />

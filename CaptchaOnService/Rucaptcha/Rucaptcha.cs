@@ -209,6 +209,15 @@ namespace Captcha_Service.Rucaptcha
         }
 
         /// <summary>
+        /// Решить капчу ReCaptcha V2
+        /// </summary>
+        /// <returns></returns>
+        public ResponseModels InvisibleReCaptchaV2(InvisibleReCaptchaV2Models invisibleRecaptcha)
+        {
+            return _query.InvisibleReCaptchaV2(invisibleRecaptcha);
+        }
+
+        /// <summary>
         /// Решить капчу ReCaptcha V3
         /// </summary>
         /// <returns></returns>
@@ -257,5 +266,14 @@ namespace Captcha_Service.Rucaptcha
             });
         }
 
+        /// <summary>
+        /// Отчет об ответах
+        /// </summary>
+        /// <param name="report">Информация о капче</param>
+        /// <returns></returns>
+        public ResponseModels Report(ReportModels report)
+        {
+            return _query.Report(report);
+        }
     }
 }

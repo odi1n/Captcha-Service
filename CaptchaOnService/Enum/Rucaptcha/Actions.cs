@@ -20,5 +20,13 @@ namespace Captcha_Service.Enum.Rucaptcha
         /// get2 — получить стоимость решения отправленной капчи и ответ на нее.Требует указания ID капчи в параметре id.
         /// </summary>
         GET2,
+        /// <summary>
+        /// сообщить о верном ответе
+        /// </summary>
+        REPORTGOOD,
+        /// <summary>
+        /// сообщить о неверном ответе
+        /// </summary>
+        REPORTBAD,
     }
 }

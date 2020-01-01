@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Captcha_Service.Models.Request.Rucaptcha
 {
-    public class SettingModels
+    public class SettingModels : ProxyModels
     {
         /// <summary>
         /// 0 — не определено
@@ -31,14 +31,5 @@ namespace Captcha_Service.Models.Request.Rucaptcha
         /// URL должен быть зарегистрирован на сервере.Больше информации здесь.
         /// </summary>
         public string Pingback { get; set; }
-
-        /// <summary>
-        /// Формат: логин:пароль@123.123.123.123:3128
-        /// </summary>
-        public string Proxy { get; set; } 
-        /// <summary>
-        /// Тип вашего прокси-сервера: HTTP, HTTPS, SOCKS4, SOCKS5.
-        /// </summary>
-        public ProxyType? Proxytype { get; set; } 
     }
 }

@@ -85,7 +85,7 @@ namespace Captcha_Service.Rucaptcha.wRucaptcha
                 ["lang"] = text.Lang,
                 ["textcaptcha"] = text.TextCaptcha,
                 ["header_acao"] = text.HeaderAcao,
-                ["pingback"] = text.HeaderAcao,
+                ["pingback"] = text.Pingback,
             };
 
             return _request.GetRequest(_urlIn, Data);
@@ -112,7 +112,32 @@ namespace Captcha_Service.Rucaptcha.wRucaptcha
                 ["pageurl"] = recaptcha.PageUrl,
                 ["invisible"] = recaptcha.Invisible,
                 ["header_acao"] = recaptcha.HeaderAcao,
-                ["pingback"] = recaptcha.HeaderAcao,
+                ["pingback"] = recaptcha.Pingback,
+                ["proxy"] = recaptcha.Proxy,
+                ["proxytype"] = recaptcha.Proxytype,
+                ["soft_id"] = _softId,
+            };
+
+            return _request.GetRequest(_urlIn, Data);
+        }
+
+        /// <summary>
+        /// Загрузить капчу Invisible ReCaptcha V2
+        /// </summary>
+        /// <returns></returns>
+        public ResponseModels InvisibleReCaptchaV2(InvisibleReCaptchaV2Models recaptcha)
+        {
+            var Data = new Dictionary<string, object>()
+            {
+                ["key"] = _key,
+                ["json"] = _json,
+                ["soft_id"] = _softId,
+                ["method"] = recaptcha.Method,
+                ["googlekey"] = recaptcha.GoogleKey,
+                ["pageurl"] = recaptcha.PageUrl,
+                ["invisible"] = recaptcha.Invisible,
+                ["header_acao"] = recaptcha.HeaderAcao,
+                ["pingback"] = recaptcha.Pingback,
                 ["proxy"] = recaptcha.Proxy,
                 ["proxytype"] = recaptcha.Proxytype,
                 ["soft_id"] = _softId,
@@ -139,7 +164,7 @@ namespace Captcha_Service.Rucaptcha.wRucaptcha
                 ["action"] = recaptcha.Action,
                 ["min_score"] = recaptcha.MinScore,
                 ["header_acao"] = recaptcha.HeaderAcao,
-                ["pingback"] = recaptcha.HeaderAcao,
+                ["pingback"] = recaptcha.Pingback,
                 ["proxy"] = recaptcha.Proxy,
                 ["proxytype"] = recaptcha.Proxytype,
                 ["soft_id"] = _softId,
@@ -177,6 +202,22 @@ namespace Captcha_Service.Rucaptcha.wRucaptcha
             var photo = _request.UploadFile(_urlIn + DictionaryConvert.Deserialization(data), regular.ImapePath);
 
             return photo;
+        }
+        /// <summary>
+        /// Отчет об ответах
+        /// </summary>
+        /// <returns></returns>
+        public ResponseModels Report(ReportModels regular)
+        {
+            var data = new Dictionary<string, object>()
+            {
+                ["key"] = _key,
+                ["json"] = _json,
+                ["action"] = regular.Action,
+                ["id"] = regular.Id,
+            };
+
+            return _request.GetRequest(_urlRes, data);
         }
     }
 }
