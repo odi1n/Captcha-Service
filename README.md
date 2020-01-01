@@ -10,3 +10,16 @@
   - [x] ReCaptcha V2
   - [x] ReCaptcha V3
   - [x] Дополнительные методы
+
+В планах Rucaptcha:
+- Отчет об ответах
+- Invisible ReCaptcha V2
+- ReCaptcha V2 (устаревший метод)
+- ClickCaptcha
+- RotateCaptcha
+- FunCaptcha с токеном
+- KeyCaptcha
+- GeeTest
+- hCaptcha
+- Возможно переделать некоторые моменты которые не устраивают
+
