@@ -186,7 +186,7 @@ namespace Captcha_Service.Rucaptcha
         /// <param name="proxy_type">Тип вашего прокси-сервера: HTTP, HTTPS, SOCKS4, SOCKS5.</param>
         /// <param name="sleep">Время задержки получения ответа </param>
         /// <returns></returns>
-        public ResponseModels ReCaptchaV2(string googlekey, string pageurl, Method method = Method.USERRECAPTCHA, int? invisible = null, int? header_acao = null, string pingback = null,
+        public ResponseModels ReCaptchaV2(string googlekey, string pageurl, Method method = Method.userrecaptcha, int? invisible = null, int? header_acao = null, string pingback = null,
             string proxy = null, ProxyType? proxy_type = null, int sleep = 2000)
         {
             ReCaptchaV2Models recaptcha = new ReCaptchaV2Models()
@@ -212,7 +212,7 @@ namespace Captcha_Service.Rucaptcha
         /// Решить капчу ReCaptcha V3
         /// </summary>
         /// <returns></returns>
-        public ResponseModels ReCaptcha_V3(ReCaptchaV3Models recaptcha)
+        public ResponseModels ReCaptchaV3(ReCaptchaV3Models recaptcha)
         {
             return _query.ReCaptchaV3(recaptcha);
         }
@@ -232,7 +232,7 @@ namespace Captcha_Service.Rucaptcha
         /// <param name="proxy_type">Тип вашего прокси-сервера: HTTP, HTTPS, SOCKS4, SOCKS5.</param>
         /// <param name="sleep">Время задержки получения ответа </param>
         /// <returns></returns>
-        public ResponseModels ReCaptcha_V3(string googlekey, string pageurl, string version = "v3", Method method  = Method.USERRECAPTCHA, string action = null,
+        public ResponseModels ReCaptchaV3(string googlekey, string pageurl, string version = "v3", Method method  = Method.userrecaptcha, string action = null,
             double? min_score = null, int? header_acao = null, string pingback = null, string proxy = null, ProxyType? proxy_type = null, int sleep = 2000)
         {
             ReCaptchaV3Models recaptcha = new ReCaptchaV3Models()

@@ -19,6 +19,6 @@ namespace Captcha_Service.Enum.Rucaptcha
         /// <summary>
         /// Определяет, что вы решаете ReCaptcha V2 с помощью нового метода
         /// </summary>
-        USERRECAPTCHA,
+        userrecaptcha,
     }
 }
