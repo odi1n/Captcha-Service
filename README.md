@@ -41,6 +41,17 @@
 В планах добавить:
   - Новые сервисы:
     - gurucaptcha
+    - DeathByCaptcha
+    - XEvil
+    - 2Captcha
+    - captcha.guru
+    - cptch.net
+    - solvecaptcha.com
+    - x-captcha.ru
+    - DeCaptcher
+    - MegaTypers
+    - Kolotibablo
+    - Socialink
   - Изменить:
     - anti-captcha
   - Отключения исключения при ошибки решения капчи. Возвращение в переменной
