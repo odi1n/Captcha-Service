@@ -34,11 +34,8 @@
   - [x] createTask
   - [x] getTaskResult
   - [x] getBalance
-# Исправление
-1. Полностью переделать работу с AntiCaptcha
-2. Добавить Интерфейсы
-
-В планах добавить:
+  
+# В планах добавить:
   - Новые сервисы:
     - gurucaptcha
     - DeathByCaptcha
