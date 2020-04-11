@@ -46,7 +46,6 @@
     - XEvil
     - 2Captcha
     - captcha.guru
-    - cptch.net
     - solvecaptcha.com
     - x-captcha.ru
     - DeCaptcher
@@ -59,7 +58,5 @@
   - Добавить async
   - Вынести все в интерфейсы
   - Добавить ссылку на .dll
-  
-  
   
 так же можете предлагать свои идеи.
