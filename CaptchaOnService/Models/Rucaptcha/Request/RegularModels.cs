@@ -1,4 +1,5 @@
-﻿using Captcha_Service.Enum.Rucaptcha;
+﻿using Captcha_Service.Addition;
+using Captcha_Service.Enum;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -6,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Captcha_Service.Models.Request.Rucaptcha
+namespace Captcha_Service.Models.Rucaptcha.Request
 {
     public class RegularModels : SettingModels
     {
@@ -62,5 +63,47 @@ namespace Captcha_Service.Models.Request.Rucaptcha
         /// Сервер принимает изображения в формате multipart или base64.
         /// </summary>
         public Image Imginstructions { get; set; }
+
+        public RegularModels(string imagePath, Method method = Method.post, int? phrase = null, int? regsense = null, int? numeric = null,
+            int? calc = null, int? min_len = null, int? max_len = null, int? language = null, Lang? lang = null, string textinstructions = null,
+            Image imginstructions = null, int? header_acao = null, string pingback = null)
+        {
+            this.ImapePath = imagePath;
+            this.Method = method;
+            this.Phrase = phrase;
+            this.Regsense = regsense;
+            this.Numeric = numeric;
+            this.Calc = calc;
+            this.MinLen = min_len;
+            this.MaxLen = max_len;
+            this.Language = language;
+            this.Lang = lang;
+            this.Textinstructions = textinstructions;
+            this.Imginstructions = imginstructions;
+            this.HeaderAcao = header_acao;
+            this.Pingback = pingback;
+        }
+
+        public override string ToString()
+        {
+            var data = new Dictionary<string, object>()
+            {
+                ["method"] = this.Method,
+                ["phrase"] = this.Phrase,
+                ["regsense"] = this.Regsense,
+                ["numeric"] = this.Numeric,
+                ["calc"] = this.Calc,
+                ["min_len"] = this.MinLen,
+                ["max_len"] = this.MaxLen,
+                ["language"] = this.Language,
+                ["lang"] = this.Lang,
+                ["textinstructions"] = this.Textinstructions,
+                ["imginstructions"] = this.Imginstructions,
+                ["header_acao"] = this.HeaderAcao,
+                ["pingback"] = this.Pingback,
+            };
+
+            return DictionaryConvert.Deserialization(data); 
+        }
     }
 }

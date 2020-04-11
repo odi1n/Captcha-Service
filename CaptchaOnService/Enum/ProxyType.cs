@@ -4,10 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Captcha_Service.Enum.Rucaptcha
+namespace Captcha_Service.Enum
 {
     public enum ProxyType
     {
-        HTTP, HTTPS, SOCKS4, SOCKS5
+        http,
+        https,
+        socks4,
+        socks5
     }
 }

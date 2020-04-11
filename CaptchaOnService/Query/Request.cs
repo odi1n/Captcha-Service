@@ -1,7 +1,7 @@
 ﻿using Captcha_Service.Addition;
-using Captcha_Service.Enum.Rucaptcha;
+using Captcha_Service.Enum;
 using Captcha_Service.Exception.Rucaptcha;
-using Captcha_Service.Models.Response.Rucaptcha;
+using Captcha_Service.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,9 +10,9 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Captcha_Service.Request
+namespace Captcha_Service.Query
 {
-    partial class RucaptchaRequest
+    partial class Request
     {
         /// <summary>
         /// Переводим данные с байтов в текст
@@ -35,6 +35,13 @@ namespace Captcha_Service.Request
                 CheckDownload = true;
             }
             return CheckDownload;
+        }
+
+        public ResponseModels GetRequest(string url, string data)
+        {
+            var request = WebRequest.Create(url + data);
+            var response = ByteToString(request);
+            return CheckErrorInfo(response);
         }
 
         public ResponseModels GetRequest(string url, Dictionary<string, object> data)
@@ -60,7 +67,7 @@ namespace Captcha_Service.Request
         {
             var json = JsonConvert.Deserializ<ResponseModels>(response);
             if ( json.Status == 0 && json.Request != "CAPCHA_NOT_READY" )
-                throw new ErrorParamsRucaptchaException(json.Request);
+                throw new ErrorParamsException(json.Request);
             else
                 return json;
         }

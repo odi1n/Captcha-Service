@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Captcha_Service.Enum.Rucaptcha
+namespace Captcha_Service.Enum
 {
     public enum Lang
     {

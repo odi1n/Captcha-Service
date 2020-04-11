@@ -5,18 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Captcha_Service.File
+namespace Captcha_Service.Addition
 {
-    partial class Direct
+    partial class Directorys
     {
         /// <summary>
         /// Создать папку если ее нет
         /// </summary>
         /// <param name="DirectName"></param>
-        public void Create(string DirectName)
+        public static void Create(string DirectName)
         {
-            if ( !Directory.Exists(DirectName) )
-                Directory.CreateDirectory(DirectName);
+            if (!Directory.Exists(DirectName)) Directory.CreateDirectory(DirectName);
         }
     }
 }

@@ -2,8 +2,7 @@
 using System.Net;
 using System.IO;
 using Captcha_Service.Rucaptcha;
-using Captcha_Service.File;
-using Captcha_Service.Request;
+using Captcha_Service.Query;
 
 namespace Captcha_Service
 {
@@ -12,18 +11,8 @@ namespace Captcha_Service
     /// </summary>
     public class Captcha
     {
-        /// <summary>
-        /// Для работы с сохранением
-        /// </summary>
-        static Direct Directorys = new Direct();
-        /// <summary>
-        /// Для сохранения файла
-        /// </summary>
-        static RucaptchaRequest capReq = new RucaptchaRequest();
-        /// <summary>
-        /// Путь к файлу
-        /// </summary>
-        static string PathFile
+        private static Request _capReq = new Request();
+        private static string _pathFile
         {
             get
             {
@@ -36,13 +25,11 @@ namespace Captcha_Service
         /// </summary>
         /// <param name="LinkImage">Ссылка на картинку, которую сохранить</param>
         /// <returns></returns>
-        public static string DownloadImage(string LinkImage)
+        public static string DownloadImage(string linkImage)
         {
-            bool CheckDownload = capReq.DownloadFile(LinkImage, PathFile);
-            if ( CheckDownload )
-                return PathFile;
-            else
-                return null;
+            bool CheckDownload = _capReq.DownloadFile(linkImage, _pathFile);
+            if ( CheckDownload ) return _pathFile;
+            return null;
         }
 
         /// <summary>
@@ -51,14 +38,13 @@ namespace Captcha_Service
         /// <param name="LinkImage">Ссылка на картинку, которую сохранить</param>
         /// <param name="PathSave">Папка для сохранения картинки, если папки нет, будет создана</param>
         /// <returns></returns>
-        public static string DownloadImage(string LinkImage, string PathSave)
+        public static string DownloadImage(string linkImage, string pathSave)
         {
-            Directorys.Create(PathSave);
-            string path = PathSave + "\\" + PathFile;
+            Addition.Directorys.Create(pathSave);
+            string path = pathSave + "\\" + _pathFile;
 
-            bool CheckDownload = capReq.DownloadFile(LinkImage, path);
-            if ( CheckDownload )
-                return path;
+            bool CheckDownload = _capReq.DownloadFile(linkImage, path);
+            if ( CheckDownload ) return path;
             return null;
         }
     }

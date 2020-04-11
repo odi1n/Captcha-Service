@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Captcha_Service.Enum.Rucaptcha;
+using Captcha_Service.Enum;
 
 namespace Captcha_Service.Exception.Rucaptcha
 {
     [Serializable]
-    public class ErrorParamsRucaptchaException : System.Exception
+    public class ErrorParamsException : System.Exception
     {
-        public ErrorParamsRucaptchaException(string Message) : base(Message) { }
+        public ErrorParamsException(string Message) : base(Message) { }
     }
 }

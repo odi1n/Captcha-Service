@@ -5,11 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using System.IO;
-using Captcha_Service.Models.Request.Rucaptcha;
-using Captcha_Service.Exception.Rucaptcha;
-using Captcha_Service.Enum.Rucaptcha;
-using Captcha_Service.Models.Response.Rucaptcha;
+using Captcha_Service.Models.Rucaptcha.Request;
+using Captcha_Service.Enum;
+using Captcha_Service.Models;
 using System.Drawing;
+using System.Globalization;
+using Captcha_Service.Query;
+using Captcha_Service.Addition;
+using System.Threading;
 
 namespace Captcha_Service.Rucaptcha
 {
@@ -18,30 +21,51 @@ namespace Captcha_Service.Rucaptcha
     /// </summary>
     public class Rucaptcha
     {
-        /// <summary>
-        /// Ключ от сервиса Rucaptcha
-        /// </summary>
-        public static string Key { get { return _key; } }
-        private static string _key { get; set; }
-
-        /// <summary>
-        /// Для запросов
-        /// </summary>
-        private wRucaptcha.Query _query;
+        private string _key;
+        private static readonly int _json = 1;
+        private static readonly string _softId = "2392";
+        private static readonly string _urlIn = "http://rucaptcha.com/in.php?";
+        private static readonly string _urlRes = "http://rucaptcha.com/res.php?";
+        private static readonly Request _request = new Request();
 
         public Rucaptcha(string key)
         {
-            _key = key;
-            this._query = new wRucaptcha.Query();
+            this._key = key;
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
         }
 
         /// <summary>
-        /// Проверить решение капчи
+        /// Проверить капчу
+        /// </summary>
+        /// <param name="check"></param>
+        /// <returns></returns>
+        private ResponseModels Check(CheckModels check)
+        {
+            while (true)
+            {
+                var response = _request.GetRequest(_urlRes, CreateDataParams() + check);
+
+                if (response.Status == 1)
+                    return response;
+
+                Thread.Sleep(check.Sleep);
+            }
+        }
+
+        /// <summary>
+        /// Создать данные параметры
         /// </summary>
         /// <returns></returns>
-        public ResponseModels CheckCaptchaId(CheckModels captchaInfo)
+        private string CreateDataParams()
         {
-            return _query.Check(captchaInfo);
+            var Data = new Dictionary<string, object>()
+            {
+                ["key"] = _key,
+                ["json"] = _json,
+                ["soft_id"] = _softId,
+            };
+            var data = DictionaryConvert.Deserialization(Data) + "&";
+            return data;
         }
 
         /// <summary>
@@ -51,11 +75,7 @@ namespace Captcha_Service.Rucaptcha
         /// <returns></returns>
         public ResponseModels GetBalance()
         {
-            GetBalnceModels data = new GetBalnceModels()
-            {
-                Action = Enum.Rucaptcha.Actions.GETBALANCE
-            };
-            return _query.AdditionInfomation(data);
+            return _request.GetRequest(_urlRes, CreateDataParams() + new AdditionModels(Actions.getbalance).ToString());
         }
 
         /// <summary>
@@ -63,56 +83,20 @@ namespace Captcha_Service.Rucaptcha
         /// </summary>
         /// <param name="data">Параметры</param>
         /// <returns></returns>
-        public ResponseModels AdditionInfo(GetBalnceModels data)
+        public ResponseModels AdditionInfo(AdditionModels data)
         {
-            return _query.AdditionInfomation(data);
-        }
-
-        /// <summary>
-        /// Решить текст капчу
-        /// </summary>
-        /// <returns></returns>
-        public ResponseModels Text(TextModels text)
-        {
-            return _query.Text(text);
+            return _request.GetRequest(_urlRes, CreateDataParams() + data.ToString());
         }
 
         /// <summary>
         /// Решить капчу
         /// </summary>
-        /// <param name="textcaptcha">Текст капчи</param>
-        /// <param name="lang">Код языка</param>
-        /// <param name="language">0 — не определено 1 — капча содержит только кириллицу 2 — капча содержит только латиницу</param>
-        /// <param name="header_acao">0 — выключен 1 — включен</param>
-        /// <param name="pingback">URL для автоматической отправки ответа на капчу (callback). </param>
         /// <param name="sleep">Время задержки получения ответа </param>
         /// <returns></returns>
-        public ResponseModels Text(string textcaptcha, Lang? lang = null, int? language = null, int? header_acao = null, string pingback = null, int sleep = 1000)
+        public ResponseModels Text(TextModels text, int sleep = 1000)
         {
-            var text = new TextModels
-            {
-                TextCaptcha = textcaptcha,
-                Lang = lang,
-                Language = language,
-                HeaderAcao = header_acao,
-                Pingback = pingback,
-            };
-            var response =  _query.Text(text);
-            return CheckCaptchaId(new CheckModels()
-            {
-                Action = Enum.Rucaptcha.Actions.GET,
-                Id = response.Request,
-                Sleep = sleep,
-            });
-        }
-
-        /// <summary>
-        /// Решить обычную капчу(картинка)
-        /// </summary>
-        /// <returns></returns>
-        public ResponseModels Regular(RegularModels regular)
-        {
-            return _query.Regular(regular);
+            var response = _request.GetRequest(_urlIn, CreateDataParams() + text.ToString());
+            return Check(new CheckModels(response.Request, sleep: sleep));
         }
 
         /// <summary>
@@ -134,43 +118,10 @@ namespace Captcha_Service.Rucaptcha
         /// <param name="pingback">URL для автоматической отправки ответа на капчу (callback).</param>
         /// <param name="sleep">Время задержки получения ответа </param>
         /// <returns></returns>
-        public ResponseModels Regular(string imagePath, Method method = Method.POST, int? phrase = null, int? regsense = null,  int? numeric = null,
-            int? calc = null, int? min_len = null, int? max_len = null, int? language = null, Lang? lang = null, string textinstructions = null,
-            Image imginstructions = null, int? header_acao = null, string pingback = null, int sleep = 2000)
+        public ResponseModels Regular(RegularModels regular, int sleep = 2000)
         {
-            RegularModels regular = new RegularModels()
-            {
-                ImapePath = imagePath,
-                Method = method,
-                Phrase = phrase,
-                Regsense = regsense,
-                Numeric = numeric,
-                Calc = calc,
-                MinLen = min_len,
-                MaxLen = max_len,
-                Language = language,
-                Lang = lang,
-                Textinstructions = textinstructions,
-                Imginstructions = imginstructions,
-                HeaderAcao = header_acao,
-                Pingback = pingback,
-            };
-            var response = _query.Regular(regular);
-            return CheckCaptchaId(new CheckModels()
-            {
-                Action = Enum.Rucaptcha.Actions.GET,
-                Id = response.Request,
-                Sleep = sleep,
-            });
-        }
-
-        /// <summary>
-        /// Решить капчу ReCaptcha V2
-        /// </summary>
-        /// <returns></returns>
-        public ResponseModels ReCaptchaV2(ReCaptchaV2Models recaptcha)
-        {
-            return  _query.ReCaptchaV2(recaptcha);
+            var response = _request.UploadFile(_urlIn + CreateDataParams() + regular.ToString(), regular.ImapePath);
+            return Check(new CheckModels(response.Request, sleep:sleep));
         }
 
         /// <summary>
@@ -186,44 +137,10 @@ namespace Captcha_Service.Rucaptcha
         /// <param name="proxy_type">Тип вашего прокси-сервера: HTTP, HTTPS, SOCKS4, SOCKS5.</param>
         /// <param name="sleep">Время задержки получения ответа </param>
         /// <returns></returns>
-        public ResponseModels ReCaptchaV2(string googlekey, string pageurl, Method method = Method.userrecaptcha, int? invisible = null, int? header_acao = null, string pingback = null,
-            string proxy = null, ProxyType? proxy_type = null, int sleep = 2000)
+        public ResponseModels ReCaptchaV2(ReCaptchaV2Models recaptcha, int sleep = 2000)
         {
-            ReCaptchaV2Models recaptcha = new ReCaptchaV2Models()
-            {
-                Method = method,
-                GoogleKey = googlekey,
-                PageUrl = pageurl,
-                Invisible = invisible,
-                HeaderAcao = header_acao,
-                Proxy = proxy,
-                Proxytype = proxy_type,
-            };
-            var response = _query.ReCaptchaV2(recaptcha);
-            return CheckCaptchaId(new CheckModels()
-            {
-                Action = Enum.Rucaptcha.Actions.GET,
-                Id = response.Request,
-                Sleep = sleep,
-            });
-        }
-
-        /// <summary>
-        /// Решить капчу ReCaptcha V2
-        /// </summary>
-        /// <returns></returns>
-        public ResponseModels InvisibleReCaptchaV2(InvisibleReCaptchaV2Models invisibleRecaptcha)
-        {
-            return _query.InvisibleReCaptchaV2(invisibleRecaptcha);
-        }
-
-        /// <summary>
-        /// Решить капчу ReCaptcha V3
-        /// </summary>
-        /// <returns></returns>
-        public ResponseModels ReCaptchaV3(ReCaptchaV3Models recaptcha)
-        {
-            return _query.ReCaptchaV3(recaptcha);
+            var response = _request.GetRequest(_urlIn, CreateDataParams() + recaptcha.ToString());
+            return Check(new CheckModels(response.Request, sleep:sleep));
         }
 
         /// <summary>
@@ -241,29 +158,11 @@ namespace Captcha_Service.Rucaptcha
         /// <param name="proxy_type">Тип вашего прокси-сервера: HTTP, HTTPS, SOCKS4, SOCKS5.</param>
         /// <param name="sleep">Время задержки получения ответа </param>
         /// <returns></returns>
-        public ResponseModels ReCaptchaV3(string googlekey, string pageurl, string version = "v3", Method method  = Method.userrecaptcha, string action = null,
-            double? min_score = null, int? header_acao = null, string pingback = null, string proxy = null, ProxyType? proxy_type = null, int sleep = 2000)
+        public ResponseModels ReCaptchaV3(ReCaptchaV3Models recaptcha, int sleep = 2000)
         {
-            ReCaptchaV3Models recaptcha = new ReCaptchaV3Models()
-            {
-                GoogleKey = googlekey,
-                PageUrl = pageurl,
-                Version = version,
-                Method = method,
-                Action = action,
-                MinScore = min_score,
-                HeaderAcao = header_acao,
-                Pingback = pingback,
-                Proxy = proxy,
-                Proxytype = proxy_type,
-            };
-            var response = _query.ReCaptchaV3(recaptcha);
-            return CheckCaptchaId(new CheckModels()
-            {
-                Action = Enum.Rucaptcha.Actions.GET,
-                Id = response.Request,
-                Sleep = 2000,
-            });
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
+            var response = _request.GetRequest(_urlIn, CreateDataParams() + recaptcha.ToString());
+            return Check(new CheckModels(response.Request, sleep:sleep));
         }
 
         /// <summary>
@@ -273,7 +172,7 @@ namespace Captcha_Service.Rucaptcha
         /// <returns></returns>
         public ResponseModels Report(ReportModels report)
         {
-            return _query.Report(report);
+            return _request.GetRequest(_urlRes, CreateDataParams() + report.ToString());
         }
     }
 }
