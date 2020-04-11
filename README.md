@@ -34,6 +34,10 @@
   - [x] createTask
   - [x] getTaskResult
   - [x] getBalance
+3. Cptch.net
+  - [x] getBalance
+  - [x] ReCaptcha V2
+  - [x] Решение картинки
   
 # В планах добавить:
   - Новые сервисы:
