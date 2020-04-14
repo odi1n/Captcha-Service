@@ -28,5 +28,9 @@ namespace Captcha_Service.Enum
         /// geetest - указывает, что вы отправляете капчу GeeTest
         /// </summary>
         geetest,
+        /// <summary>
+        /// hcaptcha — указывает, что вы решаете hCaptcha
+        /// </summary>
+        hcaptcha,
     }
 }

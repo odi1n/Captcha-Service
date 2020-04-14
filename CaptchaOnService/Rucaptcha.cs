@@ -78,7 +78,7 @@ namespace Captcha_Service.Rucaptcha
         }
 
         /// <summary>
-        /// Дополнительная информация о балансе
+        /// Получить дополнительную информацию
         /// </summary>
         /// <param name="data">Параметры</param>
         /// <returns></returns>
@@ -88,7 +88,7 @@ namespace Captcha_Service.Rucaptcha
         }
 
         /// <summary>
-        /// Решить капчу
+        /// Текст капча
         /// </summary>
         /// <param name="text">Модель параметров </param>
         /// <param name="sleep">Время задержки получения ответа </param>
@@ -100,7 +100,7 @@ namespace Captcha_Service.Rucaptcha
         }
 
         /// <summary>
-        /// Решить капчу картинку
+        /// Картинка капча
         /// </summary>
         /// <param name="regular">Модель параметров</param>
         /// <param name="sleep">Время задержки получения ответа </param>
@@ -112,7 +112,7 @@ namespace Captcha_Service.Rucaptcha
         }
 
         /// <summary>
-        /// Решить капчу ReCaptchaV2
+        /// ReCaptch aV2
         /// </summary>
         /// <param name="recaptcha">Модель параметров</param>
         /// <param name="sleep">Время задержки получения ответа </param>
@@ -124,7 +124,7 @@ namespace Captcha_Service.Rucaptcha
         }
 
         /// <summary>
-        /// Решить капчу ReCaptcha_V3
+        /// ReCaptcha V3
         /// </summary>
         /// <param name="recaptcha">Модель параметров</param>
         /// <param name="sleep">Время задержки получения ответа </param>
@@ -186,6 +186,20 @@ namespace Captcha_Service.Rucaptcha
             var response = _request.GetRequest(_urlIn, CreateDataParams() + geeTest.ToString());
             return Check(new Check(response.Request, sleep: sleep));
         }
+
+        /// <summary>
+        /// HCaptcha
+        /// </summary>
+        /// <param name="hCaptcha">Модель параметров</param>
+        /// <param name="sleep">Время задержки получения ответа</param>
+        /// <returns></returns>
+        public Response HCaptcha(HCaptcha hCaptcha, int sleep = 2000)
+        {
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
+            var response = _request.GetRequest(_urlIn, CreateDataParams() + hCaptcha.ToString());
+            return Check(new Check(response.Request, sleep: sleep));
+        }
+
 
         /// <summary>
         /// Отчет об ответах
