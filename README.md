@@ -47,11 +47,9 @@
     - XEvil
     - 2Captcha
     - solvecaptcha.com
+    - azcaptcha.com
     - x-captcha.ru
     - DeCaptcher
-    - MegaTypers
-    - Kolotibablo
-    - Socialink
   - Изменить:
     - anti-captcha
   - Отключения исключения при ошибки решения капчи. Возвращение в переменной
