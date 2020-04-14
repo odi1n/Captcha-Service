@@ -39,7 +39,7 @@ namespace Captcha_Service.Rucaptcha
         /// </summary>
         /// <param name="check"></param>
         /// <returns></returns>
-        private ResponseModels Check(CheckModels check)
+        private Response Check(Check check)
         {
             while (true)
             {
@@ -71,11 +71,10 @@ namespace Captcha_Service.Rucaptcha
         /// <summary>
         /// Узнать баланс пользователя
         /// </summary>
-        /// <param name="data">Параметры</param>
         /// <returns></returns>
-        public ResponseModels GetBalance()
+        public Response GetBalance()
         {
-            return _request.GetRequest(_urlRes, CreateDataParams() + new AdditionModels(Actions.getbalance).ToString());
+            return _request.GetRequest(_urlRes, CreateDataParams() + new Models.Request.Addition(Actions.getbalance).ToString());
         }
 
         /// <summary>
@@ -83,7 +82,7 @@ namespace Captcha_Service.Rucaptcha
         /// </summary>
         /// <param name="data">Параметры</param>
         /// <returns></returns>
-        public ResponseModels AdditionInfo(AdditionModels data)
+        public Response AdditionInfo(Models.Request.Addition data)
         {
             return _request.GetRequest(_urlRes, CreateDataParams() + data.ToString());
         }
@@ -91,78 +90,62 @@ namespace Captcha_Service.Rucaptcha
         /// <summary>
         /// Решить капчу
         /// </summary>
+        /// <param name="text">Модель параметров </param>
         /// <param name="sleep">Время задержки получения ответа </param>
         /// <returns></returns>
-        public ResponseModels Text(TextModels text, int sleep = 1000)
+        public Response Text(Text text, int sleep = 1000)
         {
             var response = _request.GetRequest(_urlIn, CreateDataParams() + text.ToString());
-            return Check(new CheckModels(response.Request, sleep: sleep));
+            return Check(new Check(response.Request, sleep: sleep));
         }
 
         /// <summary>
         /// Решить капчу картинку
         /// </summary>
-        /// <param name="imagePath">Путь к картинке</param>
-        /// <param name="method">post — говорит о том, что вы отправляете изображение с помощью multipart-фомы base64 — говорит о том, что вы отправляете изображение в формате base64</param>
-        /// <param name="phrase">0 — капча состоит из одного слова 1 — капча состоит из двух или более слов</param>
-        /// <param name="regsense">0 — капча не чувствительна к регистру 1 — капча чувствительна к регистру</param>
-        /// <param name="numeric">0 — не определено 1 — капча состоит только из цифр 2 — капча состоит только из букв 3 — капча состоит либо только из букв, либо только из цифр 4 — в капче могут быть и буквы, и цифры</param>
-        /// <param name="calc">0 — не определено 1 — капча требует совершения математического действия (например: напишите результат 4 + 8 = )</param>
-        /// <param name="min_len">0 — не определено 1..20 — минимальное количетсво символов в ответе</param>
-        /// <param name="max_len">0 — не определено 1..20 — максимальное количетсво символов в ответе</param>
-        /// <param name="language">0 — не определено 1 — капча содержит только кириллицу 2 — капча содержит только латиницу</param>
-        /// <param name="lang">Код языка</param>
-        /// <param name="textinstructions">Текст будет показан работнику, чтобы помочь ему правильно решить капчу.</param>
-        /// <param name="imginstructions">Изображение будет показано работнику, чтобы помочь ему решить капчу правильно.</param>
-        /// <param name="header_acao">0 — выключен 1 — включен</param>
-        /// <param name="pingback">URL для автоматической отправки ответа на капчу (callback).</param>
+        /// <param name="regular">Модель параметров</param>
         /// <param name="sleep">Время задержки получения ответа </param>
         /// <returns></returns>
-        public ResponseModels Regular(RegularModels regular, int sleep = 2000)
+        public Response Regular(Regular regular, int sleep = 2000)
         {
             var response = _request.UploadFile(_urlIn + CreateDataParams() + regular.ToString(), regular.File);
-            return Check(new CheckModels(response.Request, sleep:sleep));
+            return Check(new Check(response.Request, sleep:sleep));
         }
 
         /// <summary>
         /// Решить капчу ReCaptchaV2
         /// </summary>
-        /// <param name="googlekey">Значение параметра k или data-sitekey, которое вы нашли в коде страницы</param>
-        /// <param name="pageurl">Полный URL страницы, на которой вы решаете ReCaptcha V2</param>
-        /// <param name="method">userrecaptcha — определяет, что вы решаете ReCaptcha V2 с помощью нового метода</param>
-        /// <param name="invisible">1 — говорит нам, что на сайте невидимая ReCaptcha. 0 — обычная ReCaptcha.</param>
-        /// <param name="header_acao">0 — выключен 1 — включен</param>
-        /// <param name="pingback">URL для автоматической отправки ответа на капчу (callback). </param>
-        /// <param name="proxy">Формат: логин:пароль@123.123.123.123:3128</param>
-        /// <param name="proxy_type">Тип вашего прокси-сервера: HTTP, HTTPS, SOCKS4, SOCKS5.</param>
+        /// <param name="recaptcha">Модель параметров</param>
         /// <param name="sleep">Время задержки получения ответа </param>
         /// <returns></returns>
-        public ResponseModels ReCaptchaV2(ReCaptchaV2Models recaptcha, int sleep = 2000)
+        public Response ReCaptchaV2(ReCaptchaV2 recaptcha, int sleep = 2000)
         {
             var response = _request.GetRequest(_urlIn, CreateDataParams() + recaptcha.ToString());
-            return Check(new CheckModels(response.Request, sleep:sleep));
+            return Check(new Check(response.Request, sleep:sleep));
         }
 
         /// <summary>
         /// Решить капчу ReCaptcha_V3
         /// </summary>
-        /// <param name="googlekey">Значение параметра k или data-sitekey, которое вы нашли в коде страницы</param>
-        /// <param name="pageurl">Полный URL страницы, на которой вы решаете ReCaptcha V2</param>
-        /// <param name="version">v3 — указывает на то, что это ReCaptcha V3</param>
-        /// <param name="method">userrecaptcha — определяет, что вы решаете ReCaptcha V2 с помощью нового метода</param>
-        /// <param name="action">Значение параметра action, которые вы нашли в коде сайта</param>
-        /// <param name="min_score">Требуемое значение рейтинга (score). На текущий момент сложно получить токен со score выше 0.3</param>
-        /// <param name="header_acao">0 — выключен 1 — включен</param>
-        /// <param name="pingback">URL для автоматической отправки ответа на капчу (callback). </param>
-        /// <param name="proxy">Формат: логин:пароль@123.123.123.123:3128</param>
-        /// <param name="proxy_type">Тип вашего прокси-сервера: HTTP, HTTPS, SOCKS4, SOCKS5.</param>
+        /// <param name="recaptcha">Модель параметров</param>
         /// <param name="sleep">Время задержки получения ответа </param>
         /// <returns></returns>
-        public ResponseModels ReCaptchaV3(ReCaptchaV3Models recaptcha, int sleep = 2000)
+        public Response ReCaptchaV3(ReCaptchaV3 recaptcha, int sleep = 2000)
         {
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
             var response = _request.GetRequest(_urlIn, CreateDataParams() + recaptcha.ToString());
-            return Check(new CheckModels(response.Request, sleep:sleep));
+            return Check(new Check(response.Request, sleep:sleep));
+        }
+
+        /// <summary>
+        /// ReCaptcha V2 (устаревший метод)
+        /// </summary>
+        /// <param name="recaptcha">Модель параметров</param>
+        /// <param name="sleep">Время задержки получения ответа</param>
+        /// <returns></returns>
+        public Response ReCaptchaV2Old(ReCaptchaV2Old recaptcha, int sleep = 2000)
+        {
+            var response = _request.UploadFile(_urlIn + CreateDataParams() + recaptcha.ToString(), recaptcha.File);
+            return Check(new Check(response.Request, sleep: sleep));
         }
 
         /// <summary>
@@ -170,7 +153,7 @@ namespace Captcha_Service.Rucaptcha
         /// </summary>
         /// <param name="report">Информация о капче</param>
         /// <returns></returns>
-        public ResponseModels Report(ReportModels report)
+        public Response Report(ReportModels report)
         {
             return _request.GetRequest(_urlRes, CreateDataParams() + report.ToString());
         }

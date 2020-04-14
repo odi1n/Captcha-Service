@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Captcha_Service.Models.Request
 {
-    public class ReCaptchaV3Models : SettingModels
+    public class ReCaptchaV2 : Setting
     {
         /// <summary>
         /// Полный URL страницы, на которой вы решаете ReCaptcha V2
@@ -19,23 +19,15 @@ namespace Captcha_Service.Models.Request
         /// </summary>
         public string GoogleKey { get; set; }
         /// <summary>
+        /// 1 — говорит нам, что на сайте невидимая ReCaptcha. 0 — обычная ReCaptcha.
+        /// </summary>
+        public int? Invisible { get; set; } = 0;
+        /// <summary>
         /// Метод указан по умолчанию
         /// </summary>
         public Method Method { get; set; } = Method.userrecaptcha;
-        /// <summary>
-        /// v3 — указывает на то, что это ReCaptcha V3. указана по умолчанию
-        /// </summary>
-        public string Version { get; set; } = "v3";
-        /// <summary>
-        /// Значение параметра action, которые вы нашли в коде сайта
-        /// </summary>
-        public string Action { get; set; } = "verify";
-        /// <summary>
-        /// Требуемое значение рейтинга (score). На текущий момент сложно получить токен со score выше 0.3
-        /// </summary>
-        public double? MinScore { get; set; } = 0.4;
 
-        public ReCaptchaV3Models(string googlekey, string pageurl)
+        public ReCaptchaV2(string googlekey, string pageurl)
         {
             this.GoogleKey = googlekey;
             this.PageUrl = pageurl;
@@ -46,16 +38,15 @@ namespace Captcha_Service.Models.Request
             var Data = new Dictionary<string, object>()
             {
                 ["method"] = this.Method,
-                ["version"] = this.Version,
                 ["googlekey"] = this.GoogleKey,
                 ["pageurl"] = this.PageUrl,
-                ["action"] = this.Action,
-                ["min_score"] = this.MinScore,
+                ["invisible"] = this.Invisible,
                 ["header_acao"] = this.HeaderAcao,
                 ["pingback"] = this.Pingback,
                 ["proxy"] = this.Proxy,
                 ["proxytype"] = this.ProxyType,
             };
+
             return DictionaryConvert.Deserialization(Data);
         }
     }

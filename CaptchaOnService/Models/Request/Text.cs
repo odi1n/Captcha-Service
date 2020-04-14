@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Captcha_Service.Models.Request
 {
-    public class TextModels : SettingModels
+    public class Text : Setting
     {
         /// <summary>
         /// Текст капчи.
@@ -23,7 +23,7 @@ namespace Captcha_Service.Models.Request
         /// <param name="language">0 — не определено 1 — капча содержит только кириллицу 2 — капча содержит только латиницу</param>
         /// <param name="headerAcao">0 — выключен 1 — включен</param>
         /// <param name="pingback">URL для автоматической отправки ответа на капчу (callback)</param>
-        public TextModels(string textCaptcha, Lang? lang = null, int language = 0, int headerAcao = 0, string pingback = null)
+        public Text(string textCaptcha, Lang? lang = null, int language = 0, int headerAcao = 0, string pingback = null)
         {
             this.TextCaptcha = textCaptcha;
             this.Lang = lang;

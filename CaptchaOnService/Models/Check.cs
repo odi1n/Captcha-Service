@@ -9,7 +9,7 @@ using System.Web.Script.Serialization;
 
 namespace Captcha_Service.Models
 {
-    partial class CheckModels
+    partial class Check
     {
         /// <summary>
         /// Указан по умолчанию
@@ -40,7 +40,7 @@ namespace Captcha_Service.Models
         /// <param name="action"></param>
         /// <param name="sleep"></param>
         /// <param name="headerAcao"></param>
-        public CheckModels(string id, Actions action = Actions.get, int sleep = 2000, int headerAcao = 0)
+        public Check(string id, Actions action = Actions.get, int sleep = 2000, int headerAcao = 0)
         {
             this.Id = id;
             this.Action = action;

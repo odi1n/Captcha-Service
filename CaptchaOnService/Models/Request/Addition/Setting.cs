@@ -1,13 +1,14 @@
 ﻿using Captcha_Service.Enum;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Captcha_Service.Models.Request
 {
-    public class SettingModels : ProxyModels
+    public class Setting : SetProxy
     {
         /// <summary>
         /// 0 — не определено
@@ -31,5 +32,16 @@ namespace Captcha_Service.Models.Request
         /// URL должен быть зарегистрирован на сервере.Больше информации здесь.
         /// </summary>
         public string Pingback { get; set; }
+
+        /// <summary>
+        /// Текст будет показан работнику, чтобы помочь ему правильно решить капчу.
+        /// Например: введите только красные буквы.
+        /// </summary>
+        public string TextInstructions { get; set; }
+        /// <summary>
+        /// Изображение будет показано работнику, чтобы помочь ему решить капчу правильно.
+        /// Сервер принимает изображения в формате multipart или base64.
+        /// </summary>
+        public Image Imginstructions { get; set; }
     }
 }

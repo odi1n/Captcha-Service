@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Captcha_Service.Models
 {
-    public class ResponseModels
+    public class Response
     {
         /// <summary>
         /// Информация успешен ли ответ, 0 - нет, 1 - да

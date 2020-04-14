@@ -25,7 +25,7 @@ namespace Captcha_Service.Query
             return CheckDownload;
         }
 
-        public ResponseModels GetRequest(string url, string data)
+        public Response GetRequest(string url, string data)
         {
             var request = WebRequest.Create(url + data);
             using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
@@ -33,7 +33,7 @@ namespace Captcha_Service.Query
                 return CheckErrorInfo(reader.ReadToEnd());
         }
 
-        public ResponseModels UploadFile(string link, string path)
+        public Response UploadFile(string link, string path)
         {
             using(var webClient = new WebClient() )
             {
@@ -44,9 +44,9 @@ namespace Captcha_Service.Query
             }
         }
 
-        private ResponseModels CheckErrorInfo(string response)
+        private Response CheckErrorInfo(string response)
         {
-            var json = JsonConvert.Deserializ<ResponseModels>(response);
+            var json = JsonConvert.Deserializ<Response>(response);
             if ( json.Status == 0 && json.Request != "CAPCHA_NOT_READY" )
                 throw new ErrorParamsException(json.Request);
             else

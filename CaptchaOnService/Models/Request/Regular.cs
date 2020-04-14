@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Captcha_Service.Models.Request
 {
-    public class RegularModels : SettingModels
+    public class Regular : Setting
     {
         /// <summary>
         /// Путь картинки
@@ -53,18 +53,7 @@ namespace Captcha_Service.Models.Request
         /// </summary>
         public int? MaxLen { get; set; }
 
-        /// <summary>
-        /// Текст будет показан работнику, чтобы помочь ему правильно решить капчу.
-        /// Например: введите только красные буквы.
-        /// </summary>
-        public string Textinstructions { get; set; }
-        /// <summary>
-        /// Изображение будет показано работнику, чтобы помочь ему решить капчу правильно.
-        /// Сервер принимает изображения в формате multipart или base64.
-        /// </summary>
-        public Image Imginstructions { get; set; }
-
-        public RegularModels(string file)
+        public Regular(string file)
         {
             this.File = file;
         }
@@ -82,7 +71,7 @@ namespace Captcha_Service.Models.Request
                 ["max_len"] = this.MaxLen,
                 ["language"] = this.Language,
                 ["lang"] = this.Lang,
-                ["textinstructions"] = this.Textinstructions,
+                ["textinstructions"] = this.TextInstructions,
                 ["imginstructions"] = this.Imginstructions,
                 ["header_acao"] = this.HeaderAcao,
                 ["pingback"] = this.Pingback,

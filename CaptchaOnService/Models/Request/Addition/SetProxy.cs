@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Captcha_Service.Models.Request
 {
-    public class ProxyModels
+    public class SetProxy
     {
         public string Proxy { get; set; } 
         /// <summary>

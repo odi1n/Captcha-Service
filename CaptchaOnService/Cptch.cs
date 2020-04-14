@@ -35,7 +35,7 @@ namespace Captcha_Service
         /// </summary>
         /// <param name="check"></param>
         /// <returns></returns>
-        private ResponseModels Check(CheckModels check)
+        private Response Check(Check check)
         {
             while (true)
             {
@@ -69,9 +69,9 @@ namespace Captcha_Service
         /// </summary>
         /// <param name="data">Параметры</param>
         /// <returns></returns>
-        public ResponseModels GetBalance()
+        public Response GetBalance()
         {
-            return _request.GetRequest(_urlRes, CreateDataParams() + new AdditionModels(Actions.getbalance).ToString());
+            return _request.GetRequest(_urlRes, CreateDataParams() + new Models.Request.Addition(Actions.getbalance).ToString());
         }
 
         /// <summary>
@@ -79,10 +79,10 @@ namespace Captcha_Service
         /// </summary>
         /// <param name="regular">Модель данных</param>
         /// <returns></returns>
-        public ResponseModels Regular(RegularModels regular, int sleep = 2000)
+        public Response Regular(Regular regular, int sleep = 2000)
         {
             var reg = _request.UploadFile(_urlIn + CreateDataParams() + regular.ToString(), regular.File);
-            return Check(new CheckModels(reg.Request, sleep:sleep));
+            return Check(new Check(reg.Request, sleep:sleep));
         }
 
         /// <summary>
@@ -90,10 +90,10 @@ namespace Captcha_Service
         /// </summary>
         /// <param name="recaptcha">Модель данных</param>
         /// <returns></returns>
-        public ResponseModels ReCaptchaV2(ReCaptchaV2Models recaptcha, int sleep = 2000)
+        public Response ReCaptchaV2(ReCaptchaV2 recaptcha, int sleep = 2000)
         {
             var recap = _request.GetRequest(_urlIn, CreateDataParams() + recaptcha.ToString());
-            return Check(new CheckModels(recap.Request, sleep: sleep));
+            return Check(new Check(recap.Request, sleep: sleep));
         }
     }
 }
