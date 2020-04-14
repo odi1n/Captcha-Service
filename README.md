@@ -8,16 +8,14 @@
   - [x] ReCaptcha V2
   - [x] ReCaptcha V3
   - [x] Дополнительные методы
-  - Отчет об ответах
-  - Invisible ReCaptcha V2
-  - ReCaptcha V2 (устаревший метод)
+  - [x] Отчет об ответах - Report
+  - [x] ReCaptcha V2 (устаревший метод) - RecaptchaV2Old
   - ClickCaptcha
   - RotateCaptcha
   - FunCaptcha с токеном
   - KeyCaptcha
   - GeeTest
   - hCaptcha
-  - Возможно переделать некоторые моменты которые не устраивают
 2. AntiCaptcha:
   - [x] ImageToTextTask
   - [x] NoCaptchaTask
