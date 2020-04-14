@@ -14,12 +14,16 @@ namespace Captcha_Service.Addition
 
             foreach ( KeyValuePair<string, object> entry in dict )
             {
-                if ( str.Length > 0 )
-                    str += "&";
+                if ( str.Length > 0 ) str += "&";
 
-                var key = entry.Key != null ? entry.Key.ToString() : null;
-                var value = entry.Value != null ? entry.Value.ToString() : null;
-                str += key + "=" + value;
+                if (entry.Value != null)
+                {
+                    if (entry.Value.ToString().Length == 0) continue;
+
+                    var key = entry.Key != null ? entry.Key.ToString() : null;
+                    var value = entry.Value != null ? entry.Value.ToString() : null;
+                    str += key + "=" + value;
+                }
             }
 
             return str;

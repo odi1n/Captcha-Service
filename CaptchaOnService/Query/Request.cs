@@ -44,13 +44,6 @@ namespace Captcha_Service.Query
             return CheckErrorInfo(response);
         }
 
-        public ResponseModels GetRequest(string url, Dictionary<string, object> data)
-        {
-            var request = WebRequest.Create(url + DictionaryConvert.Deserialization(data));
-            var response = ByteToString(request);
-            return CheckErrorInfo( response);
-        }
-
         public ResponseModels UploadFile(string link, string path)
         {
             using(var webClient = new WebClient() )
