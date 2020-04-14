@@ -10,7 +10,7 @@
   - [x] Дополнительные методы
   - [x] Отчет об ответах - Report
   - [x] ReCaptcha V2 (устаревший метод) - RecaptchaV2Old
-  - ClickCaptcha
+  - [x] ClickCaptcha
   - RotateCaptcha
   - [x] FunCaptcha с токеном
   - [x] KeyCaptcha
