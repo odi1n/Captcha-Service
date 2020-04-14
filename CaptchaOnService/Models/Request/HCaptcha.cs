@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace Captcha_Service.Models.Request
 {
-    public class HCaptcha : Setting
+    public class hCaptcha : Setting
     {
-       
         public string TextCaptcha { get; set; }
 
-        public HCaptcha(string textCaptcha, Lang? lang = null, int language = 0, int headerAcao = 0, string pingback = null)
+       
+        public hCaptcha(string textCaptcha, Lang? lang = null, int language = 0, int headerAcao = 0, string pingback = null)
         {
             this.TextCaptcha = textCaptcha;
             this.Lang = lang;

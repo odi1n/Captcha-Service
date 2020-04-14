@@ -20,5 +20,9 @@ namespace Captcha_Service.Enum
         /// funcaptcha — указывает, что вы решаете FunCaptcha с помощью токена
         /// </summary>
         funcaptcha,
+        /// <summary>
+        /// keycaptcha — говорит о том, что вы отправляете KeyCaptcha
+        /// </summary>
+        keycaptcha,
     }
 }
