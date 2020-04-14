@@ -46,7 +46,6 @@
     - DeathByCaptcha
     - XEvil
     - 2Captcha
-    - captcha.guru
     - solvecaptcha.com
     - x-captcha.ru
     - DeCaptcher
