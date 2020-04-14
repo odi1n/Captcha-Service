@@ -52,6 +52,7 @@
     <Compile Include="Anticaptcha\wAnticaptcha\JsonDes.cs" />
     <Compile Include="Anticaptcha\wAnticaptcha\Query.cs" />
     <Compile Include="Captcha.cs" />
+    <Compile Include="CaptchaGuru.cs" />
     <Compile Include="Cptch.cs" />
     <Compile Include="Enum\Lang.cs" />
     <Compile Include="Enum\Actions.cs" />
