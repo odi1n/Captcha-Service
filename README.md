@@ -13,9 +13,9 @@
   - ClickCaptcha
   - RotateCaptcha
   - [x] FunCaptcha с токеном
-  - KeyCaptcha
-  - GeeTest
-  - hCaptcha
+  - [x] KeyCaptcha
+  - [x] GeeTest
+  - [x] hCaptcha
 2. AntiCaptcha:
   - [x] ImageToTextTask
   - [x] NoCaptchaTask
