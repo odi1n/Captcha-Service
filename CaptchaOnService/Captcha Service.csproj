@@ -46,7 +46,7 @@
     <Compile Include="Addition\DictionaryConvert.cs" />
     <Compile Include="Addition\JsonConvert.cs" />
     <Compile Include="Anticaptcha.cs" />
-    <Compile Include="Anticaptcha\wAnticaptcha\Addition.cs" />
+    <Compile Include="Addition\Decode.cs" />
     <Compile Include="Anticaptcha\wAnticaptcha\Error.cs" />
     <Compile Include="Anticaptcha\wAnticaptcha\JsonSer.cs" />
     <Compile Include="Anticaptcha\wAnticaptcha\JsonDes.cs" />

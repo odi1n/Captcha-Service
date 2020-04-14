@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using Captcha_Service.Addition;
+using System;
+using System.IO;
 using System.Net;
 using System.Web.Script.Serialization;
 
@@ -7,18 +9,6 @@ namespace Captcha_Service.Anticaptcha.wAnticaptcha
     partial class Query
     {
         private static string softId = null;
-
-        #region Работа данных
-        /// <summary>
-        /// Сериализирует данные с класса в строку типа string 
-        /// </summary>
-        /// <param name="Serial">Что нужно привести в нормальный вид</param>
-        /// <returns></returns>
-        private static string serializer(object Serial)
-        {
-            JavaScriptSerializer js = new JavaScriptSerializer();
-            return js.Serialize(Serial);
-        }
 
         /// <summary>
         /// Десериализирует данные с json в строку
@@ -41,9 +31,7 @@ namespace Captcha_Service.Anticaptcha.wAnticaptcha
             */
             return jsonObject;
         }
-        #endregion
 
-        #region Информационные данные
         /// <summary>
         /// Узнать баланс пользовалея
         /// </summary>
@@ -56,7 +44,7 @@ namespace Captcha_Service.Anticaptcha.wAnticaptcha
             using (var webClient = new WebClient())
             {
                 JsonSer.balance getKey = new JsonSer.balance() { clientKey = key };
-                string data = serializer(getKey);
+                string data = JsonConvert.Serializer(getKey);
 
                 WebRequest request = WebRequest.Create(url);
                 request.Method = "POST";
@@ -75,6 +63,11 @@ namespace Captcha_Service.Anticaptcha.wAnticaptcha
             return DowloadInf;
         }
 
+        private static string JsonConverts(JsonSer.balance getKey)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// Получить информацию о загрузке очереди
         /// </summary>
@@ -87,7 +80,7 @@ namespace Captcha_Service.Anticaptcha.wAnticaptcha
             using (var webClient = new WebClient())
             {
                 JsonSer.getQueueStats getQueueStats = new JsonSer.getQueueStats() { queueId = queueId };
-                string data = serializer(getQueueStats);
+                string data = JsonConvert.Serializer(getQueueStats);
 
                 WebRequest request = WebRequest.Create(url);
                 request.Method = "POST";
@@ -119,7 +112,7 @@ namespace Captcha_Service.Anticaptcha.wAnticaptcha
             using (var webClient = new WebClient())
             {
                 JsonSer.getTaskResult getTaskResult = new JsonSer.getTaskResult() { clientKey = clientKey, taskId = taskId };
-                string data = serializer(getTaskResult);
+                string data = JsonConvert.Serializer(getTaskResult);
 
                 WebRequest request = WebRequest.Create(url);
                 request.Method = "POST";
@@ -166,9 +159,7 @@ namespace Captcha_Service.Anticaptcha.wAnticaptcha
             }
             return DowloadInf;
         }
-        #endregion
-
-        #region ImageToTextTask : решение обычной капчи с текстом
+        
         /// <summary>
         /// Составить запрос для Решение обычной капчи с текстом
         /// </summary>
@@ -190,7 +181,7 @@ namespace Captcha_Service.Anticaptcha.wAnticaptcha
                 task = new JsonSer.ImageToTextTask.Task
                 {
                     type = "ImageToTextTask",
-                    body = Addition.Base64ToString(ImapePath),
+                    body = Decode.Base64ToString(ImapePath),
                     phrase = phrase,
                     _case = _case,
                     numeric = numeric,
@@ -200,12 +191,10 @@ namespace Captcha_Service.Anticaptcha.wAnticaptcha
                     comment = comment,
                 },
             };
-            string data = serializer(query).Replace("_case", "case");
+            string data = JsonConvert.Serializer(query).Replace("_case", "case");
             return data;
         }
-        #endregion
 
-        #region NoCaptchaTaskProxyless : решение капчи Google
         /// <summary>
         /// Составить запрос для решение капчи Google
         /// </summary>
@@ -245,7 +234,7 @@ namespace Captcha_Service.Anticaptcha.wAnticaptcha
                     isInvisible = isInvisible,
                 },
             };
-            string data = serializer(query);
+            string data = JsonConvert.Serializer(query);
             return data;
         }
 
@@ -273,12 +262,10 @@ namespace Captcha_Service.Anticaptcha.wAnticaptcha
                     isInvisible = isInvisible,
                 },
             };
-            string data = serializer(query);
+            string data = JsonConvert.Serializer(query);
             return data;
         }
-        #endregion
 
-        #region FunCaptchaTask - крутящаяся капча funcaptcha.com
         /// <summary>
         /// Составить запрос для решение, крутящаяся капча funcaptcha.com
         /// </summary>
@@ -324,7 +311,7 @@ namespace Captcha_Service.Anticaptcha.wAnticaptcha
                     cookies = cookie,
                 },
             };
-            string data = serializer(query);
+            string data = JsonConvert.Serializer(query);
             return data;
         }
 
@@ -352,12 +339,10 @@ namespace Captcha_Service.Anticaptcha.wAnticaptcha
                     websitePublicKey = websiteKey,
                 },
             };
-            string data = serializer(query);
+            string data = JsonConvert.Serializer(query);
             return data;
         }
-        #endregion
 
-        #region SquareNetTextTask : выбрать нужный объект на картинке с сеткой изображений
         /// <summary>
         /// Составить запрос для того где нужно выбрать нужный объект на картинке с сеткой изображений
         /// </summary>
@@ -375,18 +360,16 @@ namespace Captcha_Service.Anticaptcha.wAnticaptcha
                 task = new JsonSer.SquareNetTextTask.Task
                 {
                     type = "SquareNetTextTask",
-                    body = Addition.Base64ToString(body),
+                    body = Decode.Base64ToString(body),
                     objectName = objectName,
                     rowsCount = rowsCount,
                     columnsCount = columnsCount,
                 },
             };
-            string data = serializer(query);
+            string data = JsonConvert.Serializer(query);
             return data;
         }
-        #endregion
 
-        #region GeeTestTask - капча от geetest.com
 
         /// <summary>
         /// Составить запрос для решение, капчи от geetest.com
@@ -426,7 +409,7 @@ namespace Captcha_Service.Anticaptcha.wAnticaptcha
                     cookies = cookie,
                 },
             };
-            string data = serializer(query);
+            string data = JsonConvert.Serializer(query);
             return data;
         }
 
@@ -452,13 +435,11 @@ namespace Captcha_Service.Anticaptcha.wAnticaptcha
                     geetestApiServerSubdomain = geetestApiServerSubdomain,
                 },
             };
-            string data = serializer(query);
+            string data = JsonConvert.Serializer(query);
             return data;
         }
 
-        #endregion
 
-        #region RecaptchaV1TaskProxyless : решение старой рекапчи
         /// <summary>
         /// Составить запрос для решение старай версия рекапчи, решение через прокси
         /// </summary>
@@ -493,7 +474,7 @@ namespace Captcha_Service.Anticaptcha.wAnticaptcha
                     cookies = cookie,
                 },
             };
-            string data = serializer(query);
+            string data = JsonConvert.Serializer(query);
             return data;
         }
 
@@ -516,10 +497,9 @@ namespace Captcha_Service.Anticaptcha.wAnticaptcha
                     websiteKey = websiteKey,
                 },
             };
-            string data = serializer(query);
+            string data = JsonConvert.Serializer(query);
             return data;
         }
 
-        #endregion
     }
 }

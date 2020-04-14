@@ -11,7 +11,6 @@
          https://yandex.ua/search/?text=%D1%81%D0%B5%D1%80%D0%B8%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F%20json%20c%23&rdrnd=224419&lr=24876&redircnt=1549665534.1
          */
 
-        #region Информационный функционал
         /// <summary>
         /// Узнать баланс пользователя
         /// </summary>
@@ -49,9 +48,7 @@
             public int taskId { get; set; }
             
         }
-        #endregion
 
-        #region Дополнительные данные
         /// <summary>
         /// Класс с основными данными
         /// </summary>
@@ -108,9 +105,7 @@
             /// </summary>
             public string cookies { get; set; }
         }
-        #endregion
 
-        #region ImageToTextTask : решение обычной капчи с текстом
 
         /// <summary>
         /// Решение обычной капчи с текстом
@@ -126,7 +121,6 @@
             /// </summary>
             public class Task
             {
-                #region Главные данные
                 /// <summary>
                 /// * Определяет тип объекта задачи
                 /// </summary>
@@ -135,9 +129,7 @@
                 /// * Путь к капче которую будем разгадывать
                 /// </summary>
                 public string body { get; set; }
-                #endregion
 
-                #region Второстепенные данные
                 /// <summary>
                 /// false - нет требований. 
                 /// true - работник должен ввести текст с одним или несколькими пробелами
@@ -174,13 +166,10 @@
                 /// Результат не гарантирован.
                 /// </summary>
                 public string comment { get; set; }
-                #endregion
             }
         }
 
-        #endregion
 
-        #region NoCaptchaTask - Решение капчи от гугл
         /// <summary>
         /// Решение капчи Google
         /// </summary>
@@ -195,7 +184,6 @@
             /// </summary>
             public class Task : Proxy
             {
-                #region Главные данные
                 /// <summary>
                 /// * Определяет тип объекта задачи
                 /// </summary>
@@ -208,9 +196,7 @@
                 /// * Ключ-индентификатор рекапчи на целевой странице.
                 /// </summary>
                 public string websiteKey { get; set; }
-                #endregion
                 
-                #region Второстепенные данные
                 /// <summary>
                 /// Секретный токен для предыдущей версии рекапчи.
                 /// </summary>
@@ -220,7 +206,6 @@
                 /// В большинстве случаев флаг указывать не нужно, т.к.невидимая рекапча распознается автоматически, но на это требуется несколько десятков задач для обучения системы.
                 /// </summary>
                 public bool isInvisible { get; set; }
-                #endregion
             }
         }
 
@@ -238,7 +223,6 @@
             /// </summary>
             public class Task 
             {
-                #region Главные данные
                 /// <summary>
                 /// * Определяет тип объекта задачи
                 /// </summary>
@@ -251,9 +235,7 @@
                 /// * Ключ-индентификатор рекапчи на целевой странице.
                 /// </summary>
                 public string websiteKey { get; set; }
-                #endregion
 
-                #region Второстепенные данные
                 /// <summary>
                 /// Секретный токен для предыдущей версии рекапчи.
                 /// </summary>
@@ -263,12 +245,9 @@
                 /// В большинстве случаев флаг указывать не нужно, т.к.невидимая рекапча распознается автоматически, но на это требуется несколько десятков задач для обучения системы.
                 /// </summary>
                 public bool isInvisible { get; set; }
-                #endregion
             }
         }
-        #endregion
 
-        #region FunCaptchaTask - крутящаяся капча funcaptcha.com
         /// <summary>
         /// Крутящаяся капча funcaptcha.com
         /// </summary>
@@ -283,7 +262,6 @@
             /// </summary>
             public class Task : Proxy
             {
-                #region Главные данные
                 /// <summary>
                 /// * Определяет тип объекта задачи
                 /// </summary>
@@ -296,15 +274,12 @@
                 /// * Ключ-индентификатор рекапчи на целевой странице.
                 /// </summary>
                 public string websitePublicKey { get; set; }
-                #endregion
 
-                #region Второстепенные данные
                 /// <summary>
                 /// Специальный субдомен funcaptcha.com, с которого должен загружаться JS виджет капчи.
                 /// Большинство инсталляций фанкапчи работают с общих доменов, поэтому этот параметр нужен только в определенных редких случаях.
                 /// </summary>
                 public string funcaptchaApiJSSubdomain { get; set; }
-                #endregion
             }
         }
 
@@ -322,7 +297,6 @@
             /// </summary>
             public class Task 
             {
-                #region Главные данные
                 /// <summary>
                 /// * Определяет тип объекта задачи
                 /// </summary>
@@ -335,21 +309,16 @@
                 /// * Ключ-индентификатор рекапчи на целевой странице.
                 /// </summary>
                 public string websitePublicKey { get; set; }
-                #endregion
 
-                #region Второстепенные данные
                 /// <summary>
                 /// Специальный субдомен funcaptcha.com, с которого должен загружаться JS виджет капчи.
                 /// Большинство инсталляций фанкапчи работают с общих доменов, поэтому этот параметр нужен только в определенных редких случаях.
                 /// </summary>
                 public string funcaptchaApiJSSubdomain { get; set; }
-                #endregion
             }
         }
 
-        #endregion
 
-        #region SquareNetTextTask : выбрать нужный объект
         /// <summary>
         /// SquareNetTextTask : выбрать нужный объект на картинке с сеткой изображений
         /// </summary>
@@ -386,9 +355,7 @@
                 public int columnsCount { get; set; }
             }
         }
-        #endregion
 
-        #region GeeTestTask - капча от geetest.com
         /// <summary>
         /// GeeTestTask - капча от geetest.com
         /// </summary>
@@ -462,9 +429,7 @@
                 public string geetestApiServerSubdomain { get; set; }
             }
         }
-        #endregion
 
-        #region RecaptchaV1Task : старая версия рекапчи, решение через прокси
         /// <summary>
         /// RecaptchaV1Task : старая версия рекапчи, решение через прокси
         /// </summary>
@@ -522,6 +487,5 @@
                 public string websiteKey { get; set; }
             }
         }
-        #endregion
     }
 }

@@ -8,7 +8,6 @@ namespace Captcha_Service.Anticaptcha
     /// </summary>
     public class Anticaptcha
     {
-        #region Переменные
         /// <summary>
         /// Ключ от сервиса
         /// </summary>
@@ -47,9 +46,7 @@ namespace Captcha_Service.Anticaptcha
         }
 
         private wAnticaptcha.Query Query = new wAnticaptcha.Query();
-        #endregion
 
-        #region Обработка
         /// <summary>
         /// Отправка, обрабока и решение капчи
         /// </summary>
@@ -83,9 +80,7 @@ namespace Captcha_Service.Anticaptcha
             else
                 return check;
         }
-        #endregion
 
-        #region Информационный функционал
         /// <summary>
         /// Получить информацию об ошибке
         /// </summary>
@@ -205,7 +200,6 @@ namespace Captcha_Service.Anticaptcha
         /// </summary>
         public class GetQueueStats
         {
-            #region Данные которые надо передать
             /// <summary>
             /// В каком виде получать данные
             /// true - вернуть в json
@@ -216,9 +210,7 @@ namespace Captcha_Service.Anticaptcha
             /// Номер очереди. Можно использовать enum queueIdList
             /// </summary>
             public int queueId { get; set; }
-            #endregion
 
-            #region Данные которые получаем
             /// <summary>
             /// Получать данные об ошибке если json = false
             /// </summary>
@@ -232,12 +224,9 @@ namespace Captcha_Service.Anticaptcha
             /// Получить данные если Json = true
             /// </summary>
             public string JsonResult { get; set; }
-            #endregion
 
-            #region Дополнительные переменные
             private wAnticaptcha.Query Query = new wAnticaptcha.Query();
             private Anticaptcha Anticaptcha = new Anticaptcha();
-            #endregion
 
             /// <summary>
             /// Получить информацию о загрузке очереди, передать параметры
@@ -266,15 +255,12 @@ namespace Captcha_Service.Anticaptcha
                 return this;
             }
         }
-        #endregion
 
-        #region ImageToTextTask - обычная капча с текстом
         /// <summary>
         /// Решение обычной капчи с текстом
         /// </summary>
         public class ImageToTextTask : wAnticaptcha.JsonSer.ImageToTextTask.Task
         {
-            #region Данные которые надо передать
             /// <summary>
             /// В каком виде получать данные
             /// true - вернуть в json
@@ -285,9 +271,7 @@ namespace Captcha_Service.Anticaptcha
             /// Задержка проверки данных
             /// </summary>
             public int sleep { get; set; }
-            #endregion
 
-            #region Данные которые получаем
             /// <summary>
             /// Получать данные об ошибке если json = false
             /// </summary>
@@ -312,14 +296,10 @@ namespace Captcha_Service.Anticaptcha
             /// Получить данные если Json = true
             /// </summary>
             public string JsonResult { get; set; }
-            #endregion
 
-            #region Дополнительные переменные
             private wAnticaptcha.Query Query = new wAnticaptcha.Query();
             private Anticaptcha Anticaptcha = new Anticaptcha();
-            #endregion
 
-            #region Методы
             /// <summary>
             /// Решение обычной капчи с текстом. Передать параметры
             /// </summary>
@@ -355,18 +335,14 @@ namespace Captcha_Service.Anticaptcha
                     JsonResult = Answer;
                 return this;
             }
-            #endregion 
         }
-        #endregion
 
-        #region NoCaptcha
         /// <summary>
         /// Решить капчу Google с использованием прокси
         /// </summary>
         /// <returns></returns>
         public class NoCaptchaTask : wAnticaptcha.JsonSer.NoCaptchaTask.Task
         {
-            #region Данные которые требуется передать
             /// <summary>
             /// В каком виде получать данные
             /// true - вернуть в json
@@ -377,9 +353,7 @@ namespace Captcha_Service.Anticaptcha
             /// Задержка ожидания запросса
             /// </summary>
             public int sleep { get; set; }
-            #endregion
 
-            #region Данные которые получаем
             /// <summary>
             /// Получать данные об ошибке если json = false
             /// </summary>
@@ -402,15 +376,11 @@ namespace Captcha_Service.Anticaptcha
             /// Получить данные если Json = true
             /// </summary>
             public string JsonResult { get; set; }
-            #endregion
 
-            #region Дополнительные переменные
             private wAnticaptcha.Query Query = new wAnticaptcha.Query();
             private Anticaptcha Anticaptcha = new Anticaptcha();
-            #endregion
 
 
-            #region Методы
             /// <summary>
             /// Решить капчу Google с использованием прокси, передать параметры
             /// </summary>
@@ -461,7 +431,6 @@ namespace Captcha_Service.Anticaptcha
                     JsonResult = Verify;
                 return this;
             }
-            #endregion
         }
 
         /// <summary>
@@ -469,7 +438,6 @@ namespace Captcha_Service.Anticaptcha
         /// </summary>
         public class NoCaptchaTaskProxyless : wAnticaptcha.JsonSer.NoCaptchaTaskProxyless.Task
         {
-            #region Данные которые требуется передать
             /// <summary>
             /// В каком виде получать данные
             /// true - вернуть в json
@@ -480,9 +448,7 @@ namespace Captcha_Service.Anticaptcha
             /// Задержка ожидания запросса
             /// </summary>
             public int sleep { get; set; }
-            #endregion
 
-            #region Данные которые получаем
             /// <summary>
             /// Получать данные об ошибке если json = false
             /// </summary>
@@ -505,14 +471,10 @@ namespace Captcha_Service.Anticaptcha
             /// Получить данные если Json = true
             /// </summary>
             public string JsonResult { get; set; }
-            #endregion
 
-            #region Дополнительные переменные
             private wAnticaptcha.Query Query = new wAnticaptcha.Query();
             private Anticaptcha Anticaptcha = new Anticaptcha();
-            #endregion
 
-            #region Методы
             /// <summary>
             /// Решить капчу Google без прокси, передать параметры
             /// </summary>
@@ -543,17 +505,13 @@ namespace Captcha_Service.Anticaptcha
                     JsonResult = Verify;
                 return this;
             }
-            #endregion
         }
-        #endregion
 
-        #region FunCaptcha
         /// <summary>
         /// FunCaptchaTask - крутящаяся капча funcaptcha.com
         /// </summary>
         public class FunCaptchaTask : wAnticaptcha.JsonSer.FunCaptchaTask.Task
         {
-            #region Данные которые надо передать
             /// <summary>
             /// В каком виде получать данные
             /// true - вернуть в json
@@ -564,9 +522,7 @@ namespace Captcha_Service.Anticaptcha
             /// Задержка ожидания запросса
             /// </summary>
             public int sleep { get; set; }
-            #endregion
 
-            #region Данные которые получаем
             /// <summary>
             /// Получать данные об ошибке если json = false
             /// </summary>
@@ -589,14 +545,10 @@ namespace Captcha_Service.Anticaptcha
             /// Получить данные если Json = true
             /// </summary>
             public string JsonResult { get; set; }
-            #endregion
 
-            #region Дополнительные переменные
             private wAnticaptcha.Query Query = new wAnticaptcha.Query();
             private Anticaptcha Anticaptcha = new Anticaptcha();
-            #endregion
 
-            #region Методы
             /// <summary>
             /// Решить funcaptcha без прокси, передать параметры
             /// </summary>
@@ -634,7 +586,6 @@ namespace Captcha_Service.Anticaptcha
                     JsonResult = Verify;
                 return this;
             }
-            #endregion
         }
 
         /// <summary>
@@ -642,7 +593,6 @@ namespace Captcha_Service.Anticaptcha
         /// </summary>
         public class FunCaptchaTaskProxyless : wAnticaptcha.JsonSer.FunCaptchaTaskProxyless.Task
         {
-            #region Данные которые надо передать
             /// <summary>
             /// В каком виде получать данные
             /// true - вернуть в json
@@ -653,9 +603,7 @@ namespace Captcha_Service.Anticaptcha
             /// Задержка ожидания запросса
             /// </summary>
             public int sleep { get; set; }
-            #endregion
 
-            #region Данные которые получаем
             /// <summary>
             /// Получать данные об ошибке если json = false
             /// </summary>
@@ -678,14 +626,10 @@ namespace Captcha_Service.Anticaptcha
             /// Получить данные если Json = true
             /// </summary>
             public string JsonResult { get; set; }
-            #endregion
 
-            #region Дополнительные переменные
             private wAnticaptcha.Query Query = new wAnticaptcha.Query();
             private Anticaptcha Anticaptcha = new Anticaptcha();
-            #endregion
 
-            #region Методы
             /// <summary>
             /// Решить funcaptcha без прокси, передать параметры
             /// </summary>
@@ -714,18 +658,14 @@ namespace Captcha_Service.Anticaptcha
                     JsonResult = Verify;
                 return this;
             }
-            #endregion
         }
-        #endregion
 
-        #region SquareNetText
         /// <summary>
         /// Решить капчу где нужно выбрать нужный объект на картинке с сеткой изображений
         /// </summary>
         /// <returns></returns>
         public class SquareNetText : wAnticaptcha.JsonSer.SquareNetTextTask.Task
         {
-            #region Данные которые надо передать
             /// <summary>
             /// В каком виде получать данные
             /// true - вернуть в json
@@ -736,9 +676,7 @@ namespace Captcha_Service.Anticaptcha
             /// Задержка ожидания запросса
             /// </summary>
             public int sleep { get; set; }
-            #endregion
 
-            #region Данные которые получаем
             /// <summary>
             /// Получать данные об ошибке если json = false
             /// </summary>
@@ -761,14 +699,10 @@ namespace Captcha_Service.Anticaptcha
             /// Получить данные если Json = true
             /// </summary>
             public string JsonResult { get; set; }
-            #endregion
 
-            #region Дополнительные переменные
             private wAnticaptcha.Query Query = new wAnticaptcha.Query();
             private Anticaptcha Anticaptcha = new Anticaptcha();
-            #endregion
 
-            #region Методы
             /// <summary>
             /// Решить капчу где нужно выбрать нужный объект на картинке с сеткой изображений, передать параметры
             /// </summary>
@@ -802,18 +736,14 @@ namespace Captcha_Service.Anticaptcha
                     JsonResult = Verify;
                 return this;
             }
-            #endregion
         }
-        #endregion
 
-        #region GeeTestTask
         /// <summary>
         /// Решить капчу от geetest.com с использованием прокси
         /// </summary>
         /// <returns></returns>
         public class GeeTestTask: wAnticaptcha.JsonSer.GeeTestTask.Task
         {
-            #region Данные которые надо передать
             /// <summary>
             /// В каком виде получать данные
             /// true - вернуть в json
@@ -824,9 +754,7 @@ namespace Captcha_Service.Anticaptcha
             /// Задержка ожидания запросса
             /// </summary>
             public int sleep { get; set; }
-            #endregion
 
-            #region Данные которые получаем
             /// <summary>
             /// Получать данные об ошибке если json = false
             /// </summary>
@@ -849,14 +777,10 @@ namespace Captcha_Service.Anticaptcha
             /// Получить данные если Json = true
             /// </summary>
             public string JsonResult { get; set; }
-            #endregion
 
-            #region Дополнительные переменные
             private wAnticaptcha.Query Query = new wAnticaptcha.Query();
             private Anticaptcha Anticaptcha = new Anticaptcha();
-            #endregion
 
-            #region Методы
             /// <summary>
             /// Капча от geetest.com, передать параметры
             /// </summary>
@@ -906,7 +830,6 @@ namespace Captcha_Service.Anticaptcha
                     JsonResult = Verify;
                 return this;
             }
-            #endregion
         }
 
         /// <summary>
@@ -914,7 +837,6 @@ namespace Captcha_Service.Anticaptcha
         /// </summary>
         public class GeeTestTaskProxyless : wAnticaptcha.JsonSer.GeeTestTaskProxyless.Task
         {
-            #region Данные которые надо передать
             /// <summary>
             /// В каком виде получать данные
             /// true - вернуть в json
@@ -925,9 +847,7 @@ namespace Captcha_Service.Anticaptcha
             /// Задержка ожидания запросса
             /// </summary>
             public int sleep { get; set; }
-            #endregion
 
-            #region Данные которые получаем
             /// <summary>
             /// Получать данные об ошибке если json = false
             /// </summary>
@@ -950,14 +870,10 @@ namespace Captcha_Service.Anticaptcha
             /// Получить данные если Json = true
             /// </summary>
             public string JsonResult { get; set; }
-            #endregion
 
-            #region Дополнительные переменные
             private wAnticaptcha.Query Query = new wAnticaptcha.Query();
             private Anticaptcha Anticaptcha = new Anticaptcha();
-            #endregion
 
-            #region Методы
             /// <summary>
             /// Капча от geetest.com, передать параметры
             /// </summary>
@@ -994,17 +910,13 @@ namespace Captcha_Service.Anticaptcha
                     JsonResult = Verify;
                 return this;
             }
-            #endregion
         }
-        #endregion
 
-        #region RecaptchaV1
         /// <summary>
         /// RecaptchaV1Task : старая версия рекапчи, решение через прокси
         /// </summary>
         public class RecaptchaV1Task: wAnticaptcha.JsonSer.RecaptchaV1Task.Task
         {
-            #region Данные которые надо передать
             /// <summary>
             /// В каком виде получать данные
             /// true - вернуть в json
@@ -1015,9 +927,7 @@ namespace Captcha_Service.Anticaptcha
             /// Задержка ожидания запросса
             /// </summary>
             public int sleep { get; set; }
-            #endregion
 
-            #region Данные которые получаем
             /// <summary>
             /// Получать данные об ошибке если json = false
             /// </summary>
@@ -1040,14 +950,10 @@ namespace Captcha_Service.Anticaptcha
             /// Получить данные если Json = true
             /// </summary>
             public string JsonResult { get; set; }
-            #endregion
 
-            #region Дополнительные переменные
             private wAnticaptcha.Query Query = new wAnticaptcha.Query();
             private Anticaptcha Anticaptcha = new Anticaptcha();
-            #endregion
 
-            #region Методы
             /// <summary>
             /// RecaptchaV1Task : старая версия рекапчи, передать параметры
             /// </summary>
@@ -1095,7 +1001,6 @@ namespace Captcha_Service.Anticaptcha
                     JsonResult = Verify;
                 return this;
             }
-            #endregion
         }
 
         /// <summary>
@@ -1103,7 +1008,6 @@ namespace Captcha_Service.Anticaptcha
         /// </summary>
         public class RecaptchaV1TaskProxyless : wAnticaptcha.JsonSer.RecaptchaV1TaskProxyless.Task
         {
-            #region Данные которые надо передать
             /// <summary>
             /// В каком виде получать данные
             /// true - вернуть в json
@@ -1114,9 +1018,7 @@ namespace Captcha_Service.Anticaptcha
             /// Задержка ожидания запросса
             /// </summary>
             public int sleep { get; set; }
-            #endregion
 
-            #region Данные которые получаем
             /// <summary>
             /// Получать данные об ошибке если json = false
             /// </summary>
@@ -1139,14 +1041,10 @@ namespace Captcha_Service.Anticaptcha
             /// Получить данные если Json = true
             /// </summary>
             public string JsonResult { get; set; }
-            #endregion
 
-            #region Дополнительные переменные
             private wAnticaptcha.Query Query = new wAnticaptcha.Query();
             private Anticaptcha Anticaptcha = new Anticaptcha();
-            #endregion
 
-            #region Методы
             /// <summary>
             /// RecaptchaV1Task : старая версия рекапчи без прокси, передать параметры
             /// </summary>
@@ -1180,8 +1078,6 @@ namespace Captcha_Service.Anticaptcha
                     JsonResult = Verify;
                 return this;
             }
-            #endregion
         }
-        #endregion
     }
 }

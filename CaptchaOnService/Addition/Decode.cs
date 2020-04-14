@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Captcha_Service.Anticaptcha.wAnticaptcha
 {
-    partial class Addition
+    partial class Decode
     {
         public static string Base64ToString(string ImagePath)
         {

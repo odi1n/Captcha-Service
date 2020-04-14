@@ -8,7 +8,6 @@ namespace Captcha_Service.Anticaptcha.wAnticaptcha
 {
     public class JsonDes
     {
-        #region Информационные
         /// <summary>
         /// Получить данные об ошибке
         /// </summary>
@@ -65,9 +64,7 @@ namespace Captcha_Service.Anticaptcha.wAnticaptcha
             /// </summary>
             public string solveCount { get; set; }
         }
-        #endregion
 
-        #region Дополнительные
         /// <summary>
         /// Получить данные о балансе
         /// </summary>
@@ -110,9 +107,7 @@ namespace Captcha_Service.Anticaptcha.wAnticaptcha
             /// </summary>
             public int total { get; set; }
         }
-        #endregion
 
-        #region Решение капчи
         /// <summary>
         /// Получить данные о решение обычной капчи с текстом.
         /// </summary>
@@ -198,6 +193,5 @@ namespace Captcha_Service.Anticaptcha.wAnticaptcha
             /// </summary>
             public string recaptchaResponse { get; set; }
         }
-        #endregion
     }
 }
