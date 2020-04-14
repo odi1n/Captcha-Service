@@ -12,7 +12,7 @@
   - [x] ReCaptcha V2 (устаревший метод) - RecaptchaV2Old
   - ClickCaptcha
   - RotateCaptcha
-  - FunCaptcha с токеном
+  - [x] FunCaptcha с токеном
   - KeyCaptcha
   - GeeTest
   - hCaptcha
