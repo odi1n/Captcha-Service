@@ -149,6 +149,20 @@ namespace Captcha_Service.Rucaptcha
         }
 
         /// <summary>
+        /// FunCaptcha с токеном
+        /// </summary>
+        /// <param name="recaptcha">Модель параметров</param>
+        /// <param name="sleep">Время задержки получения ответа</param>
+        /// <returns></returns>
+        public Response FunCaptchaToken(FunCaptcha funCaptcha, int sleep = 2000)
+        {
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
+            var response = _request.GetRequest(_urlIn, CreateDataParams() + funCaptcha.ToString());
+            return Check(new Check(response.Request, sleep: sleep));
+        }
+
+
+        /// <summary>
         /// Отчет об ответах
         /// </summary>
         /// <param name="report">Информация о капче</param>

@@ -60,7 +60,11 @@
     <Compile Include="Exception\Rucaptcha\ErrorParamsException.cs" />
     <Compile Include="Addition\Directorys.cs" />
     <Compile Include="Models\Check.cs" />
+    <Compile Include="Models\Request\HCaptcha.cs" />
+    <Compile Include="Models\Request\GeeTest.cs" />
+    <Compile Include="Models\Request\KeyCaptcha.cs" />
     <Compile Include="Models\Request\ReCaptchaV2Old.cs" />
+    <Compile Include="Models\Request\FunCaptcha.cs" />
     <Compile Include="Models\Response.cs" />
     <Compile Include="Models\Request\Addition.cs" />
     <Compile Include="Models\Request\Addition\SetProxy.cs" />

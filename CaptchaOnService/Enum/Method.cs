@@ -16,5 +16,9 @@ namespace Captcha_Service.Enum
         /// Определяет, что вы решаете ReCaptcha V2 с помощью нового метода
         /// </summary>
         userrecaptcha,
+        /// <summary>
+        /// funcaptcha — указывает, что вы решаете FunCaptcha с помощью токена
+        /// </summary>
+        funcaptcha,
     }
 }
