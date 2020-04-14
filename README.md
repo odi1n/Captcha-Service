@@ -36,10 +36,13 @@
   - [x] getBalance
   - [x] ReCaptcha V2
   - [x] Решение картинки
+4. Captcha.guru
+  - [x] getBalance
+  - [x] ReCaptcha V2
+  - [x] Решение картинки
   
 # В планах добавить:
   - Новые сервисы:
-    - gurucaptcha
     - DeathByCaptcha
     - XEvil
     - 2Captcha
