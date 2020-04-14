@@ -24,5 +24,9 @@ namespace Captcha_Service.Enum
         /// keycaptcha — говорит о том, что вы отправляете KeyCaptcha
         /// </summary>
         keycaptcha,
+        /// <summary>
+        /// geetest - указывает, что вы отправляете капчу GeeTest
+        /// </summary>
+        geetest,
     }
 }

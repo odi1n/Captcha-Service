@@ -164,13 +164,26 @@ namespace Captcha_Service.Rucaptcha
         /// <summary>
         /// KeyCaptcha
         /// </summary>
-        /// <param name="keyCaptcha">>Модель параметров</param>
+        /// <param name="keyCaptcha">Модель параметров</param>
         /// <param name="sleep">Время задержки получения ответа</param>
         /// <returns></returns>
         public Response KeyCaptcha(KeyCaptcha keyCaptcha, int sleep = 2000)
         {
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
             var response = _request.GetRequest(_urlIn, CreateDataParams() + keyCaptcha.ToString());
+            return Check(new Check(response.Request, sleep: sleep));
+        }
+
+        /// <summary>
+        /// GeeTest
+        /// </summary>
+        /// <param name="geeTest">Модель параметров</param>
+        /// <param name="sleep">Время задержки получения ответа</param>
+        /// <returns></returns>
+        public Response GeeTest(GeeTest geeTest, int sleep = 2000)
+        {
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
+            var response = _request.GetRequest(_urlIn, CreateDataParams() + geeTest.ToString());
             return Check(new Check(response.Request, sleep: sleep));
         }
 

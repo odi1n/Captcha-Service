@@ -10,25 +10,49 @@ namespace Captcha_Service.Models.Request
 {
     public class GeeTest : Setting
     {
-        public string TextCaptcha { get; set; }
+        /// <summary>
+        /// geetest - указывает, что вы отправляете капчу GeeTest
+        /// </summary>
+        public Method Method { get; set; } = Method.geetest;
+        /// <summary>
+        /// Значение параметра gt найденное на сайте
+        /// </summary>
+        public string Gt { get; set; }
+        /// <summary>
+        /// Значение параметра challenge найденное на сайте
+        /// </summary>
+        public string Challenge { get; set; }
+        /// <summary>
+        /// Значение параметра api_server найденное на сайте
+        /// </summary>
+        public string ApiServer { get; set; }
+        /// <summary>
+        /// Полный URL страницы с капчей GeeTest
+        /// </summary>
+        public string PageUrl { get; set; }
 
-        
-        public GeeTest(string textCaptcha, Lang? lang = null, int language = 0, int headerAcao = 0, string pingback = null)
+        /// <summary>
+        /// GeeTest
+        /// </summary>
+        /// <param name="gt">Значение параметра gt найденное на сайте</param>
+        /// <param name="challenge">Значение параметра challenge найденное на сайте</param>
+        /// <param name="pageurl">Полный URL страницы с капчей GeeTest</param>
+        public GeeTest(string gt, string challenge, string pageurl)
         {
-            this.TextCaptcha = textCaptcha;
-            this.Lang = lang;
-            this.Language = language;
-            this.HeaderAcao = headerAcao;
-            this.Pingback = pingback;
+            this.Gt = gt;
+            this.Challenge = challenge;
+            this.PageUrl = pageurl;
         }
 
         public override string ToString()
         {
             var Data = new Dictionary<string, object>()
             {
-                ["language"] = this.Language,
-                ["lang"] = this.Lang,
-                ["textcaptcha"] = this.TextCaptcha,
+                ["method"] = this.Method,
+                ["gt"] = this.Gt,
+                ["challenge"] = this.Challenge,
+                ["api_server"] = this.ApiServer,
+                ["pageurl"] = this.PageUrl,
                 ["header_acao"] = this.HeaderAcao,
                 ["pingback"] = this.Pingback,
             };
