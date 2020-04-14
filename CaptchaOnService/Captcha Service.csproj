@@ -60,6 +60,7 @@
     <Compile Include="Exception\Rucaptcha\ErrorParamsException.cs" />
     <Compile Include="Addition\Directorys.cs" />
     <Compile Include="Models\Check.cs" />
+    <Compile Include="Models\Request\ClickCaptcha.cs" />
     <Compile Include="Models\Request\KeyCaptcha.cs" />
     <Compile Include="Models\Request\GeeTest.cs" />
     <Compile Include="Models\Request\HCaptcha.cs" />

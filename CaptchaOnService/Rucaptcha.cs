@@ -149,6 +149,18 @@ namespace Captcha_Service.Rucaptcha
         }
 
         /// <summary>
+        /// ClickCaptcha
+        /// </summary>
+        /// <param name="clickCaptcha">Модель параметров</param>
+        /// <param name="sleep">Время задержки получения ответа</param>
+        /// <returns></returns>
+        public Response ClickCaptcha(ClickCaptcha clickCaptcha, int sleep = 2000)
+        {
+            var response = _request.UploadFile(_urlIn + CreateDataParams() + clickCaptcha.ToString(), clickCaptcha.File);
+            return Check(new Check(response.Request, sleep: sleep));
+        }
+
+        /// <summary>
         /// FunCaptcha с токеном
         /// </summary>
         /// <param name="funCaptcha">Модель параметров</param>
@@ -199,7 +211,6 @@ namespace Captcha_Service.Rucaptcha
             var response = _request.GetRequest(_urlIn, CreateDataParams() + hCaptcha.ToString());
             return Check(new Check(response.Request, sleep: sleep));
         }
-
 
         /// <summary>
         /// Отчет об ответах
