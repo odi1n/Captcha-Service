@@ -17,6 +17,16 @@
   - [x] GeeTest
   - [x] hCaptcha
 2. AntiCaptcha:
+  - [x] createTask 
+  - [x] getTaskResult
+  - [x] getBalance
+  - getQueueStats
+  - reportIncorrectImageCaptcha 
+  - reportIncorrectRecaptcha
+  - getSpendingStats 
+  - getAppStats 
+  - sendFunds
+  - test
   - [x] ImageToTextTask
   - [x] NoCaptchaTask
   - [x] NoCaptchaTaskProxyless
@@ -26,12 +36,11 @@
   - [x] SquareNetTextTask
   - [x] GeeTestTask 
   - [x] GeeTestTaskProxyless 
+  - HCaptchaTask
+  - HCaptchaTaskProxyless 
   - CustomCaptchaTask
   - [x] RecaptchaV1Task 
   - [x] RecaptchaV1TaskProxyless
-  - [x] createTask
-  - [x] getTaskResult
-  - [x] getBalance
 3. Cptch.net
   - [x] getBalance
   - [x] ReCaptcha V2
