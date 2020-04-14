@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Captcha_Service.Models.Rucaptcha.Request
+namespace Captcha_Service.Models.Request
 {
     public class SettingModels : ProxyModels
     {
@@ -25,7 +25,7 @@ namespace Captcha_Service.Models.Rucaptcha.Request
         /// Если включен, то in.php добавит заголовок Access-Control-Allow-Origin:* в ответ.
         /// Используется для кроссдоменных AJAX-запросов из веб-приложений.
         /// </summary>
-        public int? HeaderAcao { get; set; }
+        public int HeaderAcao { get; set; } = 0;
         /// <summary>
         /// URL для автоматической отправки ответа на капчу (callback).
         /// URL должен быть зарегистрирован на сервере.Больше информации здесь.

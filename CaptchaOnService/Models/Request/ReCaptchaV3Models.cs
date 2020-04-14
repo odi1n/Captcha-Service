@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Captcha_Service.Models.Rucaptcha.Request
+namespace Captcha_Service.Models.Request
 {
-    public class ReCaptchaV2Models : SettingModels
+    public class ReCaptchaV3Models : SettingModels
     {
         /// <summary>
         /// Полный URL страницы, на которой вы решаете ReCaptcha V2
@@ -19,24 +19,26 @@ namespace Captcha_Service.Models.Rucaptcha.Request
         /// </summary>
         public string GoogleKey { get; set; }
         /// <summary>
-        /// 1 — говорит нам, что на сайте невидимая ReCaptcha. 0 — обычная ReCaptcha.
-        /// </summary>
-        public int? Invisible { get; set; }
-        /// <summary>
         /// Метод указан по умолчанию
         /// </summary>
         public Method Method { get; set; } = Method.userrecaptcha;
+        /// <summary>
+        /// v3 — указывает на то, что это ReCaptcha V3. указана по умолчанию
+        /// </summary>
+        public string Version { get; set; } = "v3";
+        /// <summary>
+        /// Значение параметра action, которые вы нашли в коде сайта
+        /// </summary>
+        public string Action { get; set; } = "verify";
+        /// <summary>
+        /// Требуемое значение рейтинга (score). На текущий момент сложно получить токен со score выше 0.3
+        /// </summary>
+        public double? MinScore { get; set; } = 0.4;
 
-        public ReCaptchaV2Models(string googlekey, string pageurl, Method method = Method.userrecaptcha, int? invisible = null, int? header_acao = null, string pingback = null,
-            string proxy = null, ProxyType? proxy_type = null)
+        public ReCaptchaV3Models(string googlekey, string pageurl)
         {
-            this.Method = method;
             this.GoogleKey = googlekey;
             this.PageUrl = pageurl;
-            this.Invisible = invisible;
-            this.HeaderAcao = header_acao;
-            this.Proxy = proxy;
-            this.Proxytype = proxy_type;
         }
 
         public override string ToString()
@@ -44,15 +46,16 @@ namespace Captcha_Service.Models.Rucaptcha.Request
             var Data = new Dictionary<string, object>()
             {
                 ["method"] = this.Method,
+                ["version"] = this.Version,
                 ["googlekey"] = this.GoogleKey,
                 ["pageurl"] = this.PageUrl,
-                ["invisible"] = this.Invisible,
+                ["action"] = this.Action,
+                ["min_score"] = this.MinScore,
                 ["header_acao"] = this.HeaderAcao,
                 ["pingback"] = this.Pingback,
                 ["proxy"] = this.Proxy,
-                ["proxytype"] = this.Proxytype,
+                ["proxytype"] = this.ProxyType,
             };
-
             return DictionaryConvert.Deserialization(Data);
         }
     }

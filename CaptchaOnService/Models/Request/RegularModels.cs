@@ -7,18 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Captcha_Service.Models.Rucaptcha.Request
+namespace Captcha_Service.Models.Request
 {
     public class RegularModels : SettingModels
     {
         /// <summary>
         /// Путь картинки
         /// </summary>
-        public string ImapePath { get; set; }
+        public string File { get; set; }
         /// <summary>
         /// Метод загрузки фото
         /// </summary>
-        public Method Method { get; set; }
+        public Method Method { get; set; } = Method.post;
         /// <summary>
         /// 0 — капча состоит из одного слова
         /// 1 — капча состоит из двух или более слов
@@ -64,24 +64,9 @@ namespace Captcha_Service.Models.Rucaptcha.Request
         /// </summary>
         public Image Imginstructions { get; set; }
 
-        public RegularModels(string imagePath, Method method = Method.post, int? phrase = null, int? regsense = null, int? numeric = null,
-            int? calc = null, int? min_len = null, int? max_len = null, int? language = null, Lang? lang = null, string textinstructions = null,
-            Image imginstructions = null, int? header_acao = null, string pingback = null)
+        public RegularModels(string file)
         {
-            this.ImapePath = imagePath;
-            this.Method = method;
-            this.Phrase = phrase;
-            this.Regsense = regsense;
-            this.Numeric = numeric;
-            this.Calc = calc;
-            this.MinLen = min_len;
-            this.MaxLen = max_len;
-            this.Language = language;
-            this.Lang = lang;
-            this.Textinstructions = textinstructions;
-            this.Imginstructions = imginstructions;
-            this.HeaderAcao = header_acao;
-            this.Pingback = pingback;
+            this.File = file;
         }
 
         public override string ToString()
@@ -103,7 +88,8 @@ namespace Captcha_Service.Models.Rucaptcha.Request
                 ["pingback"] = this.Pingback,
             };
 
-            return DictionaryConvert.Deserialization(data); 
+            var info = DictionaryConvert.Deserialization(data);
+            return info;
         }
     }
 }

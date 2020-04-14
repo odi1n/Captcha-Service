@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using System.IO;
-using Captcha_Service.Models.Rucaptcha.Request;
+using Captcha_Service.Models.Request;
 using Captcha_Service.Enum;
 using Captcha_Service.Models;
 using System.Drawing;
@@ -120,7 +120,7 @@ namespace Captcha_Service.Rucaptcha
         /// <returns></returns>
         public ResponseModels Regular(RegularModels regular, int sleep = 2000)
         {
-            var response = _request.UploadFile(_urlIn + CreateDataParams() + regular.ToString(), regular.ImapePath);
+            var response = _request.UploadFile(_urlIn + CreateDataParams() + regular.ToString(), regular.File);
             return Check(new CheckModels(response.Request, sleep:sleep));
         }
 

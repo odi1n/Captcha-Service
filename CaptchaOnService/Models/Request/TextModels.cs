@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Captcha_Service.Models.Rucaptcha.Request
+namespace Captcha_Service.Models.Request
 {
     public class TextModels : SettingModels
     {

@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 
-namespace Captcha_Service.Models.Rucaptcha.Request
+namespace Captcha_Service.Models.Request
 {
     public class ReportModels
     {

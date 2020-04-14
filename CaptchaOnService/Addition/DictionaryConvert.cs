@@ -14,10 +14,9 @@ namespace Captcha_Service.Addition
 
             foreach ( KeyValuePair<string, object> entry in dict )
             {
-                if ( str.Length > 0 ) str += "&";
-
                 if (entry.Value != null)
                 {
+                    if (str.Length > 0) str += "&";
                     if (entry.Value.ToString().Length == 0) continue;
 
                     var key = entry.Key != null ? entry.Key.ToString() : null;
@@ -25,7 +24,6 @@ namespace Captcha_Service.Addition
                     str += key + "=" + value;
                 }
             }
-
             return str;
         }
     }

@@ -14,18 +14,6 @@ namespace Captcha_Service.Query
 {
     partial class Request
     {
-        /// <summary>
-        /// Переводим данные с байтов в текст
-        /// </summary>
-        /// <param name="request">Байт которые будем переводить в текст</param>
-        /// <returns></returns>
-        private  string ByteToString(WebRequest request)
-        {
-            using ( HttpWebResponse response = (HttpWebResponse)request.GetResponse() )
-            using ( StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.Default, true, 8192) )
-                return reader.ReadToEnd();
-        }
-
         public bool DownloadFile(string link, string path)
         {
             bool CheckDownload = false;
@@ -40,8 +28,9 @@ namespace Captcha_Service.Query
         public ResponseModels GetRequest(string url, string data)
         {
             var request = WebRequest.Create(url + data);
-            var response = ByteToString(request);
-            return CheckErrorInfo(response);
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.Default, true, 8192))
+                return CheckErrorInfo(reader.ReadToEnd());
         }
 
         public ResponseModels UploadFile(string link, string path)
@@ -49,7 +38,6 @@ namespace Captcha_Service.Query
             using(var webClient = new WebClient() )
             {
                 var infoUpload = webClient.UploadFile(link, path);
-
                 string response = Encoding.UTF8.GetString(infoUpload);
 
                 return CheckErrorInfo(response);

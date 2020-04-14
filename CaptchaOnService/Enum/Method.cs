@@ -11,11 +11,7 @@ namespace Captcha_Service.Enum
         /// <summary>
         /// Говорит о том, что вы отправляете изображение с помощью multipart-фомы
         /// </summary>
-    post,
-/// <summary>
-        /// Говорит о том, что вы отправляете изображение в формате base64
-        /// </summary>
-        base64,
+        post,
         /// <summary>
         /// Определяет, что вы решаете ReCaptcha V2 с помощью нового метода
         /// </summary>
