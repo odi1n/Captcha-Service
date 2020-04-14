@@ -43,13 +43,13 @@
   
 # В планах добавить:
   - Новые сервисы:
-    - DeathByCaptcha
-    - XEvil
     - 2Captcha
     - solvecaptcha.com
     - azcaptcha.com
     - x-captcha.ru
     - DeCaptcher
+    - DeathByCaptcha
+    - XEvil
   - Изменить:
     - anti-captcha
   - Отключения исключения при ошибки решения капчи. Возвращение в переменной
