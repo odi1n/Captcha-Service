@@ -10,7 +10,7 @@
   - [x] Дополнительные методы
   - [x] Отчет об ответах - Report
   - [x] ReCaptcha V2 (устаревший метод) - RecaptchaV2Old
-  - ClickCaptcha
+  - [x] ClickCaptcha
   - RotateCaptcha
   - [x] FunCaptcha с токеном
   - [x] KeyCaptcha
@@ -36,20 +36,20 @@
   - [x] getBalance
   - [x] ReCaptcha V2
   - [x] Решение картинки
+4. Captcha.guru
+  - [x] getBalance
+  - [x] ReCaptcha V2
+  - [x] Решение картинки
   
 # В планах добавить:
   - Новые сервисы:
-    - gurucaptcha
-    - DeathByCaptcha
-    - XEvil
     - 2Captcha
-    - captcha.guru
     - solvecaptcha.com
+    - azcaptcha.com
     - x-captcha.ru
     - DeCaptcher
-    - MegaTypers
-    - Kolotibablo
-    - Socialink
+    - DeathByCaptcha
+    - XEvil
   - Изменить:
     - anti-captcha
   - Отключения исключения при ошибки решения капчи. Возвращение в переменной
