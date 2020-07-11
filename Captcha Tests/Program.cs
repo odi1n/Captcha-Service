@@ -17,14 +17,15 @@ namespace Captcha_Tests
             //var ttt = rc.GetBalance();
             //var test = rc.Regular(new Regular(@"D:\MyProject\C#\1. Готовые\Captcha\CaptchaTest\CaptchaTest\bin\Debug\captcha.jpg"), 3000);
 
-            CaptchaGuru cg = new CaptchaGuru(key[2]);
-            var test = cg.GetBalance();
+            //CaptchaGuru cg = new CaptchaGuru(key[2]);
+            //var test = cg.GetBalance();
 
             //CptchNet cptch = new CptchNet(key[1]);
             //cptch.GetBalance();
             //var test = cptch.Regular(new RegularModels(@"D:\MyProject\C#\1. Готовые\Captcha\CaptchaTest\CaptchaTest\bin\Debug\captcha.jpg"), 3000);
 
             AntiCaptcha ac = new AntiCaptcha(key[3]);
+            var info = ac.Test(new Captcha_Service.Models.AntiCaptcha.Request.Test("dsadasd","xzczxc"));
             //var balance = ac.GetQueueStats(new Captcha_Service.Models.ACRequest.GetQueueStats(Captcha_Service.Enums.QueueId.ImageToTextRu));
 
             Console.WriteLine(/*test.Request*/);

@@ -64,12 +64,15 @@
     <Compile Include="Models\AntiCaptcha\Request\GetQueueStats.cs" />
     <Compile Include="Models\AntiCaptcha\Request\GetTaskResult.cs" />
     <Compile Include="Models\AntiCaptcha\Request\ReportIncorrect.cs" />
+    <Compile Include="Models\AntiCaptcha\Request\SendFunds.cs" />
     <Compile Include="Models\AntiCaptcha\Request\SpendingStats.cs" />
+    <Compile Include="Models\AntiCaptcha\Request\Test.cs" />
     <Compile Include="Models\AntiCaptcha\Response\Addition\Data.cs" />
     <Compile Include="Models\AntiCaptcha\Response\Addition\Solution.cs" />
     <Compile Include="Models\AntiCaptcha\Response\BalanceResp.cs" />
     <Compile Include="Models\AntiCaptcha\Response\QueueStatsResp.cs" />
     <Compile Include="Models\AntiCaptcha\Response\ReportIncorrectResp.cs" />
+    <Compile Include="Models\AntiCaptcha\Response\SendFundsResp.cs" />
     <Compile Include="Models\AntiCaptcha\Response\SpendingStatsResp.cs" />
     <Compile Include="Models\AntiCaptcha\Response\TaskResultResp.cs" />
     <Compile Include="Models\AntiCaptcha\Response\CreateTaskResp.cs" />

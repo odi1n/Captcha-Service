@@ -6,6 +6,8 @@ using Captcha_Service.Task;
 using Captcha_Service.Models.ACResponse;
 using Captcha_Service.Models;
 using Captcha_Service.Models.AntiCaptcha.Request;
+using Captcha_Service.Models.AntiCaptcha.Response;
+using Captcha_Service.Models.ACResponse.Response;
 
 namespace Captcha_Service
 {
@@ -18,7 +20,7 @@ namespace Captcha_Service
         private Request _request = new Request();
 
         private const string _linkMain = "api.anti-captcha.com";
-        private const string _link = "https:/" + _linkMain + "/";
+        private const string _link = "https://" + _linkMain + "/";
 
         public AntiCaptcha(string key)
         {
@@ -107,6 +109,27 @@ namespace Captcha_Service
             return JsonConvert.Deserializ<SpendingStatsResp>(response);
         }
 
+        /// <summary>
+        /// Отправить средства другому пользователю
+        /// </summary>
+        /// <param name="sendFunds">Модель данных</param>
+        /// <returns></returns>
+        public SendFundsResp SendFunds(SendFunds sendFunds)
+        {
+            sendFunds.ClientKey = setting.Key;
+            var response = _request.Post(_link + ACTask.SendFunds, JsonConvert.Serializer(sendFunds));
+            return JsonConvert.Deserializ<SendFundsResp>(response);
+        }
 
+        /// <summary>
+        /// Тестовый метод для отладки
+        /// </summary>
+        /// <param name="test">Модель данных</param>
+        /// <returns></returns>
+        public string Test(Test test)
+        {
+            var response = _request.Post(_link + ACTask.Test, JsonConvert.Serializer(test));
+            return response;
+        }
     }
 }

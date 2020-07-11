@@ -7,7 +7,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Captcha_Service.Models.ACResponse
+namespace Captcha_Service.Models.ACResponse.Response
 {
     public class QueueStatsResp
     {
