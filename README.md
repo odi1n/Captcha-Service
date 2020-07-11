@@ -20,30 +20,31 @@
   - [x] createTask 
   - [x] getTaskResult
   - [x] getBalance
-  - getQueueStats
-  - reportIncorrectImageCaptcha 
-  - reportIncorrectRecaptcha
-  - getSpendingStats 
+  - [x] getQueueStats
+  - [x] reportIncorrectImageCaptcha 
+  - [x] reportIncorrectRecaptcha
+  - [x] getSpendingStats 
   - getAppStats 
-  - sendFunds
-  - test
-  - [x] ImageToTextTask
-  - [x] NoCaptchaTask
-  - [x] NoCaptchaTaskProxyless
+  - [x] sendFunds
+  - [x] test
+  - ImageToTextTask
+  - NoCaptchaTask
+  - NoCaptchaTaskProxyless
   - RecaptchaV3TaskProxyless
-  - [x] FunCaptchaTask
-  - [x] FunCaptchaTaskProxyless 
-  - [x] SquareNetTextTask
-  - [x] GeeTestTask 
-  - [x] GeeTestTaskProxyless 
+  - FunCaptchaTask
+  - FunCaptchaTaskProxyless 
+  - SquareNetTextTask
+  - GeeTestTask 
+  - GeeTestTaskProxyless 
   - HCaptchaTask
   - HCaptchaTaskProxyless 
   - CustomCaptchaTask
-  - [x] RecaptchaV1Task 
-  - [x] RecaptchaV1TaskProxyless
+  - RecaptchaV1Task 
+  - RecaptchaV1TaskProxyless
 3. Cptch.net
   - [x] getBalance
   - [x] ReCaptcha V2
+  - ReCaptcha V3
   - [x] Решение картинки
 4. Captcha.guru
   - [x] getBalance
