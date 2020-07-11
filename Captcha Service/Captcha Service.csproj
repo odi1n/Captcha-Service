@@ -44,22 +44,28 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Addition\DictionaryConvert.cs" />
+    <Compile Include="Addition\JsonConverts.cs" />
     <Compile Include="Addition\JsonConvert.cs" />
-    <Compile Include="Anticaptcha.cs" />
+    <Compile Include="AntiCaptcha.cs" />
     <Compile Include="Addition\Decode.cs" />
-    <Compile Include="Anticaptcha\wAnticaptcha\Error.cs" />
-    <Compile Include="Anticaptcha\wAnticaptcha\JsonSer.cs" />
-    <Compile Include="Anticaptcha\wAnticaptcha\JsonDes.cs" />
-    <Compile Include="Anticaptcha\wAnticaptcha\Query.cs" />
     <Compile Include="Captcha.cs" />
     <Compile Include="CaptchaGuru.cs" />
     <Compile Include="Cptch.cs" />
+    <Compile Include="Enum\Error.cs" />
     <Compile Include="Enum\Lang.cs" />
     <Compile Include="Enum\Actions.cs" />
     <Compile Include="Enum\ProxyType.cs" />
     <Compile Include="Enum\Method.cs" />
+    <Compile Include="Enum\QueueId.cs" />
+    <Compile Include="Enum\Status.cs" />
     <Compile Include="Exception\Rucaptcha\ErrorParamsException.cs" />
     <Compile Include="Addition\Directorys.cs" />
+    <Compile Include="Models\ACRequest\GetQueueStats.cs" />
+    <Compile Include="Models\ACResponse.cs" />
+    <Compile Include="Models\ACRequest\Addition\Setting.cs" />
+    <Compile Include="Models\ACRequest\GetTaskResult.cs" />
+    <Compile Include="Models\ACRequest\CreateTask .cs" />
+    <Compile Include="Models\ACRequest\GetBalance.cs" />
     <Compile Include="Models\Check.cs" />
     <Compile Include="Models\Request\ClickCaptcha.cs" />
     <Compile Include="Models\Request\KeyCaptcha.cs" />

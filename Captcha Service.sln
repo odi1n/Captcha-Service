@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Captcha Service", "CaptchaOnService\Captcha Service.csproj", "{C1F9AD88-655E-4B4D-AB18-E32602353C71}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Captcha Service", "Captcha Service\Captcha Service.csproj", "{C1F9AD88-655E-4B4D-AB18-E32602353C71}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaptchaTest", "..\CaptchaTest\CaptchaTest\CaptchaTest.csproj", "{C0B21011-78CE-4410-AEEE-E11E99537227}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Captcha Test", "..\Captcha Test\CaptchaTest\Captcha Test.csproj", "{C0B21011-78CE-4410-AEEE-E11E99537227}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
