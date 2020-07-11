@@ -59,6 +59,8 @@
     - DeCaptcher
     - DeathByCaptcha
     - XEvil
+    - Captcha24.com
+    - Ripcaptcha.com
   - Изменить:
     - anti-captcha
   - Отключения исключения при ошибки решения капчи. Возвращение в переменной
