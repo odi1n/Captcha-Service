@@ -2,6 +2,7 @@
 using Captcha_Service.Exceptions;
 using Captcha_Service.Models.AntiCaptcha.Request.Addition;
 using Captcha_Service.Task;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,19 +12,17 @@ using System.Threading.Tasks;
 
 namespace Captcha_Service.Models.AntiCaptcha.Request.Task
 {
-    [DataContract]
-    [KnownType(typeof(Task.ImageToTextTask))]
-    public class ImageToTextTask : Setting
+    public class ImageToText
     {
-        [DataMember(Name = "typE")]
-        public string Type { get; set; }
-        [DataMember(Name = "body")]
+        [JsonProperty("type")]
+        public string Type { get; private set; }
+        [JsonProperty("body")]
         public string Body { get; set; }
-        [DataMember(Name = "phrase")]
+        [JsonProperty("phrase")]
         public bool Phrase { get; set; }
-        [DataMember(Name = "case")]
+        [JsonProperty("case")]
         public bool Case { get; set; }
-        [DataMember(Name = "numeric")]
+        [JsonProperty("numeric")]
         public int Numeric
         {
             get
@@ -37,9 +36,9 @@ namespace Captcha_Service.Models.AntiCaptcha.Request.Task
                 _minLength = value;
             }
         }
-        [DataMember(Name = "math")]
+        [JsonProperty("math")]
         public bool Math { get; set; }
-        [DataMember(Name = "minLength")]
+        [JsonProperty("minLength")]
         public int MinLength
         {
             get
@@ -53,7 +52,7 @@ namespace Captcha_Service.Models.AntiCaptcha.Request.Task
                 _minLength = value;
             }
         }
-        [DataMember(Name = "maxLength")]
+        [JsonProperty("maxLength")]
         public int MaxLength
         {
             get
@@ -67,24 +66,20 @@ namespace Captcha_Service.Models.AntiCaptcha.Request.Task
                 _maxLength = value;
             }
         }
-        [DataMember(Name = "comment")]
+        [JsonProperty("comment")]
         public string Comment { get; set; }
-        [DataMember(Name = "websiteURL")]
+        [JsonProperty("websiteURL")]
         public string WebsiteURL { get; set; }
 
+        [NonSerialized]
         private int _minLength;
+        [NonSerialized]
         public int _maxLength;
 
-        public ImageToTextTask(string body)
+        public ImageToText(string body)
         {
-            //this.Type = ACType.ImageToTextTask;
-            this.Type = "ImageToTextTask";
+            this.Type = ACTask.ImageToTextTask;
             this.Body = body;
-        }
-
-        public override string ToString()
-        {
-            return JsonConvert.Serializer(this);
         }
     }
 }

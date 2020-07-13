@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -9,13 +10,13 @@ namespace Captcha_Service.Models.AntiCaptcha.Response
 {
     public class SendFundsResp
     {
-        [DataMember(Name = "errorId")]
+        [JsonProperty( "errorId")]
         public int ErrorId { get; set; }
-        [DataMember(Name = "errorCode")]
+        [JsonProperty( "errorCode")]
         public string ErrorCode { get; set; }
-        [DataMember(Name = "errorDescription")]
+        [JsonProperty( "errorDescription")]
         public string ErrorDescription { get; set; }
-        [DataMember(Name = "balanceLeft")]
+        [JsonProperty( "balanceLeft")]
         public double BalanceLeft { get; set; }
     }
 }

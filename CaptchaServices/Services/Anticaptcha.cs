@@ -1,7 +1,6 @@
 ﻿using Captcha_Service.Additions;
 using Captcha_Service.Query;
 using System.Threading;
-using System.Web.Script.Serialization;
 using Captcha_Service.Task;
 using Captcha_Service.Models.ACResponse;
 using Captcha_Service.Models;
@@ -9,7 +8,6 @@ using Captcha_Service.Models.AntiCaptcha.Request;
 using Captcha_Service.Models.AntiCaptcha.Response;
 using Captcha_Service.Models.ACResponse.Response;
 using Captcha_Service.Models.AntiCaptcha.Request.Task;
-using Captcha_Service.Models.AntiCaptcha.Response.Task;
 
 namespace Captcha_Service
 {
@@ -37,12 +35,10 @@ namespace Captcha_Service
         private CreateTaskResp CreateTask(CreateTask createTask)
         {
             createTask.SetSetting(setting.Key, setting.SoftId);
-            var inf = JsonConverts.Serializer<CreateTask>(createTask);
-            var infs = JsonConvert.Serializer(createTask);
+            var inf = JsonConverts.Serializer(createTask);
 
-
-            var response = _request.Post(_link + ACTask.CreateTask, JsonConverts.Serializer<CreateTask>(createTask));
-            return JsonConvert.Deserializ<CreateTaskResp>(response);
+            var response = _request.Post(_link + ACTask.CreateTask, JsonConverts.Serializer(createTask));
+            return JsonConverts.Deserializ<CreateTaskResp>(response);
         }
 
         /// <summary>
@@ -53,8 +49,19 @@ namespace Captcha_Service
         private TaskResultResp GetTaskResult(GetTaskResult getTaskResult)
         {
             getTaskResult.SetSetting(setting.Key);
-            var response = _request.Post(_link + ACTask.GetTaskResult, JsonConverts.Serializer<CreateTask>(getTaskResult));
-            return JsonConvert.Deserializ<TaskResultResp>(response);
+            var response = _request.Post(_link + ACTask.GetTaskResult, JsonConverts.Serializer(getTaskResult));
+            return JsonConverts.Deserializ<TaskResultResp>(response);
+        }
+
+        private TaskResultResp GetResult(CreateTaskResp create, int sleep = 2000)
+        {
+            while (true)
+            {
+                var result = GetTaskResult(new GetTaskResult(create.TaskId));
+                if (result.ErrorId == 0)
+                    return result;
+                Thread.Sleep(sleep);
+            }
         }
 
         /// <summary>
@@ -63,8 +70,8 @@ namespace Captcha_Service
         /// <returns></returns>
         public BalanceResp GetBalance()
         {
-            var response = _request.Post(_link + ACTask.GetBalance, JsonConverts.Serializer<GetBalance>(new GetBalance(setting.Key)));
-            return JsonConvert.Deserializ<BalanceResp>(response);
+            var response = _request.Post(_link + ACTask.GetBalance, JsonConverts.Serializer(new GetBalance(setting.Key)));
+            return JsonConverts.Deserializ<BalanceResp>(response);
         }
 
         /// <summary>
@@ -74,8 +81,8 @@ namespace Captcha_Service
         /// <returns></returns>
         public QueueStatsResp GetQueueStats(GetQueueStats getQueueStatus)
         {
-            var response = _request.Post(_link + ACTask.GetQueueStats, JsonConvert.Serializer(getQueueStatus));
-            return JsonConvert.Deserializ<QueueStatsResp>(response);
+            var response = _request.Post(_link + ACTask.GetQueueStats, JsonConverts.Serializer(getQueueStatus));
+            return JsonConverts.Deserializ<QueueStatsResp>(response);
         }
 
         /// <summary>
@@ -86,8 +93,8 @@ namespace Captcha_Service
         public ReportIncorrectResp ReportIncorrectImageCaptcha(ReportIncorrect reportIncorrect)
         {
             reportIncorrect.SetSetting(setting.Key);
-            var response = _request.Post(_link + ACTask.ReportIncorrectImageCaptcha, JsonConvert.Serializer(reportIncorrect));
-            return JsonConvert.Deserializ<ReportIncorrectResp>(response);
+            var response = _request.Post(_link + ACTask.ReportIncorrectImageCaptcha, JsonConverts.Serializer(reportIncorrect));
+            return JsonConverts.Deserializ<ReportIncorrectResp>(response);
         }
 
         /// <summary>
@@ -98,8 +105,8 @@ namespace Captcha_Service
         public ReportIncorrectResp ReportIncorrectRecaptcha(ReportIncorrect reportIncorrect)
         {
             reportIncorrect.SetSetting(setting.Key);
-            var response = _request.Post(_link + ACTask.ReportIncorrectRecaptcha, JsonConvert.Serializer(reportIncorrect));
-            return JsonConvert.Deserializ<ReportIncorrectResp>(response);
+            var response = _request.Post(_link + ACTask.ReportIncorrectRecaptcha, JsonConverts.Serializer(reportIncorrect));
+            return JsonConverts.Deserializ<ReportIncorrectResp>(response);
         }
 
         /// <summary>
@@ -110,8 +117,8 @@ namespace Captcha_Service
         public SpendingStatsResp GetSpendingStats(SpendingStats spendingStats)
         {
             spendingStats.SetSetting(setting.Key);
-            var response = _request.Post(_link + ACTask.GetSpendingStats, JsonConvert.Serializer(spendingStats));
-            return JsonConvert.Deserializ<SpendingStatsResp>(response);
+            var response = _request.Post(_link + ACTask.GetSpendingStats, JsonConverts.Serializer(spendingStats));
+            return JsonConverts.Deserializ<SpendingStatsResp>(response);
         }
 
         /// <summary>
@@ -122,8 +129,8 @@ namespace Captcha_Service
         public SendFundsResp SendFunds(SendFunds sendFunds)
         {
             sendFunds.SetSetting(setting.Key);
-            var response = _request.Post(_link + ACTask.SendFunds, JsonConvert.Serializer(sendFunds));
-            return JsonConvert.Deserializ<SendFundsResp>(response);
+            var response = _request.Post(_link + ACTask.SendFunds, JsonConverts.Serializer(sendFunds));
+            return JsonConverts.Deserializ<SendFundsResp>(response);
         }
 
         /// <summary>
@@ -131,27 +138,106 @@ namespace Captcha_Service
         /// </summary>
         /// <param name="test">Модель данных</param>
         /// <returns></returns>
-        public string Test(Test test)
+        private string Test(Test test)
         {
-            var response = _request.Post(_link + ACTask.Test, JsonConvert.Serializer(test));
+            var response = _request.Post(_link + ACTask.Test, JsonConverts.Serializer(test));
             return response;
         }
 
-        public TaskResultResp ImageToTextTask(ImageToTextTask imageToText)
+        /// <summary>
+        /// Решение обычной капчи с текстом
+        /// </summary>
+        /// <param name="imageToText">Модель данных</param>
+        /// <param name="sleep">Задержка получения ответа</param>
+        /// <returns></returns>
+        public TaskResultResp ImageToText(ImageToText imageToText, int sleep = 3000)
         {
-            imageToText.SetSetting(setting.Key, setting.SoftId);
-
             var create = CreateTask(new CreateTask(imageToText));
-            var response = _request.Post(_link + ACTask.ImageToTextTask, JsonConvert.Serializer(create));
-            var imageInfo =  JsonConvert.Deserializ<ImageToTextTaskResp>(response);
-
-            while (true)
-            {
-                var result = GetTaskResult(new GetTaskResult(imageInfo.TaskId));
-                if (result.ErrorId == 0)
-                    return result;
-            }
+            return GetResult(create, sleep);
         }
 
+        /// <summary>
+        /// Решение капчи Google
+        /// </summary>
+        /// <param name="noCaptchaTask">Модель данных</param>
+        /// <param name="sleep">Задержка получения ответа</param>
+        /// <returns></returns>
+        public TaskResultResp NoCaptcha(NoCaptcha noCaptchaTask, int sleep = 4000)
+        {
+            var create = CreateTask(new CreateTask(noCaptchaTask));
+            return GetResult(create, sleep);
+        }
+
+        /// <summary>
+        /// Решение капчи Google версии 3
+        /// </summary>
+        /// <param name="recaptchaV3TaskProxyless">Модель данных</param>
+        /// <param name="sleep">Задержка получения ответа</param>
+        /// <returns></returns>
+        public TaskResultResp RecaptchaV3(RecaptchaV3 recaptchaV3TaskProxyless, int sleep = 4000)
+        {
+            var create = CreateTask(new CreateTask(recaptchaV3TaskProxyless));
+            return GetResult(create, sleep);
+        }
+
+        /// <summary>
+        /// Funcaptcha без прокси
+        /// </summary>
+        /// <param name="funCaptchaTask">Модель данных</param>
+        /// <param name="sleep">Задержка получения ответа</param>
+        /// <returns></returns>
+        public TaskResultResp FunCaptcha(FunCaptcha funCaptchaTask, int sleep = 4000)
+        {
+            var create = CreateTask(new CreateTask(funCaptchaTask));
+            return GetResult(create, sleep);
+        }
+
+        /// <summary>
+        /// Выбрать нужный объект на картинке с сеткой изображений
+        /// </summary>
+        /// <param name="squareNetText">Модель данных</param>
+        /// <param name="sleep">Задержка получения ответа</param>
+        /// <returns></returns>
+        public TaskResultResp SquareNetText(SquareNetText squareNetText, int sleep = 4000)
+        {
+            var create = CreateTask(new CreateTask(squareNetText));
+            return GetResult(create, sleep);
+        }
+
+        /// <summary>
+        /// Решить капчу от geetest.com
+        /// </summary>
+        /// <param name="geeTest">Модель данных</param>
+        /// <param name="sleep">Задержка получения ответа</param>
+        /// <returns></returns>
+        public TaskResultResp GeeTest(GeeTest geeTest, int sleep = 4000)
+        {
+            var create = CreateTask(new CreateTask(geeTest));
+            return GetResult(create, sleep);
+        }
+
+        /// <summary>
+        /// Решение капчи hCaptcha
+        /// </summary>
+        /// <param name="hCaptcha">Модель данных</param>
+        /// <param name="sleep">Задержка получения ответа</param>
+        /// <returns></returns>
+        public TaskResultResp HCaptcha(HCaptcha hCaptcha, int sleep = 4000)
+        {
+            var create = CreateTask(new CreateTask(hCaptcha));
+            return GetResult(create, sleep);
+        }
+
+        /// <summary>
+        /// Старая версия рекапчи
+        /// </summary>
+        /// <param name="recaptchaV1">Модель данных</param>
+        /// <param name="sleep">Задержка получения ответа</param>
+        /// <returns></returns>
+        public TaskResultResp RecaptchaV1(RecaptchaV1 recaptchaV1, int sleep = 4000)
+        {
+            var create = CreateTask(new CreateTask(recaptchaV1));
+            return GetResult(create, sleep);
+        }
     }
 }

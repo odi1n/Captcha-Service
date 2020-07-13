@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace Captcha_Service.Models.AntiCaptcha.Request
 {
-    [DataContract]
     public class GetBalance : Setting
     {
         public GetBalance(string clientKey)

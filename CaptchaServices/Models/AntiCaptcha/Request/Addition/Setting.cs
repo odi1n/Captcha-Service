@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -7,12 +8,11 @@ using System.Threading.Tasks;
 
 namespace Captcha_Service.Models.AntiCaptcha.Request.Addition
 {
-    [DataContract]
     public partial class Setting
     {
-        [DataMember(Name ="clientKey")]
+        [JsonProperty("clientKey")]
         public string ClientKey {  get; private set; }
-        [DataMember(Name = "softId")]
+        [JsonProperty(  "softId")]
         public int? SoftId { get; private set; }
 
         public void SetSetting(string clientKey, int? softId = null)

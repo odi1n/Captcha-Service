@@ -1,4 +1,5 @@
 ﻿using Captcha_Service.Models.AntiCaptcha.Request.Addition;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,14 +9,13 @@ using System.Threading.Tasks;
 
 namespace Captcha_Service.Models.AntiCaptcha.Request
 {
-    [DataContract]
     public class SendFunds : Setting
     {
-        [DataMember(Name= "accountLogin")]
+        [JsonProperty( "accountLogin")]
         public string AccountLogin { get; set; }
-        [DataMember(Name= "accountEmail")]
+        [JsonProperty( "accountEmail")]
         public string AccountEmail { get; set; }
-        [DataMember(Name= "amount")]
+        [JsonProperty( "amount")]
         public double Amount { get; set; }
 
         public SendFunds(double amount)

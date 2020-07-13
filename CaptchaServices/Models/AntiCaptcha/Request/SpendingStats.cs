@@ -1,5 +1,6 @@
 ﻿using Captcha_Service.Models.AntiCaptcha.Request.Addition;
 using Captcha_Service.Task;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,14 +10,14 @@ using System.Threading.Tasks;
 
 namespace Captcha_Service.Models.AntiCaptcha.Request
 {
-    [DataContract]
+
     public class SpendingStats : Setting
     {
-        [DataMember(Name = "date")]
+        [JsonProperty(  "date")]
         public int date { get; set; }
-        [DataMember(Name = "queue")]
+        [JsonProperty( "queue")]
         public ACQueue Queue { get; set; }
-        [DataMember(Name = "ip")]
+        [JsonProperty(  "ip")]
         public string Ip { get; set; }
     }
 }

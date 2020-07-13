@@ -27,8 +27,8 @@ namespace Captcha_Tests
             //var test = cptch.Regular(new RegularModels(@"D:\MyProject\C#\1. Готовые\Captcha\CaptchaTest\CaptchaTest\bin\Debug\captcha.jpg"), 3000);
 
             AntiCaptcha ac = new AntiCaptcha(key[3]);
-            var image = ac.ImageToTextTask(new ImageToTextTask("dasdasd"));
-            //var balance = ac.GetQueueStats(new Captcha_Service.Models.ACRequest.GetQueueStats(Captcha_Service.Enums.QueueId.ImageToTextRu));
+            var image = ac.GetBalance();
+            //var balance = ac.GetQueueStats(new GetQueueStats(Captcha_Service.Enums.QueueId.RecaptchaV3s03));
 
             Console.WriteLine(/*test.Request*/);
             Console.ReadKey();

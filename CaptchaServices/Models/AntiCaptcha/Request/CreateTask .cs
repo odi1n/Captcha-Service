@@ -1,5 +1,7 @@
 ﻿using Captcha_Service.Enums;
 using Captcha_Service.Models.AntiCaptcha.Request.Addition;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,16 +11,17 @@ using System.Threading.Tasks;
 
 namespace Captcha_Service.Models.AntiCaptcha.Request
 {
-    [DataContract]
+
     public class CreateTask : Setting
     {
-        [DataMember(Name = "task")]
+        [JsonProperty(  "task")]
         public object Task { get; set; }
-        [DataMember(Name = "languagePool")]
 
+        [JsonProperty( "languagePool")]
+        [JsonConverter(typeof(StringEnumConverter))]
         public LanguagePool LanguagePool { get; set; }
-        [DataMember(Name = "callbackUrl")]
 
+        [JsonProperty( "callbackUrl")]
         public string CallbackUrl { get; set; }
 
         public CreateTask(object task)

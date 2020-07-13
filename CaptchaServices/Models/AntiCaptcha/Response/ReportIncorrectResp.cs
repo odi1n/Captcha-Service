@@ -1,4 +1,5 @@
 ﻿using Captcha_Service.Enums;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +11,9 @@ namespace Captcha_Service.Models.ACResponse.Response
 {
     public class ReportIncorrectResp
     {
-        [DataMember(Name = "errorId")]
+        [JsonProperty( "errorId")]
         public int ErrorId{get;set; }
-        [DataMember(Name = "status")]
+        [JsonProperty( "status")]
         public Status Status { get;set; }
     }
 }

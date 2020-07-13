@@ -62,7 +62,7 @@ namespace Captcha_Service.Query
 
         private Response CheckErrorInfo(string response)
         {
-            var json = JsonConvert.Deserializ<Response>(response);
+            var json = JsonConverts.Deserializ<Response>(response);
             if ( json.Status == 0 && json.Request != "CAPCHA_NOT_READY" )
                 throw new ErrorParamsException(json.Request);
             else

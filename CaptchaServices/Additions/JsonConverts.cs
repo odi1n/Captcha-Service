@@ -2,48 +2,35 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web.Script.Serialization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Captcha_Service.Additions
 {
     public class JsonConverts
     {
+
         /// <summary>
-        /// Сериализирует данные с объекта в строку
+        /// Сериализирует данные с класса в строку типа string 
         /// </summary>
-        /// <typeparam name="T">Тип объекта</typeparam>
-        /// <param name="Data">Данные</param>
+        /// <param name="Serial">Что нужно привести в нормальный вид</param>
         /// <returns></returns>
-        public static string Serializer<T>(object Data)
+        public static string Serializer(object Serial)
         {
-            DataContractJsonSerializer js = new DataContractJsonSerializer(typeof(T));
-            MemoryStream msObj = new MemoryStream();
-            js.WriteObject(msObj, Data);
-            msObj.Position = 0;
-            StreamReader sr = new StreamReader(msObj);
-
-            string json = sr.ReadToEnd();
-
-            sr.Close();
-            msObj.Close();
-            return json;
+            var Settings = new Newtonsoft.Json.JsonSerializerSettings();
+            Settings.DefaultValueHandling = Newtonsoft.Json.DefaultValueHandling.Populate;
+            return JsonConvert.SerializeObject(Serial, Settings);
         }
 
         /// <summary>
         /// Десериализирует данные с json в строку
         /// </summary>
         /// <returns></returns>
-        public static T Deserializ<T>(string json)
+        public static T Deserializ<T>(string Deserial)
         {
-            using (var ms = new MemoryStream(Encoding.Unicode.GetBytes(json)))
-            {
-                DataContractJsonSerializer deserializer = new DataContractJsonSerializer(typeof(T));
-                var des = (T)deserializer.ReadObject(ms);
-                return des;
-            }
+            return JsonConvert.DeserializeObject<T>(Deserial);
         }
     }
 }

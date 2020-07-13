@@ -1,5 +1,6 @@
 ﻿using Captcha_Service.Enums;
 using Captcha_Service.Models.ACResponse.Addition;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,15 +12,15 @@ namespace Captcha_Service.Models.ACResponse.Response
 {
     public class QueueStatsResp
     {
-        [DataMember(Name = "waiting")]
+        [JsonProperty( "waiting")]
         public int Waiting { get; set; }
-        [DataMember(Name = "load")]
+        [JsonProperty( "load")]
         public float Load { get; set; }
-        [DataMember(Name = "bid")]
+        [JsonProperty( "bid")]
         public float Bid { get; set; }
-        [DataMember(Name = "speed")]
+        [JsonProperty( "speed")]
         public float Speed { get; set; }
-        [DataMember(Name = "total")]
+        [JsonProperty( "total")]
         public int Total { get; set; }
     }
 }

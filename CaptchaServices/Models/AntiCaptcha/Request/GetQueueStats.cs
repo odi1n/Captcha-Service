@@ -1,4 +1,5 @@
 ﻿using Captcha_Service.Enums;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace Captcha_Service.Models.AntiCaptcha.Request
 {
-    [DataContract]
+
     public class GetQueueStats 
     {
-        [DataMember(Name ="queueId")]
+        [JsonProperty("queueId")]
         public QueueId QueueId { get; set; }
         public GetQueueStats(QueueId queueId)
         {

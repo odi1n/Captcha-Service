@@ -1,5 +1,6 @@
 ﻿using Captcha_Service.Enums;
 using Captcha_Service.Models.AntiCaptcha.Response.Addition;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,13 +12,13 @@ namespace Captcha_Service.Models.ACResponse.Response
 {
     public class SpendingStatsResp
     {
-        [DataMember(Name = "errorId")]
+        [JsonProperty( "errorId")]
         public int ErrorId { get; set; }
-        [DataMember(Name = "errorCode")]
+        [JsonProperty( "errorCode")]
         public string ErrorCode { get; set; }
-        [DataMember(Name = "errorDescription")]
+        [JsonProperty( "errorDescription")]
         public string ErrorDescription { get; set; }
-        [DataMember(Name = "data")]
+        [JsonProperty( "data")]
         public List<Data> Data { get; set; }
     }
 }
