@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Captcha_Service.Models.AntiCaptcha.Request
 {
+    [DataContract]
     public class ReportIncorrect : Setting
     {
         [DataMember(Name = "taskId")]

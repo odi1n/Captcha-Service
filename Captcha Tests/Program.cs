@@ -1,4 +1,6 @@
 ﻿using Captcha_Service;
+using Captcha_Service.Models.AntiCaptcha.Request;
+using Captcha_Service.Models.AntiCaptcha.Request.Task;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -25,7 +27,7 @@ namespace Captcha_Tests
             //var test = cptch.Regular(new RegularModels(@"D:\MyProject\C#\1. Готовые\Captcha\CaptchaTest\CaptchaTest\bin\Debug\captcha.jpg"), 3000);
 
             AntiCaptcha ac = new AntiCaptcha(key[3]);
-            var info = ac.Test(new Captcha_Service.Models.AntiCaptcha.Request.Test("dsadasd","xzczxc"));
+            var image = ac.ImageToTextTask(new ImageToTextTask("dasdasd"));
             //var balance = ac.GetQueueStats(new Captcha_Service.Models.ACRequest.GetQueueStats(Captcha_Service.Enums.QueueId.ImageToTextRu));
 
             Console.WriteLine(/*test.Request*/);

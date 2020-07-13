@@ -13,7 +13,6 @@ namespace Captcha_Service.Models.AntiCaptcha.Request
     public class CreateTask : Setting
     {
         [DataMember(Name = "task")]
-
         public object Task { get; set; }
         [DataMember(Name = "languagePool")]
 

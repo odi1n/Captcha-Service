@@ -8,15 +8,14 @@ using System.Threading.Tasks;
 namespace Captcha_Service.Models.AntiCaptcha.Request.Addition
 {
     [DataContract]
-    public class Setting
+    public partial class Setting
     {
         [DataMember(Name ="clientKey")]
-        public string ClientKey { get; set; }
+        public string ClientKey {  get; private set; }
         [DataMember(Name = "softId")]
-        public int SoftId { get; set; }
+        public int? SoftId { get; private set; }
 
-        public Setting() { }
-        public Setting(string clientKey, int softId)
+        public void SetSetting(string clientKey, int? softId = null)
         {
             this.ClientKey = clientKey;
             this.SoftId = softId;

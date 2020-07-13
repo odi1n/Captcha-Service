@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -57,9 +61,10 @@
     <Compile Include="Enums\ProxyType.cs" />
     <Compile Include="Enums\QueueId.cs" />
     <Compile Include="Enums\Status.cs" />
-    <Compile Include="Exceptions\Rucaptcha\ErrorParamsException.cs" />
+    <Compile Include="Exceptions\ErrorParamsException.cs" />
     <Compile Include="Models\AntiCaptcha\Request\Addition\Setting.cs" />
     <Compile Include="Models\AntiCaptcha\Request\CreateTask .cs" />
+    <Compile Include="Models\AntiCaptcha\Request\Task\ImageToTextTask.cs" />
     <Compile Include="Models\AntiCaptcha\Request\GetBalance.cs" />
     <Compile Include="Models\AntiCaptcha\Request\GetQueueStats.cs" />
     <Compile Include="Models\AntiCaptcha\Request\GetTaskResult.cs" />
@@ -76,6 +81,7 @@
     <Compile Include="Models\AntiCaptcha\Response\SpendingStatsResp.cs" />
     <Compile Include="Models\AntiCaptcha\Response\TaskResultResp.cs" />
     <Compile Include="Models\AntiCaptcha\Response\CreateTaskResp.cs" />
+    <Compile Include="Models\AntiCaptcha\Response\Task\ImageToTextTaskResp.cs" />
     <Compile Include="Models\Check.cs" />
     <Compile Include="Models\Request\Addition.cs" />
     <Compile Include="Models\Request\Addition\SetProxy.cs" />
@@ -101,8 +107,11 @@
     <Compile Include="Services\RuCaptcha.cs" />
     <Compile Include="Task\ACQueue.cs" />
     <Compile Include="Task\ACTask.cs" />
+    <Compile Include="Task\ACType.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

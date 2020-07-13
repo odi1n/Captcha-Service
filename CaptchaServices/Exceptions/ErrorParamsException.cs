@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Captcha_Service.Enums;
 
-namespace Captcha_Service.Exceptions.Rucaptcha
+namespace Captcha_Service.Exceptions
 {
     [Serializable]
     public class ErrorParamsException : System.Exception

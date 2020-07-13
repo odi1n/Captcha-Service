@@ -13,7 +13,7 @@ namespace Captcha_Service.Models.AntiCaptcha.Request
     {
         public GetBalance(string clientKey)
         {
-            this.ClientKey = clientKey;
+            SetSetting(clientKey);
         }
     }
 }

@@ -5,11 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Script.Serialization;
+using System.Text.Json.Serialization;
 
 namespace Captcha_Service.Additions
 {
     public class JsonConvert
     {
+        
+
+        [JsonPropertyNameAttribute()]
+
         /// <summary>
         /// Сериализирует данные с класса в строку типа string 
         /// </summary>

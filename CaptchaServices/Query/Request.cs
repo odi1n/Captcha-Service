@@ -1,6 +1,6 @@
 ﻿using Captcha_Service.Additions;
 using Captcha_Service.Enums;
-using Captcha_Service.Exceptions.Rucaptcha;
+using Captcha_Service.Exceptions;
 using Captcha_Service.Models;
 using System;
 using System.Collections.Generic;

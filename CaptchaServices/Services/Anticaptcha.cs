@@ -8,6 +8,8 @@ using Captcha_Service.Models;
 using Captcha_Service.Models.AntiCaptcha.Request;
 using Captcha_Service.Models.AntiCaptcha.Response;
 using Captcha_Service.Models.ACResponse.Response;
+using Captcha_Service.Models.AntiCaptcha.Request.Task;
+using Captcha_Service.Models.AntiCaptcha.Response.Task;
 
 namespace Captcha_Service
 {
@@ -32,10 +34,13 @@ namespace Captcha_Service
         /// </summary>
         /// <param name="createTask">Модель данных</param>
         /// <returns></returns>
-        public CreateTaskResp CreateTask(CreateTask createTask)
+        private CreateTaskResp CreateTask(CreateTask createTask)
         {
-            createTask.SoftId = setting.SoftId;
-            createTask.ClientKey = setting.Key;
+            createTask.SetSetting(setting.Key, setting.SoftId);
+            var inf = JsonConverts.Serializer<CreateTask>(createTask);
+            var infs = JsonConvert.Serializer(createTask);
+
+
             var response = _request.Post(_link + ACTask.CreateTask, JsonConverts.Serializer<CreateTask>(createTask));
             return JsonConvert.Deserializ<CreateTaskResp>(response);
         }
@@ -45,9 +50,9 @@ namespace Captcha_Service
         /// </summary>
         /// <param name="getTaskResult">Модель данных</param>
         /// <returns></returns>
-        public TaskResultResp GetTaskResult(GetTaskResult getTaskResult)
+        private TaskResultResp GetTaskResult(GetTaskResult getTaskResult)
         {
-            getTaskResult.ClientKey = setting.Key;
+            getTaskResult.SetSetting(setting.Key);
             var response = _request.Post(_link + ACTask.GetTaskResult, JsonConverts.Serializer<CreateTask>(getTaskResult));
             return JsonConvert.Deserializ<TaskResultResp>(response);
         }
@@ -80,7 +85,7 @@ namespace Captcha_Service
         /// <returns></returns>
         public ReportIncorrectResp ReportIncorrectImageCaptcha(ReportIncorrect reportIncorrect)
         {
-            reportIncorrect.ClientKey = setting.Key;
+            reportIncorrect.SetSetting(setting.Key);
             var response = _request.Post(_link + ACTask.ReportIncorrectImageCaptcha, JsonConvert.Serializer(reportIncorrect));
             return JsonConvert.Deserializ<ReportIncorrectResp>(response);
         }
@@ -92,7 +97,7 @@ namespace Captcha_Service
         /// <returns></returns>
         public ReportIncorrectResp ReportIncorrectRecaptcha(ReportIncorrect reportIncorrect)
         {
-            reportIncorrect.ClientKey = setting.Key;
+            reportIncorrect.SetSetting(setting.Key);
             var response = _request.Post(_link + ACTask.ReportIncorrectRecaptcha, JsonConvert.Serializer(reportIncorrect));
             return JsonConvert.Deserializ<ReportIncorrectResp>(response);
         }
@@ -104,7 +109,7 @@ namespace Captcha_Service
         /// <returns></returns>
         public SpendingStatsResp GetSpendingStats(SpendingStats spendingStats)
         {
-            spendingStats.ClientKey = setting.Key;
+            spendingStats.SetSetting(setting.Key);
             var response = _request.Post(_link + ACTask.GetSpendingStats, JsonConvert.Serializer(spendingStats));
             return JsonConvert.Deserializ<SpendingStatsResp>(response);
         }
@@ -116,7 +121,7 @@ namespace Captcha_Service
         /// <returns></returns>
         public SendFundsResp SendFunds(SendFunds sendFunds)
         {
-            sendFunds.ClientKey = setting.Key;
+            sendFunds.SetSetting(setting.Key);
             var response = _request.Post(_link + ACTask.SendFunds, JsonConvert.Serializer(sendFunds));
             return JsonConvert.Deserializ<SendFundsResp>(response);
         }
@@ -131,5 +136,22 @@ namespace Captcha_Service
             var response = _request.Post(_link + ACTask.Test, JsonConvert.Serializer(test));
             return response;
         }
+
+        public TaskResultResp ImageToTextTask(ImageToTextTask imageToText)
+        {
+            imageToText.SetSetting(setting.Key, setting.SoftId);
+
+            var create = CreateTask(new CreateTask(imageToText));
+            var response = _request.Post(_link + ACTask.ImageToTextTask, JsonConvert.Serializer(create));
+            var imageInfo =  JsonConvert.Deserializ<ImageToTextTaskResp>(response);
+
+            while (true)
+            {
+                var result = GetTaskResult(new GetTaskResult(imageInfo.TaskId));
+                if (result.ErrorId == 0)
+                    return result;
+            }
+        }
+
     }
 }
