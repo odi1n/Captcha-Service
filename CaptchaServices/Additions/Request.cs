@@ -42,6 +42,11 @@ namespace Captcha_Service.Additions
             return CheckDownload;
         }
 
+        internal Response PostRequest(string url, string data)
+        {
+            return CheckErrorInfo(Post(url, data));
+        }
+
         internal Response GetRequest(string url, string data)
         {
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");

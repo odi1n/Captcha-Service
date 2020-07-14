@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Captcha_Service.Models.Captcha
 {
-    partial class Check
+    public class Check
     {
         /// <summary>
         /// Указан по умолчанию

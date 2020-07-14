@@ -14,11 +14,11 @@ namespace Captcha_Service.Models.Captcha.Request
         /// <summary>
         /// Путь картинки
         /// </summary>
-        public string File { get; set; }
+        public string Body { get; set; }
         /// <summary>
         /// Метод загрузки фото
         /// </summary>
-        public string Methods { get; private set; } = Method.Post;
+        public string Methods { get; private set; } = Method.Base64;
         /// <summary>
         /// 0 — капча состоит из одного слова
         /// 1 — капча состоит из двух или более слов
@@ -53,15 +53,16 @@ namespace Captcha_Service.Models.Captcha.Request
         /// </summary>
         public int? MaxLen { get; set; }
 
-        public Regular(string file)
+        public Regular(Decode decode)
         {
-            this.File = file;
+            this.Body = decode.ToString();
         }
 
         public override string ToString()
         {
             var data = new Dictionary<string, object>()
             {
+                ["body"] = this.Body,
                 ["method"] = this.Methods,
                 ["phrase"] = this.Phrase,
                 ["regsense"] = this.Regsense,

@@ -12,14 +12,20 @@ namespace Captcha_Service
 {
     public class Decode
     {
-        public string Base64 { get; private set; }
+        /// <summary>
+        /// Декодированная картинка
+        /// </summary>
+        internal string Base64 { get; private set; }
 
+        /// <summary>
+        /// Метод для декодирования фото. Задать готовый base64
+        /// </summary>
         public Decode() { }
 
         /// <summary>
         /// Метод декодирования фотографии
         /// </summary>
-        /// <param name="base64">Передать готовый base64</param>
+        /// <param name="pathPhoto">Передать путь к картинке</param>
         public Decode(string pathPhoto)
         {
             this.Base64 = Converts.ImageToBase64(File.ReadAllBytes(pathPhoto));
@@ -37,6 +43,7 @@ namespace Captcha_Service
         /// <summary>
         /// Метод декодирования фотографии
         /// </summary>
+        /// <param name="stream">Для конвертации в base64</param>
         public Decode(Stream stream)
         {
             this.Base64 = Converts.ImageToBase64(Converts.StreamToByte(stream));
@@ -45,6 +52,7 @@ namespace Captcha_Service
         /// <summary>
         /// Метод декодирования фотографии
         /// </summary>
+        /// <param name="memoryStream">Для конвертации в base64</param>
         public Decode(MemoryStream memoryStream)
         {
             this.Base64 = Converts.ImageToBase64(Converts.MemoryStreamToByte(memoryStream));
@@ -53,7 +61,7 @@ namespace Captcha_Service
         /// <summary>
         /// Метод декодирования фотографии
         /// </summary>
-        /// <param name="stream"></param>
+        /// <param name="streamReader">Для конвертации в base64</param>
         public Decode(StreamReader streamReader)
         {
             byte[] bytes = streamReader.CurrentEncoding.GetBytes(streamReader.ReadToEnd());
@@ -63,7 +71,7 @@ namespace Captcha_Service
         /// <summary>
         /// Метод декодирования фотографии
         /// </summary>
-        /// <param name="stream"></param>
+        /// <param name="fileStream">Для конвертации в base64</param>
         public Decode(FileStream fileStream)
         {
             this.Base64 = Converts.ImageToBase64(Converts.FileStreamToByte(fileStream));
@@ -79,6 +87,15 @@ namespace Captcha_Service
         }
 
         /// <summary>
+        /// Метод декодирования фотографии
+        /// </summary>
+        /// <param name="bytes">Передать байты картинки</param>
+        public Decode(byte[] bytes)
+        {
+            this.Base64 = Convert.ToBase64String(bytes);
+        }
+
+        /// <summary>
         /// Задать готовый base64
         /// </summary>
         /// <param name="base64">Указать base64</param>
@@ -87,6 +104,11 @@ namespace Captcha_Service
         {
             this.Base64 = base64;
             return base64;
+        }
+
+        public override string ToString()
+        {
+            return Base64;
         }
     }
 }

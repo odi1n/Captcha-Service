@@ -1,4 +1,6 @@
 ﻿using Captcha_Service;
+using Captcha_Service.Enums;
+using Captcha_Service.Models.Captcha.Request;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,9 +15,9 @@ namespace Captcha_Tests
         static void Main(string[] args)
         {
             var key = OpenFile();
-            //Rucaptcha rc = new Rucaptcha(key[0]);
-            //var ttt = rc.GetBalance();
-            //var test = rc.Regular(new Regular(@"D:\MyProject\C#\1. Готовые\Captcha\CaptchaTest\CaptchaTest\bin\Debug\captcha.jpg"), 3000);
+            RuCaptcha rc = new RuCaptcha(key[0]);
+            var ttt = rc.GetBalance();
+            var test = rc.Regular(new Regular(new Decode("3.png")));
 
             //CaptchaGuru cg = new CaptchaGuru(key[2]);
             //var test = cg.GetBalance();
@@ -28,9 +30,10 @@ namespace Captcha_Tests
             //var image = ac.GetBalance();
             //var balance = ac.GetQueueStats(new GetQueueStats(Captcha_Service.Enums.QueueId.RecaptchaV3s03));
 
-            //var decode = new Decode(new Uri("https://avatars.mds.yandex.net/get-pdb/1776078/5954e896-26f6-461e-9675-680529aa37cf/s1200?webp=false"));
+            var inf1 = rc.Report(new ReportModels(test.Check.Id, Actions.ReportBad));
+            var inf2 =rc.Report(new ReportModels(test.Request, Actions.ReportGood));
 
-            Console.WriteLine(/*test.Request*/);
+            Console.WriteLine(test.Request);
             Console.ReadKey();
         }
 

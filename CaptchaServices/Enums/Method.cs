@@ -9,6 +9,7 @@ namespace Captcha_Service.Enums
     partial class Method
     {
         public const string Post = "post";
+        public const string Base64 = "base64";
         public const string UserreCaptcha = "userrecaptcha";
         public const string FunCaptcha = "funcaptcha";
         public const string KeyCaptcha = "keycaptcha";

@@ -42,7 +42,10 @@ namespace Captcha_Service
                 var response = _request.GetRequest(_urlRes, setting.ToString() + check);
 
                 if (response.Status == true)
+                {
+                    response.Check = check;
                     return response;
+                }
 
                 Thread.Sleep(check.Sleep);
             }
@@ -87,7 +90,7 @@ namespace Captcha_Service
         /// <returns></returns>
         public Response Regular(Regular regular, int sleep = 2000)
         {
-            var response = _request.UploadFile(_urlIn + setting.ToString() + regular.ToString(), regular.File);
+            var response = _request.PostRequest(_urlIn, setting.ToString() + regular.ToString());
             return Check(new Check(response.Request, sleep:sleep));
         }
 

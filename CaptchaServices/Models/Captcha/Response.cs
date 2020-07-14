@@ -16,5 +16,9 @@ namespace Captcha_Service.Models.Captcha
         /// Ответ
         /// </summary>
         public string Request { get; set; }
+        /// <summary>
+        /// Выполненная задача
+        /// </summary>
+        public Check Check { get; set; }
     }
 }
