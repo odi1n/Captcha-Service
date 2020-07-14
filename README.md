@@ -3,8 +3,8 @@
 
 |Капча            | RuCaptcha | 2Captcha | AntiCaptcha| Cptch|CaptchaGuru | Solvecaptcha| Azcaptcha | X-captcha   | 
 | ---             | :---:     | :---:    | :---:      |:---: |:---:       |:---:        |:---:      |:---:        | 
-| Картинка в текст|      +    |   +      | +          |     +|      +     |       *     |    *      |             | 
-| Текстовая капча |      +    |   +      |            |      |            |       *     |    *      |             |
+| Image Captcha   |      +    |   +      | +          |     +|      +     |       *     |    *      |             | 
+| Text Captcha    |      +    |   +      |            |      |            |       *     |    *      |             |
 | ReCaptchaV2     |      +    |   +      |+           |     +|      +     |       *     |    *      |       *     |
 | ReCaptchaV3     |      +    |   +      |+           |     +|      +     |             |    *      |             | 
 | RecaptchaV2Old  |      +    |   +      |            |      |            |       *     |           |             |
@@ -15,7 +15,7 @@
 | hCaptcha        |      +    |   +      | +          |      |      +     |             |           |             |
 | Capy Puzzle     |      *    |   *      |            |      |            |             |           |             |
 | FunCaptcha      |      +    |   +      | +          |      |            |        *    |           |             |
-|SquareNetTextTask|           |          | +          |      |            |             |           |             |
+|  SquareNetText  |           |          | +          |      |            |             |           |             |
 | RecaptchaV1     |           |          | +          |      |            |        *    |     *     |             |
 | Report          |      +    |    +     | +          |      |            |             |           |             |
 | Balance         |      +    |    +     | +          |     +|      +     |        *    |     *     |     *       |
