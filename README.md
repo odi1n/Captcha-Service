@@ -3,19 +3,20 @@
 
 |Капча            | RuCaptcha | AntiCaptcha  | Cptch.net|Captcha.guru|2Captcha | Solvecaptcha.com| Azcaptcha.com | X-captcha.ru| DeCaptcher | DeathByCaptcha |
 | ---             | :---:     | :---:        |:---:     |:---:       | :---:   |:---:            |:---:          |:---:        |:---:       |:---:           | 
-| Картинка в текст|      +    |      +       |     +    |      +     |         |                 |               |             |            |                | 
+| Картинка в текст|      +    |      +       |     +    |      +     |         |       *         |               |             |            |                | 
 | Текстовая капча |      +    |              |          |            |         |                 |               |             |            |                | 
-| ReCaptchaV2     |      +    |      +       |     +    |      +     |         |                 |               |             |            |                | 
+| ReCaptchaV2     |      +    |      +       |     +    |      +     |         |       *         |               |             |            |                | 
 |Invis ReCaptchaV2|      *    |              |          |      *     |         |                 |               |             |            |                | 
-| ReCaptchaV3     |      +    |      +       |     *    |      *     |         |                 |               |             |            |                | 
+| ReCaptchaV3     |      +    |      +       |     *    |      *     |         |       *         |               |             |            |                | 
 | RecaptchaV2Old  |      +    |              |          |            |         |                 |               |             |            |                | 
 | ClickCaptcha    |      +    |              |          |            |         |                 |               |             |            |                | 
 | RotateCaptcha   |      *    |              |          |            |         |                 |               |             |            |                | 
-| KeyCaptcha      |      +    |              |          |            |         |                 |               |             |            |                | 
+| KeyCaptcha      |      +    |              |          |            |         |       *         |               |             |            |                | 
 | GeeTest         |      +    |      +       |          |            |         |                 |               |             |            |                | 
 | hCaptcha        |      +    |      +       |          |      *     |         |                 |               |             |            |                | 
 | Capy Puzzle     |      *    |              |          |            |         |                 |               |             |            |                | 
-| FunCaptcha      |      +    |      +       |          |            |         |                 |               |             |            |                | 
+|FunCaptcha token |      +    |              |          |            |         |         *       |               |             |            |                | 
+| FunCaptcha      |           |      +       |          |            |         |         *       |               |             |            |                | 
 |SquareNetTextTask|           |      +       |          |            |         |                 |               |             |            |                | 
 | RecaptchaV1     |           |      +       |          |            |         |                 |               |             |            |                | 
 | Report          |      +    |      +       |          |            |         |                 |               |             |            |                | 
