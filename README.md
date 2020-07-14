@@ -1,8 +1,8 @@
 # Captcha Service
 Библиотека которая объединяет в себе сервисы для работы с капчей.
 
-|Капча            | RuCaptcha | AntiCaptcha  | Cptch.net|Captcha.guru| 2Captcha| Solvecaptcha.com| Azcaptcha.com | X-captcha.ru| DeCaptcher | DeathByCaptcha |
-| ---             | :---:     | :---:        |:---:     |:---:       | :---:   |:---:            |:---:          |:---:        |:---:       |:---:           | 
+|Капча            | RuCaptcha | AntiCaptcha  | Cptch.net|Captcha.guru| 2Captcha | Solvecaptcha.com| Azcaptcha.com | X-captcha.ru| DeCaptcher | DeathByCaptcha |
+| ---             | :---:     | :---:        |:---:     |:---:       | :---:    |:---:            |:---:          |:---:        |:---:       |:---:           | 
 | Картинка в текст|      +    |      +       |     +    |      +     |   +      |       *         |               |             |            |                | 
 | Текстовая капча |      +    |              |          |            |   +      |       *         |               |             |            |                | 
 | ReCaptchaV2     |      +    |      +       |     +    |      +     |   +      |       *         |               |             |            |                | 
@@ -13,11 +13,11 @@
 | KeyCaptcha      |      +    |              |          |            |   +      |       *         |               |             |            |                | 
 | GeeTest         |      +    |      +       |          |            |   +      |                 |               |             |            |                | 
 | hCaptcha        |      +    |      +       |          |      +     |   +      |                 |               |             |            |                | 
-| Capy Puzzle     |      *    |              |          |            |   +      |                 |               |             |            |                | 
+| Capy Puzzle     |      *    |              |          |            |   *      |                 |               |             |            |                | 
 |FunCaptcha token |      +    |              |          |            |   +      |         *       |               |             |            |                | 
-| FunCaptcha      |           |      +       |          |            |         |         *       |               |             |            |                | 
-|SquareNetTextTask|           |      +       |          |            |         |                 |               |             |            |                | 
-| RecaptchaV1     |           |      +       |          |            |         |         *       |               |             |            |                | 
+| FunCaptcha      |           |      +       |          |            |          |         *       |               |             |            |                | 
+|SquareNetTextTask|           |      +       |          |            |          |                 |               |             |            |                | 
+| RecaptchaV1     |           |      +       |          |            |          |         *       |               |             |            |                | 
 | Report          |      +    |      +       |          |            |   +      |                 |               |             |            |                | 
 | Balance         |      +    |      +       |     +    |      +     |   +      |         *       |               |             |            |                | 
 | Другие методы   |      +    |      +       |          |            |   +      |         *       |               |             |            |                |  
