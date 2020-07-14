@@ -9,7 +9,7 @@
 | ReCaptchaV3     |      +    |   +      |+           |     +    |      +      |       *         |               |             |            |                | 
 | RecaptchaV2Old  |      +    |   +      |            |          |             |                 |               |             |            |                | 
 | ClickCaptcha    |      +    |   +      |            |          |             |       *         |               |             |            |                | 
-| RotateCaptcha   |      *    |   +      |            |          |             |       *         |               |             |            |                | 
+| RotateCaptcha   |      *    |   *      |            |          |             |       *         |               |             |            |                | 
 | KeyCaptcha      |      +    |   +      |            |          |             |       *         |               |             |            |                | 
 | GeeTest         |      +    |   +      | +          |          |             |                 |               |             |            |                | 
 | hCaptcha        |      +    |   +      | +          |          |      +      |                 |               |             |            |                | 
