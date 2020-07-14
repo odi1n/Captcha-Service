@@ -1,5 +1,4 @@
 ﻿using Captcha_Service.Enums;
-using Captcha_Service.Task;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -7,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Captcha_Service.Models.AntiCaptcha.Request.Task
+namespace Captcha_Service.Models.AntiCaptcha.Request
 {
-    public class HCaptcha
+    public class RecaptchaV1
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -41,16 +40,16 @@ namespace Captcha_Service.Models.AntiCaptcha.Request.Task
         [JsonProperty("cookies")]
         public string Cookies { get; set; }
 
-        public HCaptcha(string websiteURL, string websiteKey)
+        public RecaptchaV1(string websiteURL, string websiteKey)
         {
-            this.Type = ACTask.HCaptchaTaskProxyless;
+            this.Type = Method.RecaptchaV1TaskProxyless;
             this.WebsiteUrl = websiteURL;
             this.WebsiteKey = websiteKey;
         }
 
-        public HCaptcha(string websiteURL, string websiteKey, ProxyType proxyType, string proxyAddress, int proxyPort, string userAgent)
+        public RecaptchaV1(string websiteURL, string websiteKey, ProxyType proxyType, string proxyAddress, int proxyPort, string userAgent)
         {
-            this.Type = ACTask.HCaptchaTask;
+            this.Type = Method.RecaptchaV1Task;
             this.WebsiteUrl = websiteURL;
             this.WebsiteKey = websiteKey;
             this.ProxyType = proxyType;

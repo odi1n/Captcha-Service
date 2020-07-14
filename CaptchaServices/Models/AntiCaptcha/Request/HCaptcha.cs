@@ -1,5 +1,4 @@
 ﻿using Captcha_Service.Enums;
-using Captcha_Service.Task;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -7,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Captcha_Service.Models.AntiCaptcha.Request.Task
+namespace Captcha_Service.Models.AntiCaptcha.Request
 {
-    public class GeeTest
+    public class HCaptcha
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -17,14 +16,8 @@ namespace Captcha_Service.Models.AntiCaptcha.Request.Task
         [JsonProperty("websiteURL")]
         public string WebsiteUrl { get; set; }
 
-        [JsonProperty("gt")]
-        public string Gt { get; set; }
-
-        [JsonProperty("challenge")]
-        public string Challenge { get; set; }
-
-        [JsonProperty("geetestApiServerSubdomain")]
-        public string GeetestApiServerSubdomain { get; set; }
+        [JsonProperty("websiteKey")]
+        public string WebsiteKey { get; set; }
 
         [JsonProperty("proxyType")]
         public ProxyType ProxyType { get; set; }
@@ -47,20 +40,18 @@ namespace Captcha_Service.Models.AntiCaptcha.Request.Task
         [JsonProperty("cookies")]
         public string Cookies { get; set; }
 
-        public GeeTest(string websiteURL, string gt, string challenge)
+        public HCaptcha(string websiteURL, string websiteKey)
         {
-            this.Type = ACTask.GeeTestTaskProxyless;
+            this.Type = Method.HCaptchaTaskProxyless;
             this.WebsiteUrl = websiteURL;
-            this.Gt = gt;
-            this.Challenge = challenge;
+            this.WebsiteKey = websiteKey;
         }
 
-        public GeeTest(string websiteURL, string gt, string challenge, ProxyType proxyType, string proxyAddress, int proxyPort, string userAgent)
+        public HCaptcha(string websiteURL, string websiteKey, ProxyType proxyType, string proxyAddress, int proxyPort, string userAgent)
         {
-            this.Type = ACTask.GeeTestTask;
+            this.Type = Method.HCaptchaTask;
             this.WebsiteUrl = websiteURL;
-            this.Gt = gt;
-            this.Challenge = challenge;
+            this.WebsiteKey = websiteKey;
             this.ProxyType = proxyType;
             this.ProxyAddress = proxyAddress;
             this.ProxyPort = proxyPort;

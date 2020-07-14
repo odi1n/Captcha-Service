@@ -1,5 +1,4 @@
 ﻿using Captcha_Service.Enums;
-using Captcha_Service.Models.AntiCaptcha.Request.Addition;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;

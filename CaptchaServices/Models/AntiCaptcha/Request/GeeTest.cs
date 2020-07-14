@@ -1,5 +1,4 @@
 ﻿using Captcha_Service.Enums;
-using Captcha_Service.Task;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -7,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Captcha_Service.Models.AntiCaptcha.Request.Task
+namespace Captcha_Service.Models.AntiCaptcha.Request
 {
-    public class RecaptchaV1
+    public class GeeTest
     {
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -17,8 +16,14 @@ namespace Captcha_Service.Models.AntiCaptcha.Request.Task
         [JsonProperty("websiteURL")]
         public string WebsiteUrl { get; set; }
 
-        [JsonProperty("websiteKey")]
-        public string WebsiteKey { get; set; }
+        [JsonProperty("gt")]
+        public string Gt { get; set; }
+
+        [JsonProperty("challenge")]
+        public string Challenge { get; set; }
+
+        [JsonProperty("geetestApiServerSubdomain")]
+        public string GeetestApiServerSubdomain { get; set; }
 
         [JsonProperty("proxyType")]
         public ProxyType ProxyType { get; set; }
@@ -41,18 +46,20 @@ namespace Captcha_Service.Models.AntiCaptcha.Request.Task
         [JsonProperty("cookies")]
         public string Cookies { get; set; }
 
-        public RecaptchaV1(string websiteURL, string websiteKey)
+        public GeeTest(string websiteURL, string gt, string challenge)
         {
-            this.Type = ACTask.RecaptchaV1TaskProxyless;
+            this.Type = Method.GeeTestTaskProxyless;
             this.WebsiteUrl = websiteURL;
-            this.WebsiteKey = websiteKey;
+            this.Gt = gt;
+            this.Challenge = challenge;
         }
 
-        public RecaptchaV1(string websiteURL, string websiteKey, ProxyType proxyType, string proxyAddress, int proxyPort, string userAgent)
+        public GeeTest(string websiteURL, string gt, string challenge, ProxyType proxyType, string proxyAddress, int proxyPort, string userAgent)
         {
-            this.Type = ACTask.RecaptchaV1Task;
+            this.Type = Method.GeeTestTask;
             this.WebsiteUrl = websiteURL;
-            this.WebsiteKey = websiteKey;
+            this.Gt = gt;
+            this.Challenge = challenge;
             this.ProxyType = proxyType;
             this.ProxyAddress = proxyAddress;
             this.ProxyPort = proxyPort;

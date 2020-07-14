@@ -2,10 +2,8 @@
 using System.Threading;
 using Captcha_Service.Models;
 using Captcha_Service.Models.AntiCaptcha.Request;
-using Captcha_Service.Models.AntiCaptcha.Response;
-using Captcha_Service.Models.ACResponse.Response;
-using Captcha_Service.Models.AntiCaptcha.Request.Task;
 using Captcha_Service.Enums;
+using Captcha_Service.Models.AntiCaptcha;
 
 namespace Captcha_Service
 {
@@ -16,7 +14,6 @@ namespace Captcha_Service
     {
         private SettingCap setting;
         private Request _request = new Request();
-
         private const string _linkMain = "api.anti-captcha.com";
         private const string _link = "https://" + _linkMain + "/";
 

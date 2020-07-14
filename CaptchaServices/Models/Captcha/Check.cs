@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Captcha_Service.Models
+namespace Captcha_Service.Models.Captcha
 {
     partial class Check
     {

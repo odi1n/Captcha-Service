@@ -17,7 +17,7 @@ namespace Captcha_Service.Additions
         /// </summary>
         /// <param name="Serial">Что нужно привести в нормальный вид</param>
         /// <returns></returns>
-        public static string Serializer(object Serial)
+        internal static string Serializer(object Serial)
         {
             var Settings = new Newtonsoft.Json.JsonSerializerSettings();
             Settings.DefaultValueHandling = Newtonsoft.Json.DefaultValueHandling.Populate;
@@ -28,7 +28,7 @@ namespace Captcha_Service.Additions
         /// Десериализирует данные с json в строку
         /// </summary>
         /// <returns></returns>
-        public static T Deserializ<T>(string Deserial)
+        internal static T Deserializ<T>(string Deserial)
         {
             return JsonConvert.DeserializeObject<T>(Deserial);
         }

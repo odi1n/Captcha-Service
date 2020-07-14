@@ -1,5 +1,4 @@
-﻿using Captcha_Service.Models.AntiCaptcha.Request.Addition;
-using Captcha_Service.Task;
+﻿using Captcha_Service.Enums;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -16,7 +15,7 @@ namespace Captcha_Service.Models.AntiCaptcha.Request
         [JsonProperty(  "date")]
         public int date { get; set; }
         [JsonProperty( "queue")]
-        public ACQueue Queue { get; set; }
+        public QueueId Queue { get; set; }
         [JsonProperty(  "ip")]
         public string Ip { get; set; }
     }

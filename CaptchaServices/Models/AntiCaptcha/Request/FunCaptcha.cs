@@ -1,5 +1,4 @@
 ﻿using Captcha_Service.Enums;
-using Captcha_Service.Task;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -7,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Captcha_Service.Models.AntiCaptcha.Request.Task
+namespace Captcha_Service.Models.AntiCaptcha.Request
 {
     public class FunCaptcha
     {
@@ -49,14 +48,14 @@ namespace Captcha_Service.Models.AntiCaptcha.Request.Task
 
         public FunCaptcha(string websiteURL, string websitePublicKey)
         {
-            this.Type = ACTask.FunCaptchaTaskProxyless;
+            this.Type = Method.FunCaptchaTaskProxyless;
             this.WebsiteUrl = websiteURL;
             this.WebsitePublicKey = websitePublicKey;
         }
 
         public FunCaptcha(string websiteURL, string websitePublicKey, ProxyType proxyType, string proxyAddress, int proxyPort, string userAgent)
         {
-            this.Type = ACTask.FunCaptchaTask;
+            this.Type = Method.FunCaptchaTask;
             this.WebsiteUrl = websiteURL;
             this.WebsitePublicKey = websitePublicKey;
             this.ProxyType = proxyType;

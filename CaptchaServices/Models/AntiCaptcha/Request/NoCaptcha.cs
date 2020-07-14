@@ -1,5 +1,4 @@
 ﻿using Captcha_Service.Enums;
-using Captcha_Service.Task;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -7,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Captcha_Service.Models.AntiCaptcha.Request.Task
+namespace Captcha_Service.Models.AntiCaptcha.Request
 {
     public class NoCaptcha
     {
@@ -57,7 +56,7 @@ namespace Captcha_Service.Models.AntiCaptcha.Request.Task
         /// <param name="websiteKey">Ключ-индентификатор рекапчи на целевой странице.</param>
         public NoCaptcha(string websiteURL, string websiteKey)
         {
-            this.Type = ACTask.NoCaptchaTaskProxyless;
+            this.Type = Method.NoCaptchaTaskProxyless;
             this.WebsiteUrl = websiteURL;
             this.WebsiteKey = websiteKey;
         }
@@ -73,7 +72,7 @@ namespace Captcha_Service.Models.AntiCaptcha.Request.Task
         /// <param name="userAgent">User-Agent браузера, используемый в эмуляции.</param>
         public NoCaptcha(string websiteURL, string websiteKey, ProxyType proxyType, string proxyAddress,  int proxyPort, string userAgent)
         {
-            this.Type = ACTask.NoCaptchaTask;
+            this.Type = Method.NoCaptchaTask;
             this.WebsiteUrl = websiteURL;
             this.WebsiteKey = websiteKey;
             this.ProxyAddress = proxyAddress;

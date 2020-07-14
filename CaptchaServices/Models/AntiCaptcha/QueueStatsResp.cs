@@ -1,5 +1,4 @@
 ﻿using Captcha_Service.Enums;
-using Captcha_Service.Models.ACResponse.Addition;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -8,7 +7,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Captcha_Service.Models.ACResponse.Response
+namespace Captcha_Service.Models.AntiCaptcha
 {
     public class QueueStatsResp
     {

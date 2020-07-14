@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Captcha_Service.Models.AntiCaptcha.Request.Addition
+namespace Captcha_Service.Models.AntiCaptcha.Request
 {
     public partial class Setting
     {

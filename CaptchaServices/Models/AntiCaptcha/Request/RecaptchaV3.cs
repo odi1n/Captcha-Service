@@ -1,4 +1,4 @@
-﻿using Captcha_Service.Task;
+﻿using Captcha_Service.Enums;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Captcha_Service.Models.AntiCaptcha.Request.Task
+namespace Captcha_Service.Models.AntiCaptcha.Request
 {
     public class RecaptchaV3
     {
@@ -29,7 +29,7 @@ namespace Captcha_Service.Models.AntiCaptcha.Request.Task
         public RecaptchaV3(string websiteURL, string websiteKey, double minScore)
         {
             Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US");
-            this.Type = ACTask.RecaptchaV3TaskProxyless;
+            this.Type = Method.RecaptchaV3TaskProxyless;
             this.WebsiteUrl = websiteURL;
             this.WebsiteKey = websiteKey;
             this.MinScore = minScore;

@@ -1,13 +1,12 @@
 ﻿using Captcha_Service.Additions;
 using Captcha_Service.Enums;
-using Captcha_Service.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Captcha_Service.Models.Request
+namespace Captcha_Service.Models.Captcha.Request
 {
     public class FunCaptcha : Setting
     {

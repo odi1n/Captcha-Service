@@ -5,13 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using System.IO;
-using Captcha_Service.Models.Request;
 using Captcha_Service.Enums;
 using Captcha_Service.Models;
 using System.Drawing;
 using System.Globalization;
 using Captcha_Service.Additions;
 using System.Threading;
+using Captcha_Service.Models.Captcha.Request;
+using Captcha_Service.Models.Captcha;
 
 namespace Captcha_Service
 {
@@ -55,7 +56,7 @@ namespace Captcha_Service
         /// <returns></returns>
         public Response GetBalance()
         {
-            return _request.GetRequest(_urlRes, setting.ToString() + new Models.Request.Addition(Actions.GetBalance).ToString());
+            return _request.GetRequest(_urlRes, setting.ToString() + new Addition(Actions.GetBalance).ToString());
         }
 
         /// <summary>
@@ -63,7 +64,7 @@ namespace Captcha_Service
         /// </summary>
         /// <param name="data">Параметры</param>
         /// <returns></returns>
-        public Response AdditionInfo(Models.Request.Addition data)
+        public Response AdditionInfo(Addition data)
         {
             return _request.GetRequest(_urlRes, setting.ToString() + data.ToString());
         }

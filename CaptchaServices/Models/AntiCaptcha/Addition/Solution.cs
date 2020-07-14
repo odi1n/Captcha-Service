@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Captcha_Service.Models.ACResponse.Addition
+namespace Captcha_Service.Models.AntiCaptcha.Addition
 {
     public class Solution
     {

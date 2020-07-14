@@ -1,7 +1,8 @@
 ﻿using Captcha_Service.Additions;
 using Captcha_Service.Enums;
 using Captcha_Service.Models;
-using Captcha_Service.Models.Request;
+using Captcha_Service.Models.Captcha;
+using Captcha_Service.Models.Captcha.Request;
 using System;
 using System.Collections.Generic;
 using System.Linq;

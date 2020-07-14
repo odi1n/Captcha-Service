@@ -1,4 +1,4 @@
-﻿using Captcha_Service.Task;
+﻿using Captcha_Service.Enums;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Captcha_Service.Models.AntiCaptcha.Request.Task
+namespace Captcha_Service.Models.AntiCaptcha.Request
 {
     public class SquareNetText
     {
@@ -27,7 +27,7 @@ namespace Captcha_Service.Models.AntiCaptcha.Request.Task
 
         public SquareNetText(string body, string objectName, int rowsCount, int columnsCount)
         {
-            this.Type = ACTask.SquareNetTextTask;
+            this.Type = Method.SquareNetTextTask;
             this.Body = body;
             this.ObjectName = objectName;
             this.RowsCount = rowsCount;

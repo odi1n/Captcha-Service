@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Captcha_Service.Models.Request
+namespace Captcha_Service.Models.Captcha.Request
 {
     public class Addition 
     {

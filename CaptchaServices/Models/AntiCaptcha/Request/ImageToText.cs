@@ -1,7 +1,6 @@
 ﻿using Captcha_Service.Additions;
+using Captcha_Service.Enums;
 using Captcha_Service.Exceptions;
-using Captcha_Service.Models.AntiCaptcha.Request.Addition;
-using Captcha_Service.Task;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -10,7 +9,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Captcha_Service.Models.AntiCaptcha.Request.Task
+namespace Captcha_Service.Models.AntiCaptcha.Request
 {
     public class ImageToText
     {
@@ -78,7 +77,7 @@ namespace Captcha_Service.Models.AntiCaptcha.Request.Task
 
         public ImageToText(string body)
         {
-            this.Type = ACTask.ImageToTextTask;
+            this.Type = Method.ImageToTextTask;
             this.Body = body;
         }
     }

@@ -2,6 +2,7 @@
 using Captcha_Service.Enums;
 using Captcha_Service.Exceptions;
 using Captcha_Service.Models;
+using Captcha_Service.Models.Captcha;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,7 +15,7 @@ namespace Captcha_Service.Additions
 {
     partial class Request
     {
-        public string Post(string url, string json)
+        internal string Post(string url, string json)
         {
             var httpWebRequest = (HttpWebRequest)WebRequest.Create(url);
             httpWebRequest.ContentType = "application/json";
@@ -30,7 +31,7 @@ namespace Captcha_Service.Additions
             }
         }
 
-        public bool DownloadFile(string link, string path)
+        internal bool DownloadFile(string link, string path)
         {
             bool CheckDownload = false;
             using ( WebClient Client = new WebClient() )
@@ -41,7 +42,7 @@ namespace Captcha_Service.Additions
             return CheckDownload;
         }
 
-        public Response GetRequest(string url, string data)
+        internal Response GetRequest(string url, string data)
         {
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
             var request = WebRequest.Create(url + data);
@@ -50,7 +51,7 @@ namespace Captcha_Service.Additions
                 return CheckErrorInfo(reader.ReadToEnd());
         }
 
-        public Response UploadFile(string link, string path)
+        internal Response UploadFile(string link, string path)
         {
             using(var webClient = new WebClient() )
             {
