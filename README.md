@@ -27,20 +27,20 @@
   - getAppStats 
   - [x] sendFunds
   - [x] test
-  - ImageToTextTask
-  - NoCaptchaTask
-  - NoCaptchaTaskProxyless
-  - RecaptchaV3TaskProxyless
-  - FunCaptchaTask
-  - FunCaptchaTaskProxyless 
-  - SquareNetTextTask
-  - GeeTestTask 
-  - GeeTestTaskProxyless 
-  - HCaptchaTask
-  - HCaptchaTaskProxyless 
-  - CustomCaptchaTask
-  - RecaptchaV1Task 
-  - RecaptchaV1TaskProxyless
+  - [x] ImageToTextTask
+  - [x] NoCaptchaTask
+  - [x] NoCaptchaTaskProxyless
+  - [x] RecaptchaV3TaskProxyless
+  - [x] FunCaptchaTask
+  - [x] FunCaptchaTaskProxyless 
+  - [x] SquareNetTextTask
+  - [x] GeeTestTask 
+  - [x] GeeTestTaskProxyless 
+  - [x] HCaptchaTask
+  - [x] HCaptchaTaskProxyless 
+  - [x] CustomCaptchaTask
+  - [x] RecaptchaV1Task 
+  - [x] RecaptchaV1TaskProxyless
 3. Cptch.net
   - [x] getBalance
   - [x] ReCaptcha V2
