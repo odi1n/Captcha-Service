@@ -4,19 +4,21 @@
 |                 | RuCaptcha | AntiCaptcha  | Cptch.net|Captcha.guru|2Captcha | Solvecaptcha.com| Azcaptcha.com | X-captcha.ru| DeCaptcher | DeathByCaptcha |
 | ---             | :---:     | :---:        |:---:     |:---:       | :---:   |:---:            |:---:          |:---:        |:---:       |:---:           | 
 | Картинка в текст|      +    |      +       |     +    |      +     |         |                 |               |             |            |                | 
-| Текстовые капчи |      +    |              |          |            |         |                 |               |             |            |                | 
-| RecaptchaV1     |      +    |      +       |          |            |         |                 |               |             |            |                | 
+| Текстовая капча |      +    |              |          |            |         |                 |               |             |            |                | 
 | ReCaptchaV2     |      +    |      +       |     +    |      +     |         |                 |               |             |            |                | 
+|Invis ReCaptchaV2|      *    |              |          |            |         |                 |               |             |            |                | 
 | ReCaptchaV3     |      +    |      +       |     *    |            |         |                 |               |             |            |                | 
 | RecaptchaV2Old  |      +    |              |          |            |         |                 |               |             |            |                | 
-| FunCaptcha      |      +    |      +       |          |            |         |                 |               |             |            |                | 
-| GeeTest         |      +    |      +       |          |            |         |                 |               |             |            |                | 
-| hCaptcha        |      +    |      +       |          |            |         |                 |               |             |            |                | 
-|SquareNetTextTask|           |      +       |          |            |         |                 |               |             |            |                | 
 | ClickCaptcha    |      +    |              |          |            |         |                 |               |             |            |                | 
 | RotateCaptcha   |      *    |              |          |            |         |                 |               |             |            |                | 
 | KeyCaptcha      |      +    |              |          |            |         |                 |               |             |            |                | 
-| Capy Puzzle     |           |              |          |            |         |                 |               |             |            |                | 
+| GeeTest         |      +    |      +       |          |            |         |                 |               |             |            |                | 
+| hCaptcha        |      +    |      +       |          |            |         |                 |               |             |            |                | 
+| Capy Puzzle     |      *    |              |          |            |         |                 |               |             |            |                | 
+| FunCaptcha      |      +    |      +       |          |            |         |                 |               |             |            |                | 
+|SquareNetTextTask|           |      +       |          |            |         |                 |               |             |            |                | 
+| RecaptchaV1     |           |      +       |          |            |         |                 |               |             |            |                | 
+
 | Report          |      +    |      +       |          |            |         |                 |               |             |            |                | 
 | Balance         |      +    |      +       |     +    |      +     |         |                 |               |             |            |                | 
 | Другие методы   |      +    |      +       |          |            |         |                 |               |             |            |                | 
