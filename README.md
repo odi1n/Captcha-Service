@@ -6,21 +6,20 @@
 | Картинка в текст|      +    |   +      | +          |     +    |      +      |       *         |               |             |            |                | 
 | Текстовая капча |      +    |   +      |            |          |             |       *         |               |             |            |                | 
 | ReCaptchaV2     |      +    |   +      |+           |     +    |      +      |       *         |               |             |            |                | 
-| ReCaptchaV3     |      +    |   +      |+           |     +    |      +      |       *         |               |             |            |                | 
-| RecaptchaV2Old  |      +    |   +      |            |          |             |                 |               |             |            |                | 
+| ReCaptchaV3     |      +    |   +      |+           |     +    |      +      |                 |               |             |            |                | 
+| RecaptchaV2Old  |      +    |   +      |            |          |             |       *         |               |             |            |                | 
 | ClickCaptcha    |      +    |   +      |            |          |             |       *         |               |             |            |                | 
 | RotateCaptcha   |      *    |   *      |            |          |             |       *         |               |             |            |                | 
 | KeyCaptcha      |      +    |   +      |            |          |             |       *         |               |             |            |                | 
 | GeeTest         |      +    |   +      | +          |          |             |                 |               |             |            |                | 
 | hCaptcha        |      +    |   +      | +          |          |      +      |                 |               |             |            |                | 
 | Capy Puzzle     |      *    |   *      |            |          |             |                 |               |             |            |                | 
-|FunCaptcha token |      +    |   +      |            |          |             |         *       |               |             |            |                | 
-| FunCaptcha      |           |          | +          |          |             |         *       |               |             |            |                | 
+| FunCaptcha      |      +    |   +      | +          |          |             |        *        |               |             |            |                | 
 |SquareNetTextTask|           |          | +          |          |             |                 |               |             |            |                | 
-| RecaptchaV1     |           |          | +          |          |             |         *       |               |             |            |                | 
+| RecaptchaV1     |           |          | +          |          |             |        *        |               |             |            |                | 
 | Report          |      +    |    +     | +          |          |             |                 |               |             |            |                | 
-| Balance         |      +    |    +     | +          |     +    |      +      |         *       |               |             |            |                | 
-| Другие методы   |      +    |    +     | +          |          |             |         *       |               |             |            |                |  
+| Balance         |      +    |    +     | +          |     +    |      +      |        *        |               |             |            |                | 
+| Другие методы   |      +    |    +     | +          |          |             |        *        |               |             |            |                |  
 
 `+` - Имеется в библиотеке
 
