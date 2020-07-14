@@ -105,6 +105,7 @@
     <Compile Include="Service\AntiCaptcha.cs" />
     <Compile Include="Service\CaptchaGuru.cs" />
     <Compile Include="Service\CptchNet.cs" />
+    <Compile Include="Service\TwoCaptcha.cs" />
     <Compile Include="Service\RuCaptcha.cs" />
     <Compile Include="Enums\Method.cs" />
   </ItemGroup>

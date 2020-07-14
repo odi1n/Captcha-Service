@@ -19,7 +19,7 @@ namespace Captcha_Service
 
         public AntiCaptcha(string key)
         {
-            setting = new SettingCap(key, true, 0);
+            setting = new SettingCap(key, true);
         }
 
         /// <summary>

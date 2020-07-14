@@ -20,14 +20,14 @@ namespace Captcha_Service.Models
         /// <summary>
         /// Id софт
         /// </summary>
-        public int SoftId { get; set; }
+        public int? SoftId { get; set; }
         /// <summary>
         /// Задать данные
         /// </summary>
         /// <param name="key">Ключ</param>
         /// <param name="json">Включить json</param>
         /// <param name="softId">Id софта</param>
-        public SettingCap(string key, bool json, int softId)
+        public SettingCap(string key, bool json, int? softId = null)
         {
             this.Key = key;
             this.Json = json;

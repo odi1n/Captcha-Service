@@ -102,5 +102,7 @@ namespace Captcha_Service
             var response = _request.GetRequest(_urlIn, setting.ToString() + hCaptcha.ToString());
             return Check(new Check(response.Request, sleep: sleep));
         }
+
+
     }
 }
