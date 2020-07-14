@@ -24,9 +24,11 @@ namespace Captcha_Tests
             //cptch.GetBalance();
             //var test = cptch.Regular(new RegularModels(@"D:\MyProject\C#\1. Готовые\Captcha\CaptchaTest\CaptchaTest\bin\Debug\captcha.jpg"), 3000);
 
-            AntiCaptcha ac = new AntiCaptcha(key[3]);
-            var image = ac.GetBalance();
+            //AntiCaptcha ac = new AntiCaptcha(key[3]);
+            //var image = ac.GetBalance();
             //var balance = ac.GetQueueStats(new GetQueueStats(Captcha_Service.Enums.QueueId.RecaptchaV3s03));
+
+            //var decode = new Decode(new Uri("https://avatars.mds.yandex.net/get-pdb/1776078/5954e896-26f6-461e-9675-680529aa37cf/s1200?webp=false"));
 
             Console.WriteLine(/*test.Request*/);
             Console.ReadKey();

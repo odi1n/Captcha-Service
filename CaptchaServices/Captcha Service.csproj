@@ -36,7 +36,6 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,9 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Additions\Converts.cs" />
     <Compile Include="Additions\Decode.cs" />
-    <Compile Include="Additions\DictionaryConvert.cs" />
-    <Compile Include="Additions\JsonConverts.cs" />
     <Compile Include="Captcha.cs" />
     <Compile Include="Enums\Actions.cs" />
     <Compile Include="Enums\Error.cs" />

@@ -54,7 +54,7 @@ namespace Captcha_Service.Models.Captcha
                 ["id"] = this.Id,
                 ["header_acao"] = this.HeaderAcao,
             };
-            return DictionaryConvert.Deserialization(Data);
+            return Converts.StringToDictionary(Data);
         }
     }
 }

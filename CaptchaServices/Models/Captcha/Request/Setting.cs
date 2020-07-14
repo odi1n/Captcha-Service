@@ -42,6 +42,6 @@ namespace Captcha_Service.Models.Captcha.Request
         /// Изображение будет показано работнику, чтобы помочь ему решить капчу правильно.
         /// Сервер принимает изображения в формате multipart или base64.
         /// </summary>
-        public Image Imginstructions { get; set; }
+        public string Imginstructions { get; set; }
     }
 }

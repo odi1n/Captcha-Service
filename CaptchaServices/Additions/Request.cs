@@ -64,7 +64,7 @@ namespace Captcha_Service.Additions
 
         private Response CheckErrorInfo(string response)
         {
-            var json = JsonConverts.Deserializ<Response>(response);
+            var json = Converts.JsonDeserializ<Response>(response);
             if ( json.Status == false && json.Request != "CAPCHA_NOT_READY" )
                 throw new ErrorParamsException(json.Request);
             else

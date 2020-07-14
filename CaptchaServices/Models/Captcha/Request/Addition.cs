@@ -44,7 +44,7 @@ namespace Captcha_Service.Models.Captcha.Request
                 ["ids"] = this.Ids,
             };
 
-            return DictionaryConvert.Deserialization(Data);
+            return Converts.StringToDictionary(Data);
         }
     }
 }

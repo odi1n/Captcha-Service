@@ -42,7 +42,7 @@ namespace Captcha_Service.Models
                 ["json"] = Json,
                 ["soft_id"] = SoftId,
             };
-            var data = DictionaryConvert.Deserialization(Data) + "&";
+            var data = Converts.StringToDictionary(Data) + "&";
             return data;
         }
     }

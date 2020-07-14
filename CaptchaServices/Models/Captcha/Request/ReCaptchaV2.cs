@@ -62,7 +62,7 @@ namespace Captcha_Service.Models.Captcha.Request
                 ["proxytype"] = this.ProxyType,
             };
 
-            return DictionaryConvert.Deserialization(Data);
+            return Converts.StringToDictionary(Data);
         }
     }
 }

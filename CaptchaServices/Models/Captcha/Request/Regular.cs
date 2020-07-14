@@ -77,7 +77,7 @@ namespace Captcha_Service.Models.Captcha.Request
                 ["pingback"] = this.Pingback,
             };
 
-            var info = DictionaryConvert.Deserialization(data);
+            var info = Converts.StringToDictionary(data);
             return info;
         }
     }

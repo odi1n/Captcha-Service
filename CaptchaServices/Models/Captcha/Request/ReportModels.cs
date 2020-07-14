@@ -33,7 +33,7 @@ namespace Captcha_Service.Models.Captcha.Request
                 ["action"] = this.Action,
                 ["id"] = this.Id,
             };
-            return DictionaryConvert.Deserialization(data); 
+            return Converts.StringToDictionary(data); 
         }
     }
 }

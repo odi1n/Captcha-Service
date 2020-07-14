@@ -45,7 +45,7 @@ namespace Captcha_Service.Models.Captcha.Request
                 ["header_acao"] = this.HeaderAcao,
                 ["pingback"] = this.Pingback,
             };
-            return DictionaryConvert.Deserialization(Data); ;
+            return Converts.StringToDictionary(Data); ;
         }
     }
 }
