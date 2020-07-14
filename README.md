@@ -4,13 +4,13 @@
 |Капча            | RuCaptcha | AntiCaptcha  | Cptch.net|Captcha.guru|2Captcha | Solvecaptcha.com| Azcaptcha.com | X-captcha.ru| DeCaptcher | DeathByCaptcha |
 | ---             | :---:     | :---:        |:---:     |:---:       | :---:   |:---:            |:---:          |:---:        |:---:       |:---:           | 
 | Картинка в текст|      +    |      +       |     +    |      +     |         |       *         |               |             |            |                | 
-| Текстовая капча |      +    |              |          |            |         |                 |               |             |            |                | 
+| Текстовая капча |      +    |              |          |            |         |       *         |               |             |            |                | 
 | ReCaptchaV2     |      +    |      +       |     +    |      +     |         |       *         |               |             |            |                | 
 |Invis ReCaptchaV2|      *    |              |          |      *     |         |                 |               |             |            |                | 
 | ReCaptchaV3     |      +    |      +       |     *    |      *     |         |       *         |               |             |            |                | 
 | RecaptchaV2Old  |      +    |              |          |            |         |                 |               |             |            |                | 
-| ClickCaptcha    |      +    |              |          |            |         |                 |               |             |            |                | 
-| RotateCaptcha   |      *    |              |          |            |         |                 |               |             |            |                | 
+| ClickCaptcha    |      +    |              |          |            |         |       *         |               |             |            |                | 
+| RotateCaptcha   |      *    |              |          |            |         |       *         |               |             |            |                | 
 | KeyCaptcha      |      +    |              |          |            |         |       *         |               |             |            |                | 
 | GeeTest         |      +    |      +       |          |            |         |                 |               |             |            |                | 
 | hCaptcha        |      +    |      +       |          |      *     |         |                 |               |             |            |                | 
@@ -18,10 +18,10 @@
 |FunCaptcha token |      +    |              |          |            |         |         *       |               |             |            |                | 
 | FunCaptcha      |           |      +       |          |            |         |         *       |               |             |            |                | 
 |SquareNetTextTask|           |      +       |          |            |         |                 |               |             |            |                | 
-| RecaptchaV1     |           |      +       |          |            |         |                 |               |             |            |                | 
+| RecaptchaV1     |           |      +       |          |            |         |         *       |               |             |            |                | 
 | Report          |      +    |      +       |          |            |         |                 |               |             |            |                | 
-| Balance         |      +    |      +       |     +    |      +     |         |                 |               |             |            |                | 
-| Другие методы   |      +    |      +       |          |            |         |                 |               |             |            |                |  
+| Balance         |      +    |      +       |     +    |      +     |         |         *       |               |             |            |                | 
+| Другие методы   |      +    |      +       |          |            |         |         *       |               |             |            |                |  
 
 `+` - Имеется в библиотеке
 
