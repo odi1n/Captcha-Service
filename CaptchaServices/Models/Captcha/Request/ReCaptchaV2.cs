@@ -26,6 +26,18 @@ namespace Captcha_Service.Models.Captcha.Request
         /// Метод указан по умолчанию
         /// </summary>
         public string Methods { get; private set; } = Method.UserreCaptcha;
+        /// <summary>
+        /// Значение параметра data-s найденное на странице. Актуально для поиска в Google и других сервисов Google.
+        /// </summary>
+        public string DataS { get; set; }
+        /// <summary>
+        /// Ваши cookies которые будут использованы работником для решения капчи.
+        /// </summary>
+        public string Cookies { get; set; }
+        /// <summary>
+        /// Подставляем у работника ваш userAgent
+        /// </summary>
+        public string UserAgent { get; set; } 
 
         public ReCaptchaV2(string googlekey, string pageurl)
         {
@@ -41,6 +53,9 @@ namespace Captcha_Service.Models.Captcha.Request
                 ["googlekey"] = this.GoogleKey,
                 ["pageurl"] = this.PageUrl,
                 ["invisible"] = this.Invisible,
+                ["data-s"] = this.DataS,
+                ["cookies"] = this.Cookies,
+                ["userAgent"] = this.UserAgent,
                 ["header_acao"] = this.HeaderAcao,
                 ["pingback"] = this.Pingback,
                 ["proxy"] = this.Proxy,

@@ -41,6 +41,21 @@ namespace Captcha_Service.Models.Captcha.Request
             this.PageUrl = pageurl;
         }
 
+        public ReCaptchaV3(string googlekey, string pageurl, double minScore)
+        {
+            this.GoogleKey = googlekey;
+            this.PageUrl = pageurl;
+            this.MinScore = minScore;
+        }
+
+        public ReCaptchaV3(string googlekey, string pageurl, double minScore, string action = "verify")
+        {
+            this.GoogleKey = googlekey;
+            this.PageUrl = pageurl;
+            this.MinScore = minScore;
+            this.Action = action;
+        }
+
         public override string ToString()
         {
             var Data = new Dictionary<string, object>()

@@ -78,5 +78,17 @@ namespace Captcha_Service
             var recap = _request.GetRequest(_urlIn, setting.ToString() + recaptcha.ToString());
             return Check(new Check(recap.Request, sleep: sleep));
         }
+
+        /// <summary>
+        /// ReCaptcha V3
+        /// </summary>
+        /// <param name="recaptcha">Модель параметров</param>
+        /// <param name="sleep">Время задержки получения ответа </param>
+        /// <returns></returns>
+        public Response ReCaptchaV3(ReCaptchaV3 recaptcha, int sleep = 2000)
+        {
+            var response = _request.GetRequest(_urlIn, setting.ToString() + recaptcha.ToString());
+            return Check(new Check(response.Request, sleep: sleep));
+        }
     }
 }
