@@ -18,7 +18,7 @@ namespace Captcha_Service.Models.Request
         /// <summary>
         /// Метод загрузки фото
         /// </summary>
-        public Method Method { get; set; } = Method.post;
+        public string Methods { get; private set; } = Method.Post;
         /// <summary>
         /// 0 — капча состоит из одного слова
         /// 1 — капча состоит из двух или более слов
@@ -62,7 +62,7 @@ namespace Captcha_Service.Models.Request
         {
             var data = new Dictionary<string, object>()
             {
-                ["method"] = this.Method,
+                ["method"] = this.Methods,
                 ["phrase"] = this.Phrase,
                 ["regsense"] = this.Regsense,
                 ["numeric"] = this.Numeric,

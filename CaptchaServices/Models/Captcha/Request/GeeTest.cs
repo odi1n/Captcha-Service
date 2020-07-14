@@ -13,7 +13,7 @@ namespace Captcha_Service.Models.Request
         /// <summary>
         /// geetest - указывает, что вы отправляете капчу GeeTest
         /// </summary>
-        public Method Method { get; set; } = Method.geetest;
+        public string Methods { get; private set; } = Method.GeeTest;
         /// <summary>
         /// Значение параметра gt найденное на сайте
         /// </summary>
@@ -48,7 +48,7 @@ namespace Captcha_Service.Models.Request
         {
             var Data = new Dictionary<string, object>()
             {
-                ["method"] = this.Method,
+                ["method"] = this.Methods,
                 ["gt"] = this.Gt,
                 ["challenge"] = this.Challenge,
                 ["api_server"] = this.ApiServer,

@@ -2,7 +2,6 @@
 using Captcha_Service.Enums;
 using Captcha_Service.Models;
 using Captcha_Service.Models.Request;
-using Captcha_Service.Query;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,7 +39,7 @@ namespace Captcha_Service
             {
                 var response = _request.GetRequest(_urlRes, setting.ToString() + check.ToString());
 
-                if (response.Status == 1)
+                if (response.Status == true)
                     return response;
 
                 Thread.Sleep(check.Sleep);
@@ -54,7 +53,7 @@ namespace Captcha_Service
         /// <returns></returns>
         public Response GetBalance()
         {
-            return _request.GetRequest(_urlRes, setting.ToString() + new Addition(Actions.getbalance).ToString());
+            return _request.GetRequest(_urlRes, setting.ToString() + new Addition(Actions.GetBalance).ToString());
         }
 
         /// <summary>

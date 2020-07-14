@@ -13,7 +13,7 @@ namespace Captcha_Service.Models.Request
         /// <summary>
         /// Действие которое нужно получить
         /// </summary>
-        public Actions Action { get; set; } 
+        public string Action { get; set; } 
         /// <summary>
         /// ID ваших капч, разделенные запятыми.
         /// </summary>
@@ -29,7 +29,7 @@ namespace Captcha_Service.Models.Request
         /// <param name="action">Действие которое нужно получить</param>
         /// <param name="ids">Id ваших капч, через запятую</param>
         /// <param name="id">Id капчи</param>
-        public Addition(Actions action, string ids = null, string id = null)
+        public Addition(string action, string ids = null, string id = null)
         {
             this.Action = action;
             this.Ids = ids;

@@ -15,7 +15,7 @@ namespace Captcha_Service.Models.AntiCaptcha.Request.Addition
         [JsonProperty(  "softId")]
         public int? SoftId { get; private set; }
 
-        public void SetSetting(string clientKey, int? softId = null)
+        internal void SetSetting(string clientKey, int? softId = null)
         {
             this.ClientKey = clientKey;
             this.SoftId = softId;

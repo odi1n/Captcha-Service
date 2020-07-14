@@ -10,7 +10,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Captcha_Service.Query
+namespace Captcha_Service.Additions
 {
     partial class Request
     {
@@ -43,6 +43,7 @@ namespace Captcha_Service.Query
 
         public Response GetRequest(string url, string data)
         {
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
             var request = WebRequest.Create(url + data);
             using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
             using (StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.Default, true, 8192))
@@ -63,7 +64,7 @@ namespace Captcha_Service.Query
         private Response CheckErrorInfo(string response)
         {
             var json = JsonConverts.Deserializ<Response>(response);
-            if ( json.Status == 0 && json.Request != "CAPCHA_NOT_READY" )
+            if ( json.Status == false && json.Request != "CAPCHA_NOT_READY" )
                 throw new ErrorParamsException(json.Request);
             else
                 return json;

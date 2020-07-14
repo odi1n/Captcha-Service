@@ -1,5 +1,6 @@
 ﻿using Captcha_Service.Additions;
 using Captcha_Service.Enums;
+using Captcha_Service.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +35,7 @@ namespace Captcha_Service.Models.Request
         /// <summary>
         /// funcaptcha — указывает, что вы решаете FunCaptcha с помощью токена
         /// </summary>
-        public Method Method { get; set; } = Method.funcaptcha;
+        public string Methods { get; private set; } = Method.FunCaptcha;
 
         /// <summary>
         /// FunCaptcha с токеном
@@ -51,7 +52,7 @@ namespace Captcha_Service.Models.Request
         {
             var Data = new Dictionary<string, object>()
             {
-                ["method"] = this.Method,
+                ["method"] = this.Methods,
                 ["publickey"] = this.PublicKey,
                 ["surl"] = this.Surl,
                 ["pageurl"] = this.PageUrl,

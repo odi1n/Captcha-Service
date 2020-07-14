@@ -6,19 +6,29 @@ using System.Threading.Tasks;
 
 namespace Captcha_Service.Enums
 {
-    public enum QueueId
+    public class QueueId
     {
-        ImageToTextEng = 1,
-        ImageToTextRu = 2,
-        RecaptchaNoCaptcha = 5,
-        RecaptchaProxyless = 6,
-        Funcaptcha = 7,
-        FuncaptchaProxyless = 10,
-        SquareNetTask = 11,
-        GeeTestProxyOn = 12,
-        GeeTestProxyless = 13,
-        RecaptchaV3s03 = 18,
-        RecaptchaV3s07 = 19,
-        RecaptchaV3s09 = 20,
+        public const int ImageToTextEng = 1;
+        public const int ImageToTextRu = 2;
+        public const int RecaptchaNoCaptcha = 5;
+        public const int RCRecaptchaProxyless = 6;
+        public const int Funcaptcha = 7;
+        public const int FuncaptchaProxyless = 10;
+        public const int RCSquareNetTask = 11;
+        public const int RCGeeTestProxyOn = 12;
+        public const int RCGeeTestProxyless = 13;
+        public const int RecaptchaV3s03 = 18;
+        public const int RecaptchaV3s07 = 19;
+        public const int RecaptchaV3s09 = 20;
+
+        public const string EnglishImageToText = "English ImageToText";
+        public const string RussianImageToText = "Russian ImageToText";
+        public const string RecaptchaProxyOn = "Recaptcha Proxy-on";
+        public const string ACRecaptchaProxyless = "Recaptcha Proxyless";
+        public const string FunCaptcha = "FunCaptcha";
+        public const string FuncaptchaProxyles = "Funcaptcha Proxyless";
+        public const string ACSquareNetTask = "Square Net Task";
+        public const string ACGeeTestProxyOn = "GeeTest Proxy-on";
+        public const string ACGeeTestProxyless = "GeeTest Proxyless";
     }
 }

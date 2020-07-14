@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Captcha_Service.Additions
+namespace Captcha_Service
 {
-    partial class Decode
+    public class Decode
     {
-        public static string Base64ToString(string ImagePath)
+        public static string ToBase64String(string ImagePath)
         {
             Image image = Image.FromFile(ImagePath);
             System.IO.MemoryStream memoryStream = new System.IO.MemoryStream();

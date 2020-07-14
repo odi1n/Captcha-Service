@@ -9,7 +9,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Captcha_Service.Additions
 {
-    public class JsonConverts
+    partial class JsonConverts
     {
 
         /// <summary>

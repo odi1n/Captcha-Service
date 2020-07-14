@@ -21,7 +21,7 @@ namespace Captcha_Service.Models.Request
         /// <summary>
         /// Метод указан по умолчанию
         /// </summary>
-        public Method Method { get; set; } = Method.userrecaptcha;
+        public string Methods { get; private set; } = Method.UserreCaptcha;
         /// <summary>
         /// v3 — указывает на то, что это ReCaptcha V3. указана по умолчанию
         /// </summary>
@@ -45,7 +45,7 @@ namespace Captcha_Service.Models.Request
         {
             var Data = new Dictionary<string, object>()
             {
-                ["method"] = this.Method,
+                ["method"] = this.Methods,
                 ["version"] = this.Version,
                 ["googlekey"] = this.GoogleKey,
                 ["pageurl"] = this.PageUrl,

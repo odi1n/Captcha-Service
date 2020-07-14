@@ -2,7 +2,7 @@
 using System.Net;
 using System.IO;
 using Captcha_Service;
-using Captcha_Service.Query;
+using Captcha_Service.Additions;
 
 namespace Captcha_Service
 {
@@ -18,6 +18,16 @@ namespace Captcha_Service
             {
                 return $"captcha_{new Random().Next()}.jpg";
             }
+        }
+
+        /// <summary>
+        /// Создать папку если ее нет
+        /// </summary>
+        /// <param name="DirectName"></param>
+        private static void Create(string DirectName)
+        {
+            if (!Directory.Exists(DirectName))
+                Directory.CreateDirectory(DirectName);
         }
 
         /// <summary>
@@ -40,7 +50,7 @@ namespace Captcha_Service
         /// <returns></returns>
         public static string DownloadImage(string linkImage, string pathSave)
         {
-            Additions.Directorys.Create(pathSave);
+            Create(pathSave);
             string path = pathSave + "\\" + _pathFile;
 
             bool CheckDownload = _capReq.DownloadFile(linkImage, path);

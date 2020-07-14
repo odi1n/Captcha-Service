@@ -6,27 +6,27 @@ using System.Threading.Tasks;
 
 namespace Captcha_Service.Enums
 {
-    public enum Actions
+    public class Actions
     {
         /// <summary>
         /// getbalance — получить ваш баланс
         /// </summary>
-        getbalance,
+        public const string GetBalance = "getbalance";
         /// <summary>
         /// get — получить ответы на множество капч с помощью одного запроса.Требует указания параметра ids.
         /// </summary>
-        get,
+        public const string Get = "get";
         /// <summary>
         /// get2 — получить стоимость решения отправленной капчи и ответ на нее.Требует указания ID капчи в параметре id.
         /// </summary>
-        get2,
+        public const string Get2 = "get2";
         /// <summary>
         /// сообщить о верном ответе
         /// </summary>
-        reportgood,
+        public const string ReportGood = "reportgood";
         /// <summary>
         /// сообщить о неверном ответе
         /// </summary>
-        reportbad,
+        public const string ReportBad = "reportbad";
     }
 }

@@ -13,7 +13,7 @@ namespace Captcha_Service.Models.Request
         /// <summary>
         /// hcaptcha — указывает, что вы решаете hCaptcha
         /// </summary>
-        public Method Method { get; set; } = Method.hcaptcha;
+        public string Methods { get; private set; } = Method.HCaptcha;
         /// <summary>
         /// Значение параметра data-sitekey, которое вы нашли в коде страницы
         /// </summary>
@@ -38,7 +38,7 @@ namespace Captcha_Service.Models.Request
         {
             var Data = new Dictionary<string, object>()
             {
-                ["method"] = this.Method,
+                ["method"] = this.Methods,
                 ["sitekey"] = this.SiteKey,
                 ["pageurl"] = this.PageUrl,
                 ["header_acao"] = this.HeaderAcao,

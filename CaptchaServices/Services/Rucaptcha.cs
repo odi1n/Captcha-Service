@@ -10,7 +10,6 @@ using Captcha_Service.Enums;
 using Captcha_Service.Models;
 using System.Drawing;
 using System.Globalization;
-using Captcha_Service.Query;
 using Captcha_Service.Additions;
 using System.Threading;
 
@@ -23,13 +22,13 @@ namespace Captcha_Service
     {
         private SettingCap setting;
         private Request _request = new Request();
-        private static readonly string _urlIn = "http://rucaptcha.com/in.php?";
-        private static readonly string _urlRes = "http://rucaptcha.com/res.php?";
+        private const string _link = "rucaptcha.com";
+        private const string _urlIn = "http://"+ _link + "/in.php?";
+        private const string _urlRes = "http://" + _link + "/res.php?";
 
         public RuCaptcha(string key)
         {
             setting = new SettingCap(key, true, 2392);
-            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
         }
 
         /// <summary>
@@ -43,7 +42,7 @@ namespace Captcha_Service
             {
                 var response = _request.GetRequest(_urlRes, setting.ToString() + check);
 
-                if (response.Status == 1)
+                if (response.Status == true)
                     return response;
 
                 Thread.Sleep(check.Sleep);
@@ -56,7 +55,7 @@ namespace Captcha_Service
         /// <returns></returns>
         public Response GetBalance()
         {
-            return _request.GetRequest(_urlRes, setting.ToString() + new Models.Request.Addition(Actions.getbalance).ToString());
+            return _request.GetRequest(_urlRes, setting.ToString() + new Models.Request.Addition(Actions.GetBalance).ToString());
         }
 
         /// <summary>
@@ -113,7 +112,6 @@ namespace Captcha_Service
         /// <returns></returns>
         public Response ReCaptchaV3(ReCaptchaV3 recaptcha, int sleep = 2000)
         {
-            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
             var response = _request.GetRequest(_urlIn, setting.ToString() + recaptcha.ToString());
             return Check(new Check(response.Request, sleep:sleep));
         }
@@ -150,7 +148,6 @@ namespace Captcha_Service
         /// <returns></returns>
         public Response FunCaptchaToken(FunCaptcha funCaptcha, int sleep = 2000)
         {
-            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
             var response = _request.GetRequest(_urlIn, setting.ToString() + funCaptcha.ToString());
             return Check(new Check(response.Request, sleep: sleep));
         }
@@ -163,7 +160,6 @@ namespace Captcha_Service
         /// <returns></returns>
         public Response KeyCaptcha(KeyCaptcha keyCaptcha, int sleep = 2000)
         {
-            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
             var response = _request.GetRequest(_urlIn, setting.ToString() + keyCaptcha.ToString());
             return Check(new Check(response.Request, sleep: sleep));
         }
@@ -176,7 +172,6 @@ namespace Captcha_Service
         /// <returns></returns>
         public Response GeeTest(GeeTest geeTest, int sleep = 2000)
         {
-            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
             var response = _request.GetRequest(_urlIn, setting.ToString() + geeTest.ToString());
             return Check(new Check(response.Request, sleep: sleep));
         }
@@ -189,7 +184,6 @@ namespace Captcha_Service
         /// <returns></returns>
         public Response HCaptcha(HCaptcha hCaptcha, int sleep = 2000)
         {
-            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
             var response = _request.GetRequest(_urlIn, setting.ToString() + hCaptcha.ToString());
             return Check(new Check(response.Request, sleep: sleep));
         }

@@ -25,7 +25,7 @@ namespace Captcha_Service.Models.Request
         /// <summary>
         /// Метод указан по умолчанию
         /// </summary>
-        public Method Method { get; set; } = Method.userrecaptcha;
+        public string Methods { get; private set; } = Method.UserreCaptcha;
 
         public ReCaptchaV2(string googlekey, string pageurl)
         {
@@ -37,7 +37,7 @@ namespace Captcha_Service.Models.Request
         {
             var Data = new Dictionary<string, object>()
             {
-                ["method"] = this.Method,
+                ["method"] = this.Methods,
                 ["googlekey"] = this.GoogleKey,
                 ["pageurl"] = this.PageUrl,
                 ["invisible"] = this.Invisible,

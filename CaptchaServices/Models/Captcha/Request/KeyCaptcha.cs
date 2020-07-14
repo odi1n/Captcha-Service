@@ -13,7 +13,7 @@ namespace Captcha_Service.Models.Request
         /// <summary>
         /// keycaptcha — говорит о том, что вы отправляете KeyCaptcha
         /// </summary>
-        public Method Method { get; set; } = Method.keycaptcha;
+        public string Methods { get; private set; } = Method.KeyCaptcha;
         /// <summary>
         /// Значение параметра s_s_c_user_id, найденное на странице
         /// </summary>
@@ -57,7 +57,7 @@ namespace Captcha_Service.Models.Request
         {
             var Data = new Dictionary<string, object>()
             {
-                ["method"] = this.Method,
+                ["method"] = this.Methods,
                 ["s_s_c_user_id	"] = this.SSCUserId,
                 ["s_s_c_session_id"] = this.SSCSessionId,
                 ["s_s_c_web_server_sign"] = this.SSCWebServerSign,

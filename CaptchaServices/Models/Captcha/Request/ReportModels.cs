@@ -14,13 +14,13 @@ namespace Captcha_Service.Models.Request
         /// Указан по умолчанию
         /// get — получить ответ на капчу
         /// </summary>
-        public Actions Action { get; set; } = Actions.get;
+        public string Action { get; set; } 
         /// <summary>
         /// ID капчи, полученный от in.php.
         /// </summary>
         public string Id { get; set; }
 
-        public ReportModels(string id, Actions action = Actions.get)
+        public ReportModels(string id, string action ) 
         {
             this.Id = id;
             this.Action = action;

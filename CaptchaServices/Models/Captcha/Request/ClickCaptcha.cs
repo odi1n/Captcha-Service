@@ -1,5 +1,6 @@
 ﻿using Captcha_Service.Additions;
 using Captcha_Service.Enums;
+using Captcha_Service.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace Captcha_Service.Models.Request
         /// <summary>
         /// hcaptcha — указывает, что вы решаете hCaptcha
         /// </summary>
-        public Method Method { get; set; } = Method.hcaptcha;
+        public string Methods { get; private set; } = Method.HCaptcha;
         /// <summary>
         /// Файл
         /// </summary>
@@ -36,7 +37,7 @@ namespace Captcha_Service.Models.Request
         {
             var Data = new Dictionary<string, object>()
             {
-                ["method"] = this.Method,
+                ["method"] = this.Methods,
                 ["coordinatescaptcha"] = this.CoordinatesCaptcha,
                 ["textinstructions"] = this.TextInstructions,
                 ["imginstructions"] = this.Imginstructions,

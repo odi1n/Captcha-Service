@@ -11,7 +11,7 @@ namespace Captcha_Service.Models
         /// <summary>
         /// Информация успешен ли ответ, 0 - нет, 1 - да
         /// </summary>
-        public int Status { get; set; }
+        public bool Status { get; set; }
         /// <summary>
         /// Ответ
         /// </summary>

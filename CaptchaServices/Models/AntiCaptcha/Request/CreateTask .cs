@@ -19,7 +19,7 @@ namespace Captcha_Service.Models.AntiCaptcha.Request
 
         [JsonProperty( "languagePool")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public LanguagePool LanguagePool { get; set; }
+        public Lang LanguagePool { get; set; }
 
         [JsonProperty( "callbackUrl")]
         public string CallbackUrl { get; set; }

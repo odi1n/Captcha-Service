@@ -42,7 +42,7 @@ namespace Captcha_Service.Models.Request
         /// Мы покажем работнику кнопку "Нет подходящих картинок", а вы получите в ответе No_matching_images.
         /// </summary>
         public int CanNoAnswer { get; set; } = 0;
-        public Method Method { get; set; } = Method.post;
+        public string Methods { get; private set; } = Method.Post;
 
         public ReCaptchaV2Old(string file, string textinstructions)
         {
@@ -53,7 +53,7 @@ namespace Captcha_Service.Models.Request
         {
             var Data = new Dictionary<string, object>()
             {
-                ["method"] = this.Method,
+                ["method"] = this.Methods,
                 ["recaptcha"] = this.Recaptcha,
                 ["canvas"] = this.Canvas,
                 ["textinstructions"] = this.TextInstructions,
