@@ -1,70 +1,35 @@
 # Captcha Service
 Библиотека которая объединяет в себе сервисы для работы с капчей.
 
-На данные момент имеется 2 сервиса:
-1. Rucaptcha:
-  - [x] Обычные капчи
-  - [x] Текстовые капчи
-  - [x] ReCaptcha V2
-  - [x] ReCaptcha V3
-  - [x] Дополнительные методы
-  - [x] Отчет об ответах - Report
-  - [x] ReCaptcha V2 (устаревший метод) - RecaptchaV2Old
-  - [x] ClickCaptcha
-  - RotateCaptcha
-  - [x] FunCaptcha с токеном
-  - [x] KeyCaptcha
-  - [x] GeeTest
-  - [x] hCaptcha
-2. AntiCaptcha:
-  - [x] createTask 
-  - [x] getTaskResult
-  - [x] getBalance
-  - [x] getQueueStats
-  - [x] reportIncorrectImageCaptcha 
-  - [x] reportIncorrectRecaptcha
-  - [x] getSpendingStats 
-  - getAppStats 
-  - [x] sendFunds
-  - [x] test
-  - ImageToTextTask
-  - NoCaptchaTask
-  - NoCaptchaTaskProxyless
-  - RecaptchaV3TaskProxyless
-  - FunCaptchaTask
-  - FunCaptchaTaskProxyless 
-  - SquareNetTextTask
-  - GeeTestTask 
-  - GeeTestTaskProxyless 
-  - HCaptchaTask
-  - HCaptchaTaskProxyless 
-  - CustomCaptchaTask
-  - RecaptchaV1Task 
-  - RecaptchaV1TaskProxyless
-3. Cptch.net
-  - [x] getBalance
-  - [x] ReCaptcha V2
-  - ReCaptcha V3
-  - [x] Решение картинки
-4. Captcha.guru
-  - [x] getBalance
-  - [x] ReCaptcha V2
-  - [x] Решение картинки
-  
-# В планах добавить:
-  - Новые сервисы:
-    - 2Captcha
-    - solvecaptcha.com
-    - azcaptcha.com
-    - x-captcha.ru
-    - DeCaptcher
-    - DeathByCaptcha
-  - Изменить:
-    - anti-captcha
+|Капча            | RuCaptcha | AntiCaptcha  | Cptch.net|Captcha.guru|2Captcha | Solvecaptcha.com| Azcaptcha.com | X-captcha.ru| DeCaptcher | DeathByCaptcha |
+| ---             | :---:     | :---:        |:---:     |:---:       | :---:   |:---:            |:---:          |:---:        |:---:       |:---:           | 
+| Картинка в текст|      +    |      +       |     +    |      +     |         |       *         |               |             |            |                | 
+| Текстовая капча |      +    |              |          |            |         |       *         |               |             |            |                | 
+| ReCaptchaV2     |      +    |      +       |     +    |      +     |         |       *         |               |             |            |                | 
+|Invis ReCaptchaV2|      *    |              |          |      *     |         |                 |               |             |            |                | 
+| ReCaptchaV3     |      +    |      +       |     *    |      *     |         |       *         |               |             |            |                | 
+| RecaptchaV2Old  |      +    |              |          |            |         |                 |               |             |            |                | 
+| ClickCaptcha    |      +    |              |          |            |         |       *         |               |             |            |                | 
+| RotateCaptcha   |      *    |              |          |            |         |       *         |               |             |            |                | 
+| KeyCaptcha      |      +    |              |          |            |         |       *         |               |             |            |                | 
+| GeeTest         |      +    |      +       |          |            |         |                 |               |             |            |                | 
+| hCaptcha        |      +    |      +       |          |      *     |         |                 |               |             |            |                | 
+| Capy Puzzle     |      *    |              |          |            |         |                 |               |             |            |                | 
+|FunCaptcha token |      +    |              |          |            |         |         *       |               |             |            |                | 
+| FunCaptcha      |           |      +       |          |            |         |         *       |               |             |            |                | 
+|SquareNetTextTask|           |      +       |          |            |         |                 |               |             |            |                | 
+| RecaptchaV1     |           |      +       |          |            |         |         *       |               |             |            |                | 
+| Report          |      +    |      +       |          |            |         |                 |               |             |            |                | 
+| Balance         |      +    |      +       |     +    |      +     |         |         *       |               |             |            |                | 
+| Другие методы   |      +    |      +       |          |            |         |         *       |               |             |            |                |  
+
+`+` - Имеется в библиотеке
+
+`*` - В планах добавить
+    
+# В планах:
   - Отключения исключения при ошибки решения капчи. Возвращение в переменной
   - Добавить async
-  - Вынести все в интерфейсы
   - Добавить ссылку на .dll
-  - Сделать метод в который указываем только сервис и иедт решение
-  
+  - Сделать метод в который указываем только сервис и идет решение(скорее всего все кроме anticaptcha)
 так же можете предлагать свои идеи.
