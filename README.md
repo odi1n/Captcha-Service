@@ -6,14 +6,14 @@
 | Картинка в текст|      +    |      +       |     +    |      +     |         |                 |               |             |            |                | 
 | Текстовая капча |      +    |              |          |            |         |                 |               |             |            |                | 
 | ReCaptchaV2     |      +    |      +       |     +    |      +     |         |                 |               |             |            |                | 
-|Invis ReCaptchaV2|      *    |              |          |            |         |                 |               |             |            |                | 
-| ReCaptchaV3     |      +    |      +       |     *    |            |         |                 |               |             |            |                | 
+|Invis ReCaptchaV2|      *    |              |          |      *     |         |                 |               |             |            |                | 
+| ReCaptchaV3     |      +    |      +       |     *    |      *     |         |                 |               |             |            |                | 
 | RecaptchaV2Old  |      +    |              |          |            |         |                 |               |             |            |                | 
 | ClickCaptcha    |      +    |              |          |            |         |                 |               |             |            |                | 
 | RotateCaptcha   |      *    |              |          |            |         |                 |               |             |            |                | 
 | KeyCaptcha      |      +    |              |          |            |         |                 |               |             |            |                | 
 | GeeTest         |      +    |      +       |          |            |         |                 |               |             |            |                | 
-| hCaptcha        |      +    |      +       |          |            |         |                 |               |             |            |                | 
+| hCaptcha        |      +    |      +       |          |      *     |         |                 |               |             |            |                | 
 | Capy Puzzle     |      *    |              |          |            |         |                 |               |             |            |                | 
 | FunCaptcha      |      +    |      +       |          |            |         |                 |               |             |            |                | 
 |SquareNetTextTask|           |      +       |          |            |         |                 |               |             |            |                | 
