@@ -1,5 +1,4 @@
 ﻿using Captcha_Service;
-using Captcha_Service.Models.AntiCaptcha.Request;
 using System;
 using System.Collections.Generic;
 using System.IO;

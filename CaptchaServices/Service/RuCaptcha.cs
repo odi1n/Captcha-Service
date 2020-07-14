@@ -7,8 +7,6 @@ using System.Net;
 using System.IO;
 using Captcha_Service.Enums;
 using Captcha_Service.Models;
-using System.Drawing;
-using System.Globalization;
 using Captcha_Service.Additions;
 using System.Threading;
 using Captcha_Service.Models.Captcha.Request;
