@@ -1,6 +1,6 @@
 # Captcha Service
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/odi1n/Captcha-Service)
-![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/1.0.5.0)
+![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/odi1n/Captcha-Service/1.0.5.0)
 
 Библиотека объединяющая в себе все сервисы для работы с капчей.
 
