@@ -11,7 +11,7 @@ namespace Captcha_Service
     /// </summary>
     public class Captcha
     {
-        private static Request _capReq = new Request();
+        private static Request _request = new Request();
         private static string _pathFile
         {
             get
@@ -37,9 +37,12 @@ namespace Captcha_Service
         /// <returns></returns>
         public static string DownloadImage(string linkImage)
         {
-            bool CheckDownload = _capReq.DownloadFile(linkImage, _pathFile);
-            if ( CheckDownload ) return _pathFile;
-            return null;
+            bool CheckDownload = _request.DownloadFile(linkImage, _pathFile);
+
+            if (!CheckDownload)
+                return null;
+
+            return _pathFile;
         }
 
         /// <summary>
@@ -53,9 +56,12 @@ namespace Captcha_Service
             Create(pathSave);
             string path = pathSave + "\\" + _pathFile;
 
-            bool CheckDownload = _capReq.DownloadFile(linkImage, path);
-            if ( CheckDownload ) return path;
-            return null;
+            bool CheckDownload = _request.DownloadFile(linkImage, path);
+
+            if (CheckDownload)
+                return null;
+
+            return path;
         }
     }
 }

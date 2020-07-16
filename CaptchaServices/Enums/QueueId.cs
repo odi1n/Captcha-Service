@@ -8,18 +8,18 @@ namespace Captcha_Service.Enums
 {
     public class QueueId
     {
-        public const int ImageToTextEng = 1;
-        public const int ImageToTextRu = 2;
-        public const int RecaptchaNoCaptcha = 5;
-        public const int RCRecaptchaProxyless = 6;
-        public const int Funcaptcha = 7;
-        public const int FuncaptchaProxyless = 10;
-        public const int RCSquareNetTask = 11;
-        public const int RCGeeTestProxyOn = 12;
-        public const int RCGeeTestProxyless = 13;
-        public const int RecaptchaV3s03 = 18;
-        public const int RecaptchaV3s07 = 19;
-        public const int RecaptchaV3s09 = 20;
+        internal const int ImageToTextEng = 1;
+        internal const int ImageToTextRu = 2;
+        internal const int RecaptchaNoCaptcha = 5;
+        internal const int RCRecaptchaProxyless = 6;
+        internal const int Funcaptcha = 7;
+        internal const int FuncaptchaProxyless = 10;
+        internal const int RCSquareNetTask = 11;
+        internal const int RCGeeTestProxyOn = 12;
+        internal const int RCGeeTestProxyless = 13;
+        internal const int RecaptchaV3s03 = 18;
+        internal const int RecaptchaV3s07 = 19;
+        internal const int RecaptchaV3s09 = 20;
 
         public const string EnglishImageToText = "English ImageToText";
         public const string RussianImageToText = "Russian ImageToText";

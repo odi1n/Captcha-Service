@@ -14,7 +14,7 @@ namespace Captcha_Service.Models.Captcha
         /// </summary>
         public bool Status { get; set; }
         /// <summary>
-        /// Ответ
+        /// Ответ решения капчи
         /// </summary>
         public string Request { get; set; }
         /// <summary>

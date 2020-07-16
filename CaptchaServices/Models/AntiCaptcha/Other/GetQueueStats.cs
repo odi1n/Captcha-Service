@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 
 namespace Captcha_Service.Models.AntiCaptcha.Other
 {
-
     public class GetQueueStats 
     {
         [JsonProperty("queueId")]

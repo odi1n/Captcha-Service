@@ -19,7 +19,7 @@ namespace Captcha_Service
         private const int SoftId = 147;
         private Request _request = new Request();
         private const string _link = "cptch.net";
-        private const string _urlIn = "https://"+_link+"/in.php?";
+        private const string _urlIn = "https://" + _link + "/in.php?";
         private const string _urlRes = "https://" + _link + "/res.php?";
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace Captcha_Service
         /// <returns></returns>
         public Response ReCaptchaV3(ReCaptchaV3 recaptcha, int sleep = 2000)
         {
-            var response = _request.GetRequest(_urlIn,  recaptcha.ToString());
+            var response = _request.GetRequest(_urlIn, recaptcha.ToString());
             return Check(new Check(response.Request, sleep: sleep));
         }
     }

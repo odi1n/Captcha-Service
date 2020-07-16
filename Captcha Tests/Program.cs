@@ -22,7 +22,6 @@ namespace Captcha_Tests
             AntiCaptcha ac = new AntiCaptcha(key[3]);
             var info = ac.GetBalance();
 
-            ac.ImageToText(null);
             //CaptchaGuru cg = new CaptchaGuru(key[2]);
             //var test = cg.GetBalance();
 

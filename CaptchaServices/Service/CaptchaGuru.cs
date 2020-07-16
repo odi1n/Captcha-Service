@@ -19,7 +19,7 @@ namespace Captcha_Service
         private const int SoftId = 102564;
         private Request _request = new Request();
         private const string _link = "api.captcha.guru";
-        private const string _urlIn = "http://"+ _link + "/in.php?";
+        private const string _urlIn = "http://" + _link + "/in.php?";
         private const string _urlRes = "http://" + _link + "/res.php?";
 
         /// <summary>
@@ -107,7 +107,5 @@ namespace Captcha_Service
             var response = _request.GetRequest(_urlIn, hCaptcha.ToString());
             return Check(new Check(response.Request, sleep: sleep));
         }
-
-
     }
 }
