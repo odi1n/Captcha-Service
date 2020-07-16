@@ -46,7 +46,7 @@ namespace Captcha_Service.Models.Captcha.Other
             {
                 ["key"] = Key,
 
-                ["action"] = this.Action,
+                ["action"] = this.Action.ToName(),
                 ["id"] = this.Id,
                 ["header_acao"] = this.HeaderAcao,
 

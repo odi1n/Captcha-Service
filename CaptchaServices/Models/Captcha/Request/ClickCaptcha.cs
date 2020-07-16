@@ -36,9 +36,9 @@ namespace Captcha_Service.Models.Captcha.Request
             this.Pingback = pingBack;
         }
 
-        public override string ToString()
+        public Dictionary<string, object> ToDictionary()
         {
-            var Data = new Dictionary<string, object>()
+            return new Dictionary<string, object>()
             {
                 ["key"] = Key,
 
@@ -54,7 +54,11 @@ namespace Captcha_Service.Models.Captcha.Request
                 ["json"] = Json.GetHashCode(),
                 ["soft_id"] = SoftId,
             };
-            return Converts.StringToDictionary(Data); ;
+        }
+
+        public override string ToString()
+        {
+            return Converts.StringToDictionary(this.ToDictionary()); ;
         }
     }
 }

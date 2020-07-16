@@ -108,12 +108,14 @@ namespace Captcha_Service.Models.Captcha.Request
             this.Pingback = pingback;
         }
 
-        public override string ToString()
+        public Dictionary<string, object> ToDictionary()
         {
-            var data = new Dictionary<string, object>()
+            return new Dictionary<string, object>()
             {
                 ["key"] = Key,
-                
+                ["json"] = Json.GetHashCode(),
+                ["soft_id"] = SoftId,
+
                 ["method"] = this.Methods,
                 ["body"] = this.Body,
                 ["phrase"] = this.Phrase.GetHashCode(),
@@ -128,12 +130,12 @@ namespace Captcha_Service.Models.Captcha.Request
                 ["header_acao"] = this.HeaderAcao.GetHashCode(),
                 ["pingback"] = this.Pingback,
 
-                ["json"] = Json.GetHashCode(),
-                ["soft_id"] = SoftId,
             };
+        }
 
-            var info = Converts.StringToDictionary(data);
-            return info;
+        public override string ToString()
+        {
+            return Converts.StringToDictionary(this.ToDictionary());
         }
     }
 }

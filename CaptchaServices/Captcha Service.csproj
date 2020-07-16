@@ -47,6 +47,7 @@
     <Compile Include="Additions\Converts.cs" />
     <Compile Include="Additions\Decode.cs" />
     <Compile Include="Additions\EnumAdditions.cs" />
+    <Compile Include="Additions\FormUpload.cs" />
     <Compile Include="Captcha.cs" />
     <Compile Include="Enums\Actions.cs" />
     <Compile Include="Enums\Error.cs" />

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,23 +32,7 @@ namespace Captcha_Service.Additions
             }
         }
 
-        internal bool DownloadFile(string link, string path)
-        {
-            bool CheckDownload = false;
-            using ( WebClient Client = new WebClient() )
-            {
-                Client.DownloadFile(link, path);
-                CheckDownload = true;
-            }
-            return CheckDownload;
-        }
-
-        internal Response PostRequest(string url, string data)
-        {
-            return CheckErrorInfo(Post(url, data));
-        }
-
-        internal Response GetRequest(string url, string data)
+        internal Response Get(string url, string data)
         {
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
             var request = WebRequest.Create(url + data);
@@ -56,15 +41,45 @@ namespace Captcha_Service.Additions
                 return CheckErrorInfo(reader.ReadToEnd());
         }
 
-        internal Response UploadFile(string link, string path)
+        internal bool Download(string link, string pathFile)
         {
-            using(var webClient = new WebClient() )
+            bool CheckDownload = false;
+            using ( WebClient Client = new WebClient() )
             {
-                var infoUpload = webClient.UploadFile(link, path);
+                Client.DownloadFile(link, pathFile);
+                CheckDownload = true;
+            }
+            return CheckDownload;
+        }
+
+        internal Response Upload(string link, string pathFile)
+        {
+            using (var webClient = new WebClient())
+            {
+                var infoUpload = webClient.UploadFile(link, pathFile);
                 string response = Encoding.UTF8.GetString(infoUpload);
 
                 return CheckErrorInfo(response);
             }
+        }
+
+        internal string PostMultipart(string url, Dictionary<string, object> postParameters)
+        {
+            HttpWebResponse webResponse = FormUpload.MultipartFormDataPost(url, postParameters);
+            StreamReader responseReader = new StreamReader(webResponse.GetResponseStream());
+            string fullResponse = responseReader.ReadToEnd();
+            webResponse.Close();
+            return fullResponse;
+        }
+
+        internal Response FormData(string url, string data)
+        {
+            return CheckErrorInfo(Post(url, data));
+        }
+
+        internal Response Multipart(string url, Dictionary<string, object> data)
+        {
+            return CheckErrorInfo(PostMultipart(url, data));
         }
 
         private Response CheckErrorInfo(string response)
@@ -76,4 +91,5 @@ namespace Captcha_Service.Additions
                 return json;
         }
     }
+    
 }

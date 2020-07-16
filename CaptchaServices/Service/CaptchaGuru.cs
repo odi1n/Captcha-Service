@@ -40,7 +40,7 @@ namespace Captcha_Service
         {
             while (true)
             {
-                var response = _request.GetRequest(_urlRes, check.ToString());
+                var response = _request.Get(_urlRes, check.ToString());
 
                 if (response.Status == true)
                 {
@@ -59,7 +59,7 @@ namespace Captcha_Service
         /// <returns></returns>
         public Response GetBalance()
         {
-            return _request.GetRequest(_urlRes, new Addition(Actions.GetBalance).ToString());
+            return _request.Get(_urlRes, new Addition(Actions.GetBalance).ToString());
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace Captcha_Service
         /// <returns></returns>
         public Response Regular(Regular regular, int sleep = 2000)
         {
-            var response = _request.PostRequest(_urlIn, regular.ToString());
+            var response = _request.Multipart(_urlIn, regular.ToDictionary());
             return Check(new Check(response.Request, sleep: sleep));
         }
 
@@ -80,7 +80,7 @@ namespace Captcha_Service
         /// <returns></returns>
         public Response ReCaptchaV2(ReCaptchaV2 recaptcha, int sleep = 2000)
         {
-            var recap = _request.GetRequest(_urlIn, recaptcha.ToString());
+            var recap = _request.Get(_urlIn, recaptcha.ToString());
             return Check(new Check(recap.Request, sleep: sleep));
         }
 
@@ -92,7 +92,7 @@ namespace Captcha_Service
         /// <returns></returns>
         public Response ReCaptchaV3(ReCaptchaV3 recaptcha, int sleep = 2000)
         {
-            var response = _request.GetRequest(_urlIn, recaptcha.ToString());
+            var response = _request.Get(_urlIn, recaptcha.ToString());
             return Check(new Check(response.Request, sleep: sleep));
         }
 
@@ -104,7 +104,7 @@ namespace Captcha_Service
         /// <returns></returns>
         public Response HCaptcha(HCaptcha hCaptcha, int sleep = 2000)
         {
-            var response = _request.GetRequest(_urlIn, hCaptcha.ToString());
+            var response = _request.Get(_urlIn, hCaptcha.ToString());
             return Check(new Check(response.Request, sleep: sleep));
         }
     }

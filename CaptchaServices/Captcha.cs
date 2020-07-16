@@ -37,7 +37,7 @@ namespace Captcha_Service
         /// <returns></returns>
         public static string DownloadImage(string linkImage)
         {
-            bool CheckDownload = _request.DownloadFile(linkImage, _pathFile);
+            bool CheckDownload = _request.Download(linkImage, _pathFile);
 
             if (!CheckDownload)
                 return null;
@@ -56,7 +56,7 @@ namespace Captcha_Service
             Create(pathSave);
             string path = pathSave + "\\" + _pathFile;
 
-            bool CheckDownload = _request.DownloadFile(linkImage, path);
+            bool CheckDownload = _request.Download(linkImage, path);
 
             if (CheckDownload)
                 return null;

@@ -41,7 +41,7 @@ namespace Captcha_Service
         {
             while (true)
             {
-                var response = _request.GetRequest(_urlRes, check.ToString());
+                var response = _request.Get(_urlRes, check.ToString());
 
                 if (response.Status == true)
                 {
@@ -59,7 +59,7 @@ namespace Captcha_Service
         /// <returns></returns>
         public Response GetBalance()
         {
-            return _request.GetRequest(_urlRes, new Addition(Actions.GetBalance).ToString());
+            return _request.Get(_urlRes, new Addition(Actions.GetBalance).ToString());
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace Captcha_Service
         /// <returns></returns>
         public Response AdditionInfo(Addition data)
         {
-            return _request.GetRequest(_urlRes, data.ToString());
+            return _request.Get(_urlRes, data.ToString());
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace Captcha_Service
         /// <returns></returns>
         public Response Text(Text text, int sleep = 1000)
         {
-            var response = _request.GetRequest(_urlIn, text.ToString());
+            var response = _request.Get(_urlIn, text.ToString());
             return Check(new Check(response.Request, sleep: sleep));
         }
 
@@ -92,7 +92,7 @@ namespace Captcha_Service
         /// <returns></returns>
         public Response Regular(Regular regular, int sleep = 2000)
         {
-            var response = _request.PostRequest(_urlIn, regular.ToString());
+            var response = _request.Multipart(_urlIn, regular.ToDictionary());
             return Check(new Check(response.Request, sleep: sleep));
         }
 
@@ -104,7 +104,7 @@ namespace Captcha_Service
         /// <returns></returns>
         public Response ReCaptchaV2(ReCaptchaV2 recaptcha, int sleep = 2000)
         {
-            var response = _request.GetRequest(_urlIn, recaptcha.ToString());
+            var response = _request.Get(_urlIn, recaptcha.ToString());
             return Check(new Check(response.Request, sleep: sleep));
         }
 
@@ -116,7 +116,7 @@ namespace Captcha_Service
         /// <returns></returns>
         public Response ReCaptchaV3(ReCaptchaV3 recaptcha, int sleep = 2000)
         {
-            var response = _request.GetRequest(_urlIn, recaptcha.ToString());
+            var response = _request.Get(_urlIn, recaptcha.ToString());
             return Check(new Check(response.Request, sleep: sleep));
         }
 
@@ -128,7 +128,7 @@ namespace Captcha_Service
         /// <returns></returns>
         public Response ReCaptchaV2Old(ReCaptchaV2Old recaptcha, int sleep = 2000)
         {
-            var response = _request.PostRequest(_urlIn, recaptcha.ToString());
+            var response = _request.Multipart(_urlIn, recaptcha.ToDictionary());
             return Check(new Check(response.Request, sleep: sleep));
         }
 
@@ -140,7 +140,7 @@ namespace Captcha_Service
         /// <returns></returns>
         public Response ClickCaptcha(ClickCaptcha clickCaptcha, int sleep = 2000)
         {
-            var response = _request.PostRequest(_urlIn, clickCaptcha.ToString());
+            var response = _request.Multipart(_urlIn, clickCaptcha.ToDictionary());
             return Check(new Check(response.Request, sleep: sleep));
         }
 
@@ -152,7 +152,7 @@ namespace Captcha_Service
         /// <returns></returns>
         public Response FunCaptchaToken(FunCaptcha funCaptcha, int sleep = 2000)
         {
-            var response = _request.GetRequest(_urlIn, funCaptcha.ToString());
+            var response = _request.Get(_urlIn, funCaptcha.ToString());
             return Check(new Check(response.Request, sleep: sleep));
         }
 
@@ -164,7 +164,7 @@ namespace Captcha_Service
         /// <returns></returns>
         public Response KeyCaptcha(KeyCaptcha keyCaptcha, int sleep = 2000)
         {
-            var response = _request.GetRequest(_urlIn, keyCaptcha.ToString());
+            var response = _request.Get(_urlIn, keyCaptcha.ToString());
             return Check(new Check(response.Request, sleep: sleep));
         }
 
@@ -176,7 +176,7 @@ namespace Captcha_Service
         /// <returns></returns>
         public Response GeeTest(GeeTest geeTest, int sleep = 2000)
         {
-            var response = _request.GetRequest(_urlIn, geeTest.ToString());
+            var response = _request.Get(_urlIn, geeTest.ToString());
             return Check(new Check(response.Request, sleep: sleep));
         }
 
@@ -188,7 +188,7 @@ namespace Captcha_Service
         /// <returns></returns>
         public Response HCaptcha(HCaptcha hCaptcha, int sleep = 2000)
         {
-            var response = _request.GetRequest(_urlIn, hCaptcha.ToString());
+            var response = _request.Get(_urlIn, hCaptcha.ToString());
             return Check(new Check(response.Request, sleep: sleep));
         }
 
@@ -199,7 +199,7 @@ namespace Captcha_Service
         /// <returns></returns>
         public Response Report(ReportModels report)
         {
-            return _request.GetRequest(_urlRes, report.ToString());
+            return _request.Get(_urlRes, report.ToString());
         }
     }
 }

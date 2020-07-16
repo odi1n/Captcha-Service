@@ -45,7 +45,7 @@ namespace Captcha_Service.Models.Captcha.Other
 
                 ["action"] = this.Action,
                 ["id"] = this.Id,
-                ["ids"] = string.Join(", ", this.Ids),
+                ["ids"] = Ids == null ? null: string.Join(", ", this.Ids),
 
                 ["json"] = Json.GetHashCode(),
             };
