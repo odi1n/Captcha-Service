@@ -29,9 +29,9 @@ namespace Captcha_Service.Models.Captcha.Request
         /// <param name="action">Действие которое нужно получить</param>
         /// <param name="ids">Id ваших капч, через запятую</param>
         /// <param name="id">Id капчи</param>
-        public Addition(string action, string ids = null, string id = null)
+        public Addition(Actions action, string ids = null, string id = null)
         {
-            this.Action = action;
+            this.Action = action.ToName();
             this.Ids = ids;
             this.Id = id;
         }

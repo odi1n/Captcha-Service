@@ -20,10 +20,10 @@ namespace Captcha_Service.Models.Captcha.Request
         /// </summary>
         public string Id { get; set; }
 
-        public ReportModels(string id, string action ) 
+        public ReportModels(string id, Actions action ) 
         {
             this.Id = id;
-            this.Action = action;
+            this.Action = action.ToName();
         }
 
         public override string ToString()

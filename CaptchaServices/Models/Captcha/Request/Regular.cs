@@ -12,23 +12,24 @@ namespace Captcha_Service.Models.Captcha.Request
     public class Regular : Setting
     {
         /// <summary>
-        /// Путь картинки
+        /// base64
         /// </summary>
-        public string Body { get; set; }
+        internal string Body { get; private set; }
         /// <summary>
         /// Метод загрузки фото
         /// </summary>
-        public string Methods { get; private set; } = Method.Base64;
+        internal string Methods { get; private set; } 
+
         /// <summary>
-        /// 0 — капча состоит из одного слова
-        /// 1 — капча состоит из двух или более слов
+        /// false — капча состоит из одного слова
+        /// true — капча состоит из двух или более слов
         /// </summary>
-        public int? Phrase { get; set; }
+        public bool Phrase { get; set; }
         /// <summary>
-        /// 0 — капча не чувствительна к регистру
-        /// 1 — капча чувствительна к регистру
+        /// false — капча не чувствительна к регистру
+        /// true — капча чувствительна к регистру
         /// </summary>
-        public int? Regsense { get; set; }
+        public bool Regsense { get; set; }
         /// <summary>
         /// 0 — не определено
         /// 1 — капча состоит только из цифр
@@ -53,8 +54,12 @@ namespace Captcha_Service.Models.Captcha.Request
         /// </summary>
         public int? MaxLen { get; set; }
 
+        private int _numeric { get; set; }
+
+
         public Regular(Decode decode)
         {
+            this.Methods = Method.Base64;
             this.Body = decode.ToString();
         }
 
@@ -64,8 +69,8 @@ namespace Captcha_Service.Models.Captcha.Request
             {
                 ["body"] = this.Body,
                 ["method"] = this.Methods,
-                ["phrase"] = this.Phrase,
-                ["regsense"] = this.Regsense,
+                ["phrase"] = this.Phrase.GetHashCode(),
+                ["regsense"] = this.Regsense.GetHashCode(),
                 ["numeric"] = this.Numeric,
                 ["calc"] = this.Calc,
                 ["min_len"] = this.MinLen,

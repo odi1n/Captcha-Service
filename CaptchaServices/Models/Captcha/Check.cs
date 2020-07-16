@@ -14,7 +14,7 @@ namespace Captcha_Service.Models.Captcha
         /// Указан по умолчанию
         /// get — получить ответ на капчу
         /// </summary>
-        public string Action { get; private set; } = Actions.Get;
+        public Actions Action { get; private set; } = Actions.Get;
         /// <summary>
         /// ID капчи, полученный от in.php.
         /// </summary>

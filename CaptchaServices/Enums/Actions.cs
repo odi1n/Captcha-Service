@@ -1,32 +1,44 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Captcha_Service.Enums
 {
-    public class Actions
+    [Flags]
+    public enum Actions
     {
         /// <summary>
         /// getbalance — получить ваш баланс
         /// </summary>
-        public const string GetBalance = "getbalance";
+        [Description("getbalance")]
+        GetBalance,
+
         /// <summary>
         /// get — получить ответы на множество капч с помощью одного запроса.Требует указания параметра ids.
         /// </summary>
-        public const string Get = "get";
+        [Description("get")]
+        Get,
+
         /// <summary>
         /// get2 — получить стоимость решения отправленной капчи и ответ на нее.Требует указания ID капчи в параметре id.
         /// </summary>
-        public const string Get2 = "get2";
+        [Description("get2")]
+        Get2,
+
         /// <summary>
         /// сообщить о верном ответе
         /// </summary>
-        public const string ReportGood = "reportgood";
+        [Description("reportgood")]
+        ReportGood,
+
         /// <summary>
         /// сообщить о неверном ответе
         /// </summary>
-        public const string ReportBad = "reportbad";
+        [Description("reportbad")]
+        ReportBad,
     }
 }

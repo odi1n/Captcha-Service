@@ -65,9 +65,21 @@ namespace Captcha_Service
         /// </summary>
         /// <param name="data">Параметры</param>
         /// <returns></returns>
-        public Response AdditionInfo(Addition data)
+        public Response Addition(Addition data)
         {
             return _request.GetRequest(_urlRes, setting.ToString() + data.ToString());
+        }
+
+        /// <summary>
+        /// Картинка капча
+        /// </summary>
+        /// <param name="regular">Модель параметров</param>
+        /// <param name="sleep">Время задержки получения ответа </param>
+        /// <returns></returns>
+        public Response Regular(Regular regular, int sleep = 2000)
+        {
+            var response = _request.PostRequest(_urlIn, setting.ToString() + regular.ToString());
+            return Check(new Check(response.Request, sleep: sleep));
         }
 
         /// <summary>
@@ -80,18 +92,6 @@ namespace Captcha_Service
         {
             var response = _request.GetRequest(_urlIn, setting.ToString() + text.ToString());
             return Check(new Check(response.Request, sleep: sleep));
-        }
-
-        /// <summary>
-        /// Картинка капча
-        /// </summary>
-        /// <param name="regular">Модель параметров</param>
-        /// <param name="sleep">Время задержки получения ответа </param>
-        /// <returns></returns>
-        public Response Regular(Regular regular, int sleep = 2000)
-        {
-            var response = _request.PostRequest(_urlIn, setting.ToString() + regular.ToString());
-            return Check(new Check(response.Request, sleep:sleep));
         }
 
         /// <summary>

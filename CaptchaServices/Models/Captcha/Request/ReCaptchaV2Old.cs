@@ -42,6 +42,9 @@ namespace Captcha_Service.Models.Captcha.Request
         /// Мы покажем работнику кнопку "Нет подходящих картинок", а вы получите в ответе No_matching_images.
         /// </summary>
         public int CanNoAnswer { get; set; } = 0;
+        /// <summary>
+        /// Метод капчи
+        /// </summary>
         public string Methods { get; private set; } = Method.Post;
 
         public ReCaptchaV2Old(string file, string textinstructions)

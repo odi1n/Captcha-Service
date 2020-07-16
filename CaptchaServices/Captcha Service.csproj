@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Additions\Converts.cs" />
     <Compile Include="Additions\Decode.cs" />
+    <Compile Include="Additions\EnumAdditions.cs" />
     <Compile Include="Captcha.cs" />
     <Compile Include="Enums\Actions.cs" />
     <Compile Include="Enums\Error.cs" />
@@ -109,10 +110,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="bin\Debug\Captcha Service.dll" />
-    <Content Include="bin\Debug\Newtonsoft.Json.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
