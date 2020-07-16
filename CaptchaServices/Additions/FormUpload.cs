@@ -11,6 +11,7 @@ namespace Captcha_Service.Additions
     partial class FormUpload
     {
         private static readonly Encoding encoding = Encoding.UTF8;
+
         public static HttpWebResponse MultipartFormDataPost(string postUrl, Dictionary<string, object> postParameters)
         {
             string formDataBoundary = String.Format("----------{0:N}", Guid.NewGuid());
@@ -20,6 +21,7 @@ namespace Captcha_Service.Additions
 
             return PostForm(postUrl, contentType, formData);
         }
+
         private static HttpWebResponse PostForm(string postUrl, string contentType, byte[] formData)
         {
             HttpWebRequest request = WebRequest.Create(postUrl) as HttpWebRequest;
