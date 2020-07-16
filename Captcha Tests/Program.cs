@@ -3,12 +3,10 @@ using Captcha_Service.Enums;
 using Captcha_Service.Models.Captcha.Request;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Reflection;
 
 namespace Captcha_Tests
 {
@@ -18,8 +16,13 @@ namespace Captcha_Tests
         {
             var key = OpenFile();
             RuCaptcha rc = new RuCaptcha(key[0]);
-            //var test = rc.Regular(new Regular(new Decode("3.png")));
+            //var ttt = rc.GetBalance();
+            //rc.Regular(new Regular(new Decode()) { });
 
+            AntiCaptcha ac = new AntiCaptcha(key[3]);
+            var info = ac.GetBalance();
+
+            ac.ImageToText(null);
             //CaptchaGuru cg = new CaptchaGuru(key[2]);
             //var test = cg.GetBalance();
 
@@ -31,14 +34,10 @@ namespace Captcha_Tests
             //var image = ac.GetBalance();
             //var balance = ac.GetQueueStats(new GetQueueStats(Captcha_Service.Enums.QueueId.RecaptchaV3s03));
 
-            bool tests = true;
-
-
-
             //var inf1 = rc.Report(new ReportModels(test.Check.Id, Actions.ReportBad));
             //var inf2 =rc.Report(new ReportModels(test.Check.Id, Actions.ReportGood));
 
-            Console.WriteLine(tests.GetHashCode());
+            //Console.WriteLine(test.Request);
             Console.ReadKey();
         }
 
@@ -47,8 +46,6 @@ namespace Captcha_Tests
             var info = File.ReadAllLines("Keys.txt");
             return info;
         }
-
     }
-
 
 }

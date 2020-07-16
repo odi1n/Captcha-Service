@@ -1,14 +1,15 @@
 ﻿using Captcha_Service.Additions;
 using Captcha_Service.Enums;
+using Captcha_Service.Models.Captcha.Addition;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Captcha_Service.Models.Captcha.Request
+namespace Captcha_Service.Models.Captcha.Other
 {
-    public class ReportModels
+    public class ReportModels : Setting
     {
         /// <summary>
         /// Указан по умолчанию
@@ -30,8 +31,12 @@ namespace Captcha_Service.Models.Captcha.Request
         {
             var data = new Dictionary<string, object>()
             {
+                ["key"] = Key,
+
                 ["action"] = this.Action,
                 ["id"] = this.Id,
+
+                ["json"] = Json.GetHashCode(),
             };
             return Converts.StringToDictionary(data); 
         }

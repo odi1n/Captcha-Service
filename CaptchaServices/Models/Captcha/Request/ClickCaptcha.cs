@@ -1,5 +1,6 @@
 ﻿using Captcha_Service.Additions;
 using Captcha_Service.Enums;
+using Captcha_Service.Models.Captcha.Addition;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,39 +12,47 @@ namespace Captcha_Service.Models.Captcha.Request
     public class ClickCaptcha : Setting
     {
         /// <summary>
-        /// hcaptcha — указывает, что вы решаете hCaptcha
-        /// </summary>
-        public string Methods { get; private set; } = Method.HCaptcha;
-        /// <summary>
         /// Файл
         /// </summary>
-        public string File { get; set; }
+        internal string Body { get; set; }
         /// <summary>
         /// 1 — указывает, что вы отправляете ClickCaptcha
         /// </summary>
-        public int CoordinatesCaptcha { get; set; } = 1;
+        internal int CoordinatesCaptcha { get; set; } 
 
         /// <summary>
         /// ClickCaptcha
         /// </summary>
         /// <param name="file">Файл загружаемый</param>
-        public ClickCaptcha(string file)
+        public ClickCaptcha(Decode decode, string textinstructions, int language = 0, Lang? lang = null, bool headerAcao = false, string pingBack = null)
         {
-            this.File = file;
+            this.Methods = Method.HCaptcha;
+            this.CoordinatesCaptcha = 1;
+            this.Body = decode.ToString();
+            this.TextInstructions = textinstructions;
+            this.Language = language;
+            this.Lang = lang;
+            this.HeaderAcao = headerAcao;
+            this.Pingback = pingBack;
         }
 
         public override string ToString()
         {
             var Data = new Dictionary<string, object>()
             {
+                ["key"] = Key,
+
                 ["method"] = this.Methods,
+                ["body"] = this.Body,
                 ["coordinatescaptcha"] = this.CoordinatesCaptcha,
                 ["textinstructions"] = this.TextInstructions,
-                ["imginstructions"] = this.Imginstructions,
                 ["language"] = this.Language,
                 ["lang"] = this.Lang,
                 ["header_acao"] = this.HeaderAcao,
                 ["pingback"] = this.Pingback,
+
+                ["json"] = Json.GetHashCode(),
+                ["soft_id"] = SoftId,
             };
             return Converts.StringToDictionary(Data); ;
         }

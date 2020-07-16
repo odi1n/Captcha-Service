@@ -7,10 +7,10 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Captcha_Service.Models.AntiCaptcha.Request
+namespace Captcha_Service.Models.AntiCaptcha.Other
 {
 
-    public class SpendingStats : Setting
+    public class SpendingStats 
     {
         [JsonProperty(  "date")]
         public int date { get; set; }

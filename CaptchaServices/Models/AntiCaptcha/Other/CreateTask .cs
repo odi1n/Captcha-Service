@@ -1,4 +1,5 @@
 ﻿using Captcha_Service.Enums;
+using Captcha_Service.Models.AntiCaptcha.Addition;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
@@ -8,7 +9,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Captcha_Service.Models.AntiCaptcha.Request
+namespace Captcha_Service.Models.AntiCaptcha.Other
 {
 
     public class CreateTask : Setting

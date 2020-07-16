@@ -4,6 +4,8 @@ using Captcha_Service.Models;
 using Captcha_Service.Models.AntiCaptcha.Request;
 using Captcha_Service.Enums;
 using Captcha_Service.Models.AntiCaptcha;
+using Captcha_Service.Models.AntiCaptcha.Addition;
+using Captcha_Service.Models.AntiCaptcha.Other;
 
 namespace Captcha_Service
 {
@@ -12,14 +14,14 @@ namespace Captcha_Service
     /// </summary>
     public class AntiCaptcha
     {
-        private SettingCap setting;
+        private int? SoftId = null;
         private Request _request = new Request();
         private const string _linkMain = "api.anti-captcha.com";
         private const string _link = "https://" + _linkMain + "/";
 
         public AntiCaptcha(string key)
         {
-            setting = new SettingCap(key, true);
+            Setting.Set(key, SoftId);
         }
 
         /// <summary>
@@ -29,7 +31,6 @@ namespace Captcha_Service
         /// <returns></returns>
         private CreateTaskResp CreateTask(CreateTask createTask)
         {
-            createTask.SetSetting(setting.Key, setting.SoftId);
             var response = _request.Post(_link + Method.CreateTask, Converts.JsonSerializer(createTask));
             return Converts.JsonDeserializ<CreateTaskResp>(response);
         }
@@ -41,7 +42,6 @@ namespace Captcha_Service
         /// <returns></returns>
         private TaskResultResp GetTaskResult(GetTaskResult getTaskResult)
         {
-            getTaskResult.SetSetting(setting.Key);
             var response = _request.Post(_link + Method.GetTaskResult, Converts.JsonSerializer(getTaskResult));
             return Converts.JsonDeserializ<TaskResultResp>(response);
         }
@@ -63,7 +63,7 @@ namespace Captcha_Service
         /// <returns></returns>
         public BalanceResp GetBalance()
         {
-            var response = _request.Post(_link + Method.GetBalance, Converts.JsonSerializer(new GetBalance(setting.Key)));
+            var response = _request.Post(_link + Method.GetBalance, Converts.JsonSerializer(new GetBalance()));
             return Converts.JsonDeserializ<BalanceResp>(response);
         }
 
@@ -85,7 +85,6 @@ namespace Captcha_Service
         /// <returns></returns>
         public ReportIncorrectResp ReportIncorrectImageCaptcha(ReportIncorrect reportIncorrect)
         {
-            reportIncorrect.SetSetting(setting.Key);
             var response = _request.Post(_link + Method.ReportIncorrectImageCaptcha, Converts.JsonSerializer(reportIncorrect));
             return Converts.JsonDeserializ<ReportIncorrectResp>(response);
         }
@@ -97,7 +96,6 @@ namespace Captcha_Service
         /// <returns></returns>
         public ReportIncorrectResp ReportIncorrectRecaptcha(ReportIncorrect reportIncorrect)
         {
-            reportIncorrect.SetSetting(setting.Key);
             var response = _request.Post(_link + Method.ReportIncorrectRecaptcha, Converts.JsonSerializer(reportIncorrect));
             return Converts.JsonDeserializ<ReportIncorrectResp>(response);
         }
@@ -109,7 +107,6 @@ namespace Captcha_Service
         /// <returns></returns>
         public SpendingStatsResp GetSpendingStats(SpendingStats spendingStats)
         {
-            spendingStats.SetSetting(setting.Key);
             var response = _request.Post(_link + Method.GetSpendingStats, Converts.JsonSerializer(spendingStats));
             return Converts.JsonDeserializ<SpendingStatsResp>(response);
         }
@@ -121,7 +118,6 @@ namespace Captcha_Service
         /// <returns></returns>
         public SendFundsResp SendFunds(SendFunds sendFunds)
         {
-            sendFunds.SetSetting(setting.Key);
             var response = _request.Post(_link + Method.SendFunds, Converts.JsonSerializer(sendFunds));
             return Converts.JsonDeserializ<SendFundsResp>(response);
         }

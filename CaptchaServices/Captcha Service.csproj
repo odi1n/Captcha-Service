@@ -55,19 +55,19 @@
     <Compile Include="Enums\QueueId.cs" />
     <Compile Include="Enums\Status.cs" />
     <Compile Include="Exceptions\ErrorParamsException.cs" />
-    <Compile Include="Models\AntiCaptcha\Request\Setting.cs" />
-    <Compile Include="Models\AntiCaptcha\Request\CreateTask .cs" />
+    <Compile Include="Models\AntiCaptcha\Addition\Setting.cs" />
+    <Compile Include="Models\AntiCaptcha\Other\CreateTask .cs" />
     <Compile Include="Models\AntiCaptcha\Request\FunCaptcha.cs" />
     <Compile Include="Models\AntiCaptcha\Request\GeeTest.cs" />
     <Compile Include="Models\AntiCaptcha\Request\RecaptchaV1.cs" />
     <Compile Include="Models\AntiCaptcha\Request\HCaptcha.cs" />
     <Compile Include="Models\AntiCaptcha\Request\ImageToText.cs" />
-    <Compile Include="Models\AntiCaptcha\Request\GetBalance.cs" />
-    <Compile Include="Models\AntiCaptcha\Request\GetQueueStats.cs" />
-    <Compile Include="Models\AntiCaptcha\Request\GetTaskResult.cs" />
-    <Compile Include="Models\AntiCaptcha\Request\ReportIncorrect.cs" />
-    <Compile Include="Models\AntiCaptcha\Request\SendFunds.cs" />
-    <Compile Include="Models\AntiCaptcha\Request\SpendingStats.cs" />
+    <Compile Include="Models\AntiCaptcha\Other\GetBalance.cs" />
+    <Compile Include="Models\AntiCaptcha\Other\GetQueueStats.cs" />
+    <Compile Include="Models\AntiCaptcha\Other\GetTaskResult.cs" />
+    <Compile Include="Models\AntiCaptcha\Other\ReportIncorrect.cs" />
+    <Compile Include="Models\AntiCaptcha\Other\SendFunds.cs" />
+    <Compile Include="Models\AntiCaptcha\Other\SpendingStats.cs" />
     <Compile Include="Models\AntiCaptcha\Request\NoCaptcha.cs" />
     <Compile Include="Models\AntiCaptcha\Request\RecaptchaV3.cs" />
     <Compile Include="Models\AntiCaptcha\Request\SquareNetText.cs" />
@@ -82,10 +82,10 @@
     <Compile Include="Models\AntiCaptcha\SpendingStatsResp.cs" />
     <Compile Include="Models\AntiCaptcha\TaskResultResp.cs" />
     <Compile Include="Models\AntiCaptcha\CreateTaskResp.cs" />
-    <Compile Include="Models\Captcha\Check.cs" />
-    <Compile Include="Models\Captcha\Request\Addition.cs" />
-    <Compile Include="Models\Captcha\Request\SetProxy.cs" />
-    <Compile Include="Models\Captcha\Request\Setting.cs" />
+    <Compile Include="Models\Captcha\Other\Check.cs" />
+    <Compile Include="Models\Captcha\Other\Addition.cs" />
+    <Compile Include="Models\Captcha\Addition\SetProxy.cs" />
+    <Compile Include="Models\Captcha\Addition\Setting.cs" />
     <Compile Include="Models\Captcha\Request\ClickCaptcha.cs" />
     <Compile Include="Models\Captcha\Request\FunCaptcha.cs" />
     <Compile Include="Models\Captcha\Request\GeeTest.cs" />
@@ -95,10 +95,9 @@
     <Compile Include="Models\Captcha\Request\ReCaptchaV2Old.cs" />
     <Compile Include="Models\Captcha\Request\ReCaptchaV3.cs" />
     <Compile Include="Models\Captcha\Request\Regular.cs" />
-    <Compile Include="Models\Captcha\Request\ReportModels.cs" />
+    <Compile Include="Models\Captcha\Other\ReportModels.cs" />
     <Compile Include="Models\Captcha\Request\Text.cs" />
     <Compile Include="Models\Captcha\Response.cs" />
-    <Compile Include="Models\SettingCap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Additions\Request.cs" />
     <Compile Include="Service\AntiCaptcha.cs" />
@@ -111,6 +110,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

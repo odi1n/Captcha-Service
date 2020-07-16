@@ -75,10 +75,10 @@ namespace Captcha_Service.Models.AntiCaptcha.Request
         [NonSerialized]
         public int _maxLength;
 
-        public ImageToText(string body)
+        public ImageToText(Decode decode)
         {
             this.Type = Method.ImageToTextTask;
-            this.Body = body;
+            this.Body = decode.ToString();
         }
     }
 }

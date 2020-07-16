@@ -7,7 +7,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Captcha_Service.Models.AntiCaptcha.Request
+namespace Captcha_Service.Models.AntiCaptcha.Other
 {
 
     public class GetQueueStats 
