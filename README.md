@@ -1,4 +1,7 @@
 # Captcha Service
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/odi1n/Captcha-Service)
+![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/1.0.5.0)
+
 Библиотека объединяющая в себе все сервисы для работы с капчей.
 
 |  Капча - Сервис | RuCaptcha | 2Captcha | AntiCaptcha| Cptch|CaptchaGuru | Solvecaptcha| Azcaptcha | X-captcha   | 
