@@ -7,7 +7,7 @@
 Библиотека объединяющая в себе все сервисы для работы с капчей.
 
 |  Капча - Сервис | RuCaptcha | 2Captcha | AntiCaptcha| Cptch|CaptchaGuru | Solvecaptcha| Azcaptcha | X-captcha   | Pixodrom|
-| ---             | :---:     | :---:    | :---:      |:---: |:---:       |:---:        |:---:      |:---:        |         |
+| ---             | :---:     | :---:    | :---:      |:---: |:---:       |:---:        |:---:      |:---:        | :---:  |
 | Image Captcha   |      +    |   +      | +          |     +|      +     |       *     |    *      |             |         |
 | Text Captcha    |      +    |   +      |            |      |            |       *     |    *      |             |         |
 | ReCaptchaV2     |      +    |   +      |+           |     +|      +     |       *     |    *      |       *     |         |
