@@ -6,9 +6,9 @@
 
 Библиотека объединяющая в себе все сервисы для работы с капчей.
 
-|  Капча - Сервис | RuCaptcha | 2Captcha | AntiCaptcha| Cptch|CaptchaGuru | Solvecaptcha| Azcaptcha | X-captcha   | Pixodrom|
-| ---             | :---:     | :---:    | :---:      |:---: |:---:       |:---:        |:---:      |:---:        | :---:  |
-| Image Captcha   |      +    |   +      | +          |     +|      +     |       *     |    *      |             |   *     |
+|  Капча - Сервис | RuCaptcha | 2Captcha | AntiCaptcha| Cptch|CaptchaGuru | Solvecaptcha| Azcaptcha | X-captcha   |         |
+| ---             | :---:     | :---:    | :---:      |:---: |:---:       |:---:        |:---:      |:---:        | :---:   |
+| Image Captcha   |      +    |   +      | +          |     +|      +     |       *     |    *      |             |         |
 | Text Captcha    |      +    |   +      |            |      |            |       *     |    *      |             |         |
 | ReCaptchaV2     |      +    |   +      |+           |     +|      +     |       *     |    *      |       *     |         |
 | ReCaptchaV3     |      +    |   +      |+           |     +|      +     |             |    *      |             |         |
@@ -22,9 +22,8 @@
 | FunCaptcha      |      +    |   +      | +          |      |            |        *    |           |             |         |
 | SquareNetText   |           |          | +          |      |            |             |           |             |         |
 | RecaptchaV1     |           |          | +          |      |            |        *    |     *     |             |         |
-| Иероглифы       |           |          |            |      |            |             |           |             |    *    |
 | Report          |      +    |    +     | +          |      |            |             |           |             |         |
-| Balance         |      +    |    +     | +          |     +|      +     |        *    |     *     |     *       |    *    |
+| Balance         |      +    |    +     | +          |     +|      +     |        *    |     *     |     *       |         |
 | Другие методы   |      +    |    +     | +          |      |            |        *    |     *     |     *       |         |
 
 #### Информация
