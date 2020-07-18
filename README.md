@@ -8,7 +8,7 @@
 
 |  Капча - Сервис | RuCaptcha | 2Captcha | AntiCaptcha| Cptch|CaptchaGuru | Solvecaptcha| Azcaptcha | X-captcha   | Pixodrom|
 | ---             | :---:     | :---:    | :---:      |:---: |:---:       |:---:        |:---:      |:---:        | :---:  |
-| Image Captcha   |      +    |   +      | +          |     +|      +     |       *     |    *      |             |         |
+| Image Captcha   |      +    |   +      | +          |     +|      +     |       *     |    *      |             |   *     |
 | Text Captcha    |      +    |   +      |            |      |            |       *     |    *      |             |         |
 | ReCaptchaV2     |      +    |   +      |+           |     +|      +     |       *     |    *      |       *     |         |
 | ReCaptchaV3     |      +    |   +      |+           |     +|      +     |             |    *      |             |         |
@@ -20,10 +20,11 @@
 | hCaptcha        |      +    |   +      | +          |      |      +     |             |           |             |         |
 | Capy Puzzle     |      *    |   *      |            |      |            |             |           |             |         |
 | FunCaptcha      |      +    |   +      | +          |      |            |        *    |           |             |         |
-|  SquareNetText  |           |          | +          |      |            |             |           |             |         |
+| SquareNetText   |           |          | +          |      |            |             |           |             |         |
 | RecaptchaV1     |           |          | +          |      |            |        *    |     *     |             |         |
+| Иероглифы       |           |          |            |      |            |             |           |             |    *    |
 | Report          |      +    |    +     | +          |      |            |             |           |             |         |
-| Balance         |      +    |    +     | +          |     +|      +     |        *    |     *     |     *       |         |
+| Balance         |      +    |    +     | +          |     +|      +     |        *    |     *     |     *       |    *    |
 | Другие методы   |      +    |    +     | +          |      |            |        *    |     *     |     *       |         |
 
 #### Информация
