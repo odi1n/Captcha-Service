@@ -6,7 +6,7 @@
 
 Библиотека объединяющая в себе все сервисы для работы с капчей.
 
-|  Капча - Сервис | RuCaptcha | 2Captcha | AntiCaptcha| Cptch|CaptchaGuru | SolveCaptcha| AzCaptcha | X-Captcha   |BypassCaptcha.com|Captchas.io|DeathByCaptcha.com|DeCaptcher.com|ImageTyperz.com|
+|  Капча - Сервис | RuCaptcha | 2Captcha | AntiCaptcha| Cptch|CaptchaGuru | SolveCaptcha| AzCaptcha | X-Captcha   |Captchas.io|ImageTyperz.com|BypassCaptcha.com|DeathByCaptcha.com|DeCaptcher.com|
 | ---             | :---:     | :---:    | :---:      |:---: |:---:       |:---:        |:---:      |:---:        | :---: | :---: | :---: | :---: | :---: |
 | Image Captcha   |      +    |   +      | +          |     +|      +     |       *     |    *      |             |         |||||
 | Text Captcha    |      +    |   +      |            |      |            |       *     |    *      |             |         |||||
