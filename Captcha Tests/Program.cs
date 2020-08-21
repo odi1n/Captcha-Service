@@ -26,7 +26,11 @@ namespace Captcha_Tests
             CptchNet cptch = new CptchNet(key[1]);
             cptch.Answer += ((e,answer) => 
             {
-                var test = e as RuCaptcha;
+                var test = e as CptchNet;
+                var balanse = test.GetBalance();
+
+                Console.WriteLine(balanse.Request);
+
                 if(answer.Status)
                     Console.WriteLine(answer.Request);
                 else
