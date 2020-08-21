@@ -6,25 +6,25 @@
 
 Библиотека объединяющая в себе все сервисы для работы с капчей.
 
-|  Капча - Сервис | RuCaptcha | 2Captcha | AntiCaptcha| Cptch|CaptchaGuru | SolveCaptcha| AzCaptcha | X-Captcha   |Captchas.io|ImageTyperz.com|BypassCaptcha.com|DeathByCaptcha.com|DeCaptcher.com|
-| ---             | :---:     | :---:    | :---:      |:---: |:---:       |:---:        |:---:      |:---:        | :---: | :---: | :---: | :---: | :---: |
-| Image Captcha   |      +    |   +      | +          |     +|      +     |       *     |    *      |             |         |||||
-| Text Captcha    |      +    |   +      |            |      |            |       *     |    *      |             |         |||||
-| ReCaptchaV2     |      +    |   +      |+           |     +|      +     |       *     |    *      |       *     |         |||||
-| ReCaptchaV3     |      +    |   +      |+           |     +|      +     |             |    *      |             |         |||||
-| ReСaptchaV2 Old |      +    |   +      |            |      |            |       *     |           |             |         |||||
-| ClickCaptcha    |      +    |   +      |            |      |            |       *     |           |             |         |||||
-| RotateCaptcha   |      *    |   *      |            |      |            |       *     |           |             |         |||||
-| KeyCaptcha      |      +    |   +      |            |      |            |       *     |           |             |         |||||
-| GeeTest Captcha |      +    |   +      | +          |      |            |             |           |             |         |||||
-| hCaptcha        |      +    |   +      | +          |      |      +     |             |           |             |         |||||
-| Capy Puzzle     |      *    |   *      |            |      |            |             |           |             |         |||||
-| FunCaptcha      |      +    |   +      | +          |      |            |        *    |           |             |         |||||
-| SquareNetText   |           |          | +          |      |            |             |           |             |         |||||
-| ReCaptchaV1     |           |          | +          |      |            |        *    |     *     |             |         |||||
-| Report          |      +    |    +     | +          |      |            |             |           |             |         |||||
-| Balance         |      +    |    +     | +          |     +|      +     |        *    |     *     |     *       |         |||||
-| Другие методы   |      +    |    +     | +          |      |            |        *    |     *     |     *       |         |||||
+|  Капча - Сервис | RuCaptcha | 2Captcha | AntiCaptcha| Cptch|CaptchaGuru | SolveCaptcha| AzCaptcha | X-Captcha   |Captchas.io|ImageTyperz.com|BypassCaptcha.com|DeathByCaptcha.com|DeCaptcher.com|9kw.eu|Gsa-Online.de|
+| ---             | :---:     | :---:    | :---:      |:---: |:---:       |:---:        |:---:      |:---:        | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| Image Captcha   |      +    |   +      | +          |     +|      +     |       *     |    *      |             |         |||||||
+| Text Captcha    |      +    |   +      |            |      |            |       *     |    *      |             |         |||||||
+| ReCaptchaV2     |      +    |   +      |+           |     +|      +     |       *     |    *      |       *     |         |||||||
+| ReCaptchaV3     |      +    |   +      |+           |     +|      +     |             |    *      |             |         |||||||
+| ReСaptchaV2 Old |      +    |   +      |            |      |            |       *     |           |             |         |||||||
+| ClickCaptcha    |      +    |   +      |            |      |            |       *     |           |             |         |||||||
+| RotateCaptcha   |      *    |   *      |            |      |            |       *     |           |             |         |||||||
+| KeyCaptcha      |      +    |   +      |            |      |            |       *     |           |             |         |||||||
+| GeeTest Captcha |      +    |   +      | +          |      |            |             |           |             |         |||||||
+| hCaptcha        |      +    |   +      | +          |      |      +     |             |           |             |         |||||||
+| Capy Puzzle     |      *    |   *      |            |      |            |             |           |             |         |||||||
+| FunCaptcha      |      +    |   +      | +          |      |            |        *    |           |             |         |||||||
+| SquareNetText   |           |          | +          |      |            |             |           |             |         |||||||
+| ReCaptchaV1     |           |          | +          |      |            |        *    |     *     |             |         |||||||
+| Report          |      +    |    +     | +          |      |            |             |           |             |         |||||||
+| Balance         |      +    |    +     | +          |     +|      +     |        *    |     *     |     *       |         |||||||
+| Другие методы   |      +    |    +     | +          |      |            |        *    |     *     |     *       |         |||||||
 
 #### Информация
 `+` - Имеется в библиотеке
