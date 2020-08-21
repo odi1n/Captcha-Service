@@ -1,33 +1,42 @@
 # Captcha Service
-Библиотека которая объединяет в себе сервисы для работы с капчей.
 
-|Капча            | RuCaptcha | 2Captcha | AntiCaptcha| Cptch|CaptchaGuru | Solvecaptcha| Azcaptcha | X-captcha   | 
-| ---             | :---:     | :---:    | :---:      |:---: |:---:       |:---:        |:---:      |:---:        | 
-| Image Captcha   |      +    |   +      | +          |     +|      +     |       *     |    *      |             | 
-| Text Captcha    |      +    |   +      |            |      |            |       *     |    *      |             |
-| ReCaptchaV2     |      +    |   +      |+           |     +|      +     |       *     |    *      |       *     |
-| ReCaptchaV3     |      +    |   +      |+           |     +|      +     |             |    *      |             | 
-| RecaptchaV2Old  |      +    |   +      |            |      |            |       *     |           |             |
-| ClickCaptcha    |      +    |   +      |            |      |            |       *     |           |             |
-| RotateCaptcha   |      *    |   *      |            |      |            |       *     |           |             | 
-| KeyCaptcha      |      +    |   +      |            |      |            |       *     |           |             |
-| GeeTest         |      +    |   +      | +          |      |            |             |           |             |
-| hCaptcha        |      +    |   +      | +          |      |      +     |             |           |             |
-| Capy Puzzle     |      *    |   *      |            |      |            |             |           |             |
-| FunCaptcha      |      +    |   +      | +          |      |            |        *    |           |             |
-|  SquareNetText  |           |          | +          |      |            |             |           |             |
-| RecaptchaV1     |           |          | +          |      |            |        *    |     *     |             |
-| Report          |      +    |    +     | +          |      |            |             |           |             |
-| Balance         |      +    |    +     | +          |     +|      +     |        *    |     *     |     *       |
-| Другие методы   |      +    |    +     | +          |      |            |        *    |     *     |     *       | 
+![GitHub release (latest by date)](https://img.shields.io/badge/C%23%20-%20.Net%20Framework%204.5.2-blueviolet)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/odi1n/Captcha-Service)
+![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/odi1n/Captcha-Service/1.0.5.0)
 
+Библиотека объединяющая в себе все сервисы для работы с капчей.
+
+|  Капча - Сервис | RuCaptcha | 2Captcha | AntiCaptcha| Cptch|CaptchaGuru | SolveCaptcha| AzCaptcha | X-Captcha   |Captchas.io|ImageTyperz.com|BypassCaptcha.com|DeathByCaptcha.com|DeCaptcher.com|9kw.eu|Gsa-Online.de|
+| ---             | :---:     | :---:    | :---:      |:---: |:---:       |:---:        |:---:      |:---:        | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| Image Captcha   |      +    |   +      | +          |     +|      +     |       *     |    *      |             |         |||||||
+| Text Captcha    |      +    |   +      |            |      |            |       *     |    *      |             |         |||||||
+| ReCaptchaV2     |      +    |   +      |+           |     +|      +     |       *     |    *      |       *     |         |||||||
+| ReCaptchaV3     |      +    |   +      |+           |     +|      +     |             |    *      |             |         |||||||
+| ReСaptchaV2 Old |      +    |   +      |            |      |            |       *     |           |             |         |||||||
+| ClickCaptcha    |      +    |   +      |            |      |            |       *     |           |             |         |||||||
+| RotateCaptcha   |      *    |   *      |            |      |            |       *     |           |             |         |||||||
+| KeyCaptcha      |      +    |   +      |            |      |            |       *     |           |             |         |||||||
+| GeeTest Captcha |      +    |   +      | +          |      |            |             |           |             |         |||||||
+| hCaptcha        |      +    |   +      | +          |      |      +     |             |           |             |         |||||||
+| Capy Puzzle     |      *    |   *      |            |      |            |             |           |             |         |||||||
+| FunCaptcha      |      +    |   +      | +          |      |            |        *    |           |             |         |||||||
+| SquareNetText   |           |          | +          |      |            |             |           |             |         |||||||
+| ReCaptchaV1     |           |          | +          |      |            |        *    |     *     |             |         |||||||
+| Report          |      +    |    +     | +          |      |            |             |           |             |         |||||||
+| Balance         |      +    |    +     | +          |     +|      +     |        *    |     *     |     *       |         |||||||
+| Другие методы   |      +    |    +     | +          |      |            |        *    |     *     |     *       |         |||||||
+
+#### Информация
 `+` - Имеется в библиотеке
 
 `*` - В планах добавить
     
-# В планах:
-  - Отключения исключения при ошибки решения капчи. Возвращение в переменной
-  - Добавить async
-  - Добавить ссылку на .dll
-  - Сделать метод в который указываем только сервис и идет решение(скорее всего все кроме anticaptcha)
-так же можете предлагать свои идеи.
+#### Используется:
+- Newtonsoft.Json
+    
+## В планах:
+  1. Отключения исключения при ошибки решения капчи. Возвращение в переменной
+  2. Добавить async
+  3. Добавить ссылку на .dll
+  4. Сделать метод в который указываем только сервис и идет решение(скорее всего все кроме anticaptcha)
+  5. По возможности избавиться от Newtonsoft.Json, взять его методы или сделать свои. Хотелось бы видеть без каких либо библиотек проект
