@@ -19,6 +19,9 @@ namespace Captcha_Service
         private const string _linkMain = "api.anti-captcha.com";
         private const string _link = "https://" + _linkMain + "/";
 
+        public delegate void GetAnswer(object e, TaskResultResp response);
+        public event GetAnswer Answer;
+
         public AntiCaptcha(string key)
         {
             Setting.Set(key, SoftId);
@@ -52,7 +55,10 @@ namespace Captcha_Service
             {
                 var result = GetTaskResult(new GetTaskResult(create.TaskId));
                 if (result.ErrorId == 0)
+                {
+                    Answer?.Invoke(this, result);
                     return result;
+                }
                 Thread.Sleep(sleep);
             }
         }

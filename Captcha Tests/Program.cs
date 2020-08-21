@@ -1,5 +1,6 @@
 ﻿using Captcha_Service;
 using Captcha_Service.Enums;
+using Captcha_Service.Models.Captcha;
 using Captcha_Service.Models.Captcha.Other;
 using Captcha_Service.Models.Captcha.Request;
 using System;
@@ -16,18 +17,27 @@ namespace Captcha_Tests
         static void Main(string[] args)
         {
             var key = OpenFile();
-            RuCaptcha rc = new RuCaptcha(key[0]);
+            //RuCaptcha rc = new RuCaptcha(key[0]);
             //var test = rc.Regular(new Regular(new Decode("3.png")), 4000);
 
             //CaptchaGuru cg = new CaptchaGuru(key[2]);
             //var test = cg.GetBalance();
 
             CptchNet cptch = new CptchNet(key[1]);
-            var test = cptch.Regular(new Regular(new Decode("captcha.jpg")), 3000);
-            Console.WriteLine(test.Request);
+            cptch.Answer += ((e,answer) => 
+            {
+                var test = e as RuCaptcha;
+                if(answer.Status)
+                    Console.WriteLine(answer.Request);
+                else
+                    Console.WriteLine("Error: " + answer.Request);
+            });
 
-            var test2 = cptch.Regular(new Regular(new Decode("3.png")), 3000);
-            Console.WriteLine(test2.Request);
+            var info = cptch.Regular(new Regular(new Decode("captcha.jpg")));
+            Console.WriteLine();
+
+            //var test2 = cptch.Regular(new Regular(new Decode("3.png")));
+            //Console.WriteLine(test2.Request);
 
             //AntiCaptcha ac = new AntiCaptcha(key[3]);
             //var image = ac.GetBalance();
@@ -36,11 +46,15 @@ namespace Captcha_Tests
             Console.ReadKey();
         }
 
+        private static void Test_Notify(string message)
+        {
+            Console.WriteLine(message);
+        }
+
         private static string[] OpenFile()
         {
             var info = File.ReadAllLines("Keys.txt");
             return info;
         }
     }
-
 }

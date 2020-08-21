@@ -22,6 +22,9 @@ namespace Captcha_Service
         private const string _urlIn = "http://" + _link + "/in.php?";
         private const string _urlRes = "http://" + _link + "/res.php?";
 
+        public delegate void GetAnswer(object e, Response response);
+        public event GetAnswer Answer;
+
         /// <summary>
         /// Указать ключ
         /// </summary>
@@ -45,6 +48,7 @@ namespace Captcha_Service
                 if (response.Status == true)
                 {
                     response.Check = check;
+                    Answer?.Invoke(this,response);
                     return response;
                 }
 
