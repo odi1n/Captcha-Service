@@ -50,7 +50,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CaptchaServices\Captcha Service.csproj">
+    <ProjectReference Include="..\Captcha Service\Captcha Service.csproj">
       <Project>{c34aaec3-7f90-4d70-8ec9-a58bb1204fd0}</Project>
       <Name>Captcha Service</Name>
     </ProjectReference>
