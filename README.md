@@ -2,7 +2,7 @@
 
 ![GitHub release (latest by date)](https://img.shields.io/badge/C%23%20-%20.Net%20Framework%204.5.2-blueviolet)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/odi1n/Captcha-Service)
-![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/odi1n/Captcha-Service/1.0.5.0)
+![GitHub commits since latest release (by date)](https://img.shields.io/github/commits-since/odi1n/Captcha-Service/1.0.6.0)
 
 Библиотека объединяющая в себе все сервисы для работы с капчей.
 
